@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ARA KOREA · K-Culture · Portfolio</title>
+  <!-- 캐시 무력화: 숫자만 바꾸면 즉시 반영됩니다 -->
+  <link rel="stylesheet" href="styles.css?v=20251218-99"/>
+  <style>
+    /* 이 페이지에서만 강제로 라벨/프리뷰가 보이도록(캐시 영향 최소화) */
+    .card{ position:relative; }
+    .portfolio-label{
+      position:absolute; left:16px; bottom:16px;
+      padding:10px 16px;
+      border-radius:999px;
+      font-size:14px; font-weight:800;
+      letter-spacing:.06em;
+      color:#061427;
+      background: linear-gradient(135deg, rgba(69,182,255,.95), rgba(122,99,255,.95));
+      box-shadow: 0 10px 28px rgba(0,0,0,.38);
+      z-index:5;
+      pointer-events:none;
+      white-space:nowrap;
+    }
+    /* PDF 미리보기(카드 내부) */
+    .card .card-preview{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      border:0;
+    }
+    .card .card-preview object,
+    .card .card-preview iframe,
+    .card .card-preview embed{
+      width:100%; height:100%;
+      border:0;
+      display:block;
+    }
+    /* 미리보기 위를 클릭해도 카드 링크가 동작하도록 */
+    .card-preview, .card-preview *{ pointer-events:none; }
+  </style>
+<style>
+/* ==================================================
+   Mobile Nav Dropdown Fix
+   - Tap K-Culture to toggle submenu vertically on mobile
+   - PC hover behavior remains
+   ================================================== */
+@media (max-width: 900px){
+  .nav-dd-menu{
+    position: static !important;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 6px;
+  }
+  .nav-dd.is-open .nav-dd-menu{ display: flex !important; }
+  .nav-dd-menu .nav-pill{ width: 100%; justify-content: flex-start; }
+  .nav-dd-menu a:active{ transform: scale(0.99); }
+}
+</style>
+
+<style>
+/* ==================================================
+   K-Culture Portfolio patch
+   - Back navigation (same style as Awards/Posters)
+   - Mobile: always show K-Culture submenu (no double-tap)
+   ================================================== */
+
+/* Back Navigation */
+.back-nav{
+  width: min(1100px, 100%);
+  margin: 18px auto 6px;
+  padding: 0 18px;
+}
+.back-link{
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 12px;
+  opacity: .85;
+}
+.back-link::before{ content: "← "; }
+.back-link:hover{ opacity: 1; }
+
+@media (max-width: 900px){
+  .back-nav{ margin: 14px auto 4px; }
+  .back-link{ font-size: 11px; }
+
+  /* Always show submenu on mobile so K-Culture remains single-tap navigable */
+  .nav-dd-menu{
+    position: static !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 6px;
+  }
+  .nav-dd-menu .nav-pill{
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+<div class="brand">
+<div class="brand-title">ARA KOREA</div>
+<div class="brand-sub">Immersive K‑Culture · Art Film &amp; Performance</div>
+</div>
+<nav aria-label="Primary" class="top-nav"><a class="nav-pill" href="index.html">Home</a><a class="nav-pill" href="about.html">About</a><div class="nav-dd"><a class="nav-pill is-active" href="kculture.html">K‑Culture</a><div class="nav-dd-menu"><a class="nav-dd-item nav-pill" href="kculture-gallery.html">Gallery</a><a class="nav-dd-item nav-pill is-active" href="kculture-portfolio.html">Portfolio</a><a class="nav-dd-item nav-pill" href="kculture-video.html">Video</a></div></div><a class="nav-pill" href="news.html">News</a><a class="nav-pill" href="contact.html">Contact</a></nav>
+</header>
+
+<main class="page">
+
+  <div class="back-nav">
+    <a href="kculture.html" class="back-link">BACK</a>
+  </div>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">Portfolio</h2>
+      <p class="section-sub">
+        ARA KOREA의 결과물을 카테고리별로 정리한 아카이브입니다. 아래에서 항목을 선택해 확인하세요.
+      </p>
+    </div>
+
+    <!-- 3개의 카테고리로 고정: Awards / Congratulatory Messages / Posters -->
+    <div class="cards-3">
+      <a class="card" href="awards.html" aria-label="Awards">
+        <img src="images/award_2020_01.jpg" alt="Awards"
+             onerror="this.remove(); this.parentElement.classList.add('card-fallback');"/>
+        <div class="portfolio-label">Awards</div>
+      </a>
+
+      <a class="card" href="congratulatory-messages.html" aria-label="Congratulatory Messages">
+        <!-- 이미지 대신 PDF 1페이지를 카드에서 바로 미리보기(브라우저에 따라 표시 방식이 다를 수 있음) -->
+        <div class="card-preview" aria-hidden="true">
+          <object data="documents/congratulatory_2016_yonah_martin.pdf#page=1&zoom=100" type="application/pdf">
+            <iframe src="documents/congratulatory_2016_yonah_martin.pdf#page=1&zoom=100" title="Congratulatory message preview"></iframe>
+          </object>
+        </div>
+        <div class="portfolio-label">Congratulatory Messages</div>
+      </a>
+
+      <a class="card" href="portfolio-posters.html" aria-label="Posters">
+        <img src="images/KakaoTalk_Photo_2025-12-14-13-46-06.jpeg" alt="Posters" style="object-position:center 85%;" onerror="this.remove(); this.parentElement.classList.add('card-fallback');"/>
+        <div class="portfolio-label">Posters</div>
+      </a>
+    </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-head">Contact</div>
+      <div class="footer-text">E-mail: info@akenm.com</div>
+      <div class="footer-text">Tel: 02-400-7151</div>
+    </div>
+    <div>
+      <div class="footer-head">Social</div>
+      <div class="footer-text"><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div>
+    </div>
+    <div>
+      <div class="footer-head">Shop</div>
+      <div class="footer-text"><a href="https://arakorea.shop" target="_blank" rel="noopener noreferrer">ARAKOREA.SHOP</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">© ARA KOREA Space Art Project</div>
+</footer>
+
+<script>
+(function(){
+  function isMobile(){ return window.matchMedia && window.matchMedia('(max-width: 900px)').matches; }
+  var dd = document.querySelector('.nav-dd');
+  if(!dd) return;
+  var trigger = dd.querySelector('a.nav-pill'); // K-Culture pill inside .nav-dd
+  var menu = dd.querySelector('.nav-dd-menu');
+  if(!trigger || !menu) return;
+
+  trigger.setAttribute('aria-haspopup','true');
+  trigger.setAttribute('aria-expanded','false');
+
+  function close(){
+    dd.classList.remove('is-open');
+    trigger.setAttribute('aria-expanded','false');
+  }
+
+  trigger.addEventListener('click', function(e){
+    if(!isMobile()) return; // PC hover stays
+    e.preventDefault();
+    e.stopPropagation();
+    var open = dd.classList.toggle('is-open');
+    trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', function(e){
+    if(!isMobile()) return;
+    if(dd.contains(e.target)) return;
+    close();
+  });
+
+  window.addEventListener('resize', function(){
+    if(!isMobile()) close();
+  });
+})();
+</script>
+</body>
+</html>

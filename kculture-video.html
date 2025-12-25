@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ARA KOREA · K-Culture · Video</title>
+  <link rel="stylesheet" href="styles.css?v=20251219-vid1"/>
+  <style>
+    /* Video gallery (page-only) */
+    .video-grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap:14px;
+    }
+    .v-card{
+      text-align:left;
+      padding:0;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: 0 18px 50px rgba(0,0,0,.28);
+      cursor:pointer;
+      transition: transform .16s ease, border-color .16s ease, background .16s ease;
+    }
+    .v-card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.16);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+    }
+    .v-thumb{ position:relative; aspect-ratio:16/9; background: rgba(0,0,0,.35); }
+    .v-thumb img{ width:100%; height:100%; object-fit:cover; display:block; filter: saturate(1.05) contrast(1.02); }
+    .v-play{
+      position:absolute; inset:0;
+      display:grid; place-items:center;
+      background: radial-gradient(500px 220px at 50% 60%, rgba(0,0,0,.00), rgba(0,0,0,.45));
+    }
+    .v-play::before{
+      content:"";
+      width:62px; height:62px;
+      border-radius:999px;
+      background: linear-gradient(135deg, rgba(69,182,255,.95), rgba(122,99,255,.95));
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+      opacity:.92;
+    }
+    .v-play::after{
+      content:"";
+      position:absolute;
+      width:0; height:0;
+      border-left: 16px solid #061427;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      margin-left: 4px;
+    }
+    .v-body{ padding:14px 14px 16px; }
+    .v-title{ font-weight:900; letter-spacing:.02em; font-size:14px; line-height:1.35; }
+    .v-desc{ margin-top:6px; color: var(--muted); font-size:13px; line-height:1.55; }
+    .v-link{ display:inline-block; margin-top:12px; font-size:12px; font-weight:800; letter-spacing:.04em; color: rgba(69,182,255,.92); text-decoration:none; }
+    .v-link:hover{ text-decoration:underline; }
+
+    /* Modal */
+    .yt-modal{ position:fixed; inset:0; z-index:999; display:none; }
+    .yt-modal.is-open{ display:block; }
+    .yt-backdrop{ position:absolute; inset:0; background: rgba(0,0,0,.62); backdrop-filter: blur(6px); }
+    .yt-panel{
+      position:relative;
+      width:min(980px, calc(100vw - 28px));
+      margin: 7vh auto 0;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(8,12,20,.78);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .yt-bar{ display:flex; align-items:center; justify-content:space-between; padding:10px 12px; border-bottom:1px solid rgba(255,255,255,.10); }
+    .yt-title{ font-weight:900; font-size:13px; letter-spacing:.04em; color: rgba(233,238,247,.92); }
+    .yt-close{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: rgba(233,238,247,.92);
+      border-radius: 999px;
+      padding:8px 12px;
+      font-weight:900;
+      cursor:pointer;
+    }
+    .yt-close:hover{ background: rgba(255,255,255,.10); }
+    .yt-frame{ aspect-ratio:16/9; background:#000; }
+    .yt-frame iframe{ width:100%; height:100%; border:0; display:block; }
+
+    @media (max-width: 720px){
+      .yt-panel{ margin-top: 10vh; }
+    }
+  </style>
+<style>
+/* ==================================================
+   Mobile Nav Dropdown Fix
+   - Tap K-Culture to toggle submenu vertically on mobile
+   - PC hover behavior remains
+   ================================================== */
+@media (max-width: 900px){
+  .nav-dd-menu{
+    position: static !important;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 6px;
+  }
+  .nav-dd.is-open .nav-dd-menu{ display: flex !important; }
+  .nav-dd-menu .nav-pill{ width: 100%; justify-content: flex-start; }
+  .nav-dd-menu a:active{ transform: scale(0.99); }
+}
+</style>
+
+<style>
+/* ==================================================
+   K-Culture Video patch
+   - Back navigation (same style as Awards/Posters)
+   - Mobile: always show K-Culture submenu (no double-tap, no toggle)
+   ================================================== */
+
+/* Back Navigation */
+.back-nav{
+  width: min(1100px, 100%);
+  margin: 18px auto 6px;
+  padding: 0 18px;
+}
+.back-link{
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 12px;
+  opacity: .85;
+}
+.back-link::before{ content: "← "; }
+.back-link:hover{ opacity: 1; }
+
+@media (max-width: 900px){
+  .back-nav{ margin: 14px auto 4px; }
+  .back-link{ font-size: 11px; }
+
+  /* Always show submenu on mobile so K-Culture remains single-tap navigable */
+  .nav-dd-menu{
+    position: static !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 6px;
+  }
+  .nav-dd-menu .nav-pill{ width: 100%; justify-content: flex-start; }
+}
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+<div class="brand">
+<div class="brand-title">ARA KOREA</div>
+<div class="brand-sub">Immersive K‑Culture · Art Film &amp; Performance</div>
+</div>
+<nav aria-label="Primary" class="top-nav"><a class="nav-pill" href="index.html">Home</a><a class="nav-pill" href="about.html">About</a><div class="nav-dd"><a class="nav-pill" href="kculture.html">K‑Culture</a><div class="nav-dd-menu"><a class="nav-dd-item nav-pill" href="kculture-gallery.html">Gallery</a><a class="nav-dd-item nav-pill" href="kculture-portfolio.html">Portfolio</a><a class="nav-dd-item nav-pill is-active" href="kculture-video.html">Video</a></div></div><a class="nav-pill" href="news.html">News</a><a class="nav-pill" href="contact.html">Contact</a></nav>
+</header>
+
+<main class="page">
+
+  <div class="back-nav">
+    <a href="kculture.html" class="back-link">BACK</a>
+  </div>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">Video</h2>
+      <p class="section-sub">ARA KOREA의 공연·프로젝트 영상 아카이브입니다. 카드를 클릭하면 바로 재생됩니다.</p>
+    </div>
+
+    <div class="video-grid">
+
+      <button class="v-card" type="button"
+              data-vid="3UhGyFxWqmE" data-start="2963"
+              aria-label="WOOSOOZOO IV – 시간의 유령 (play)">
+        <div class="v-thumb">
+          <img loading="lazy" src="https://img.youtube.com/vi/3UhGyFxWqmE/hqdefault.jpg" alt="WOOSOOZOO IV – 시간의 유령 thumbnail">
+          <div class="v-play" aria-hidden="true"></div>
+        </div>
+        <div class="v-body">
+          <div class="v-title">WOOSOOZOO IV – 시간의 유령</div>
+          
+          <a class="v-link" href="https://www.youtube.com/watch?v=3UhGyFxWqmE&t=2963s" target="_blank" rel="noopener">Open on YouTube</a>
+        </div>
+      </button>
+    
+
+      <button class="v-card" type="button"
+              data-vid="sa7AcspcZ7A" data-start="10"
+              aria-label="시간의 유령 – 하이라이트 (play)">
+        <div class="v-thumb">
+          <img loading="lazy" src="https://img.youtube.com/vi/sa7AcspcZ7A/hqdefault.jpg" alt="시간의 유령 – 하이라이트 thumbnail">
+          <div class="v-play" aria-hidden="true"></div>
+        </div>
+        <div class="v-body">
+          <div class="v-title">시간의 유령 – 하이라이트</div>
+          
+          <a class="v-link" href="https://www.youtube.com/watch?v=sa7AcspcZ7A&t=10s" target="_blank" rel="noopener">Open on YouTube</a>
+        </div>
+      </button>
+    
+
+      <button class="v-card" type="button"
+              data-vid="TkTrvnEqV_A" data-start="173"
+              aria-label="ARA KOREA – 캠페인/프로젝트 클립 (play)">
+        <div class="v-thumb">
+          <img loading="lazy" src="https://img.youtube.com/vi/TkTrvnEqV_A/hqdefault.jpg" alt="ARA KOREA – 캠페인/프로젝트 클립 thumbnail">
+          <div class="v-play" aria-hidden="true"></div>
+        </div>
+        <div class="v-body">
+          <div class="v-title">ARA KOREA – 캠페인/프로젝트 클립</div>
+          
+          <a class="v-link" href="https://www.youtube.com/watch?v=TkTrvnEqV_A&t=173s" target="_blank" rel="noopener">Open on YouTube</a>
+        </div>
+      </button>
+    
+
+      <button class="v-card" type="button"
+              data-vid="CMcSx-OjxZA" data-start="902"
+              aria-label="현상과 현실의 혼합 (play)">
+        <div class="v-thumb">
+          <img loading="lazy" src="https://img.youtube.com/vi/CMcSx-OjxZA/hqdefault.jpg" alt="현상과 현실의 혼합 thumbnail">
+          <div class="v-play" aria-hidden="true"></div>
+        </div>
+        <div class="v-body">
+          <div class="v-title">현상과 현실의 혼합</div>
+          
+          <a class="v-link" href="https://www.youtube.com/watch?v=CMcSx-OjxZA&t=902s" target="_blank" rel="noopener">Open on YouTube</a>
+        </div>
+      </button>
+    
+
+      <button class="v-card" type="button"
+              data-vid="H_3ieProGYo" data-start="1641"
+              aria-label="Live Session – Excerpt (play)">
+        <div class="v-thumb">
+          <img loading="lazy" src="https://img.youtube.com/vi/H_3ieProGYo/hqdefault.jpg" alt="Live Session – Excerpt thumbnail">
+          <div class="v-play" aria-hidden="true"></div>
+        </div>
+        <div class="v-body">
+          <div class="v-title">Live Session – Excerpt</div>
+          
+          <a class="v-link" href="https://www.youtube.com/watch?v=H_3ieProGYo&t=1641s" target="_blank" rel="noopener">Open on YouTube</a>
+        </div>
+      </button>
+    
+
+      <button class="v-card" type="button"
+              data-vid="GJOPNTTp39g" data-start="0"
+              aria-label="Neuro Anthropause (play)">
+        <div class="v-thumb">
+          <img loading="lazy" src="https://img.youtube.com/vi/GJOPNTTp39g/hqdefault.jpg" alt="Neuro Anthropause thumbnail">
+          <div class="v-play" aria-hidden="true"></div>
+        </div>
+        <div class="v-body">
+          <div class="v-title">Neuro Anthropause</div>
+          
+          <a class="v-link" href="https://www.youtube.com/watch?v=GJOPNTTp39g" target="_blank" rel="noopener">Open on YouTube</a>
+        </div>
+      </button>
+    
+
+      <button class="v-card" type="button"
+              data-vid="IoXaREaUZ0c" data-start="17"
+              aria-label="ARA KOREA – Documentary (play)">
+        <div class="v-thumb">
+          <img loading="lazy" src="https://img.youtube.com/vi/IoXaREaUZ0c/hqdefault.jpg" alt="ARA KOREA – Documentary thumbnail">
+          <div class="v-play" aria-hidden="true"></div>
+        </div>
+        <div class="v-body">
+          <div class="v-title">ARA KOREA – Documentary</div>
+          
+          <a class="v-link" href="https://www.youtube.com/watch?v=IoXaREaUZ0c&t=17s" target="_blank" rel="noopener">Open on YouTube</a>
+        </div>
+      </button>
+    
+
+      <button class="v-card" type="button"
+              data-vid="UXj2ZhWDRZw" data-start="127"
+              aria-label="중첩된 콜라주: 시뮬라크르 시뮬라시옹 (play)">
+        <div class="v-thumb">
+          <img loading="lazy" src="https://img.youtube.com/vi/UXj2ZhWDRZw/hqdefault.jpg" alt="중첩된 콜라주: 시뮬라크르 시뮬라시옹 thumbnail">
+          <div class="v-play" aria-hidden="true"></div>
+        </div>
+        <div class="v-body">
+          <div class="v-title">중첩된 콜라주: 시뮬라크르 시뮬라시옹</div>
+          
+          <a class="v-link" href="https://www.youtube.com/watch?v=UXj2ZhWDRZw&t=127s" target="_blank" rel="noopener">Open on YouTube</a>
+        </div>
+      </button>
+    
+
+      <button class="v-card" type="button"
+              data-vid="neM15H5ThWU" data-start="0"
+              aria-label="Behind the Scenes / Rehearsal (play)">
+        <div class="v-thumb">
+          <img loading="lazy" src="https://img.youtube.com/vi/neM15H5ThWU/hqdefault.jpg" alt="Behind the Scenes / Rehearsal thumbnail">
+          <div class="v-play" aria-hidden="true"></div>
+        </div>
+        <div class="v-body">
+          <div class="v-title">Behind the Scenes / Rehearsal</div>
+          
+          <a class="v-link" href="https://www.youtube.com/watch?v=neM15H5ThWU" target="_blank" rel="noopener">Open on YouTube</a>
+        </div>
+      </button>
+    
+    </div>
+  </section>
+</main>
+
+<!-- Modal -->
+<div class="yt-modal" id="ytModal" aria-hidden="true">
+  <div class="yt-backdrop" data-close></div>
+  <div class="yt-panel" role="dialog" aria-modal="true" aria-label="Video player">
+    <div class="yt-bar">
+      <div class="yt-title" id="ytModalTitle">Video</div>
+      <button class="yt-close" type="button" data-close>Close</button>
+    </div>
+    <div class="yt-frame">
+      <iframe id="ytFrame" title="YouTube player" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-head">Contact</div>
+      <div class="footer-text">E-mail: info@akenm.com</div>
+      <div class="footer-text">Tel: 02-400-7151</div>
+    </div>
+    <div>
+      <div class="footer-head">Social</div>
+      <div class="footer-text"><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div>
+    </div>
+    <div>
+      <div class="footer-head">Shop</div>
+      <div class="footer-text"><a href="https://arakorea.shop" target="_blank" rel="noopener noreferrer">ARAKOREA.SHOP</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">© ARA KOREA Space Art Project</div>
+</footer>
+
+<script>
+(function(){
+  const modal = document.getElementById('ytModal');
+  const frame = document.getElementById('ytFrame');
+  const titleEl = document.getElementById('ytModalTitle');
+
+  function openModal(vid, start, title){
+    const startParam = start && start > 0 ? `&start=${start}` : '';
+    frame.src = `https://www.youtube.com/embed/${vid}?autoplay=1&rel=0&modestbranding=1${startParam}`;
+    titleEl.textContent = title || 'Video';
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+    frame.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.v-card').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const vid = btn.getAttribute('data-vid');
+      const start = parseInt(btn.getAttribute('data-start') || '0', 10);
+      const title = btn.querySelector('.v-title')?.textContent?.trim();
+      openModal(vid, start, title);
+    });
+  });
+
+  modal.addEventListener('click', (e) => {
+    if(e.target && e.target.matches('[data-close]')) closeModal();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
+})();
+</script>
+
+<!-- mobile nav toggle script removed: submenu is always visible on mobile -->
+</body>
+</html>

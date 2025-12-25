@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ARA KOREA · Awards</title>
+  <link rel="stylesheet" href="styles.css?v=20251218"/>
+
+<style>
+/* ==================================================
+   Awards Back Navigation
+   - Simple BACK text, uppercase, elegant
+   ================================================== */
+.back-nav{
+  width: min(1100px, 100%);
+  margin: 18px auto 6px;
+  padding: 0 18px;
+}
+.back-link{
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 12px;
+  opacity: .85;
+}
+.back-link::before{
+  content: "← ";
+  letter-spacing: 0;
+}
+.back-link:hover{ opacity: 1; }
+
+@media (max-width: 900px){
+  .back-nav{ margin: 14px auto 4px; }
+  .back-link{ font-size: 11px; }
+}
+</style>
+
+
+<style>
+/* ==================================================
+   Awards page patch
+   - Mobile: always show K-Culture submenu (no double-tap)
+   ================================================== */
+@media (max-width: 900px){
+  /* Always show submenu on mobile so K-Culture remains single-tap navigable */
+  .nav-dd-menu{
+    position: static !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 6px;
+  }
+  .nav-dd-menu .nav-pill{
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+<div class="brand">
+<div class="brand-title">ARA KOREA</div>
+<div class="brand-sub">Immersive K‑Culture · Art Film &amp; Performance</div>
+</div>
+<nav aria-label="Primary" class="top-nav"><a class="nav-pill" href="index.html">Home</a><a class="nav-pill" href="about.html">About</a><div class="nav-dd"><a class="nav-pill" href="kculture.html">K‑Culture</a><div class="nav-dd-menu"><a class="nav-dd-item nav-pill" href="kculture-gallery.html">Gallery</a><a class="nav-dd-item nav-pill is-active" href="kculture-portfolio.html">Portfolio</a><a class="nav-dd-item nav-pill" href="kculture-video.html">Video</a></div></div><a class="nav-pill" href="news.html">News</a><a class="nav-pill" href="contact.html">Contact</a></nav>
+</header>
+
+<main class="page">
+
+<div class="back-nav">
+  <a href="kculture-portfolio.html" class="back-link">BACK</a>
+</div>
+
+  <section class="section" id="awards">
+    <div class="section-head">
+      <h2 class="section-title">Awards</h2>
+      <p class="section-sub">ARA KOREA 캠페인 및 프로젝트의 수상/인증 아카이브입니다.</p>
+    </div>
+
+    <!-- Gallery와 동일한 카드 사이즈(.cards-3 + .card height:240px) -->
+    <div class="cards-3">
+      <a class="card" href="images/award_2019_01.jpg" target="_blank" rel="noreferrer" aria-label="Award 2019">
+        <img src="images/award_2019_01.jpg" alt="ARA KOREA Award 2019" onerror="this.remove(); this.parentElement.classList.add('card-fallback');"/>
+      </a>
+
+      <a class="card" href="images/award_2020_01.jpg" target="_blank" rel="noreferrer" aria-label="Award 2020">
+        <img src="images/award_2020_01.jpg" alt="ARA KOREA Award 2020" onerror="this.remove(); this.parentElement.classList.add('card-fallback');"/>
+      </a>
+
+      <a class="card" href="images/award_2018_01.jpg" target="_blank" rel="noreferrer" aria-label="Award 2018">
+        <img src="images/award_2018_01.jpg" alt="ARA KOREA Award 2018" onerror="this.remove(); this.parentElement.classList.add('card-fallback');"/>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-head">Contact</div>
+      <div class="footer-text">E-mail: info@akenm.com</div>
+      <div class="footer-text">Tel: 02-400-7151</div>
+    </div>
+    <div>
+      <div class="footer-head">Social</div>
+      <div class="footer-text"><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div>
+    </div>
+    <div>
+      <div class="footer-head">Shop</div>
+      <div class="footer-text"><a href="https://arakorea.shop" target="_blank" rel="noopener noreferrer">ARAKOREA.SHOP</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">© ARA KOREA Space Art Project</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery · ARA KOREA</title>
+  <!-- index와 동일한 스타일 파일 사용 -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- K‑Culture 전용(슬라이더/라이트박스) 최소 CSS: 기존 톤 유지 -->
+  <style>
+    .kc-wrap{max-width:var(--max);margin:0 auto;padding:28px 18px 70px;}
+    .kc-intro{margin:10px 0 18px;padding:16px 18px;border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);
+      box-shadow:0 16px 40px rgba(0,0,0,.22);}
+    .kc-intro p{margin:0;color:var(--muted);line-height:1.65;font-size:14px;}
+
+    .kc-section{margin-top:18px;}
+    .kc-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:10px;}
+    .kc-title{margin:0;font-size:18px;letter-spacing:.04em;}
+    .kc-sub{margin:0;color:var(--muted);font-size:13px;line-height:1.45;}
+
+    .kc-slider{position:relative;border-radius:var(--radius2);
+      border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);
+      box-shadow:0 16px 46px rgba(0,0,0,.26);overflow:hidden;}
+
+    .kc-track{
+      display:grid;
+      grid-auto-flow:column;
+      grid-auto-columns: calc((100% - 28px) / 3);
+      gap:14px;
+      padding:14px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+    }
+    .kc-track::-webkit-scrollbar{height:0}
+    @media (max-width: 980px){
+      .kc-track{grid-auto-columns: 88%;}
+    }
+
+    .kc-card{display:block;border-radius:18px;overflow:hidden;scroll-snap-align:start;
+      border:1px solid rgba(255,255,255,.10);background:rgba(0,0,0,.25);
+      box-shadow:0 14px 40px rgba(0,0,0,.28);}
+    .kc-card img{width:100%;height:260px;object-fit:cover;display:block;}
+    @media (max-width: 980px){ .kc-card img{height:320px;} }
+
+    .kc-nav{position:absolute;top:50%;transform:translateY(-50%);
+      width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.16);
+      background:rgba(20,30,45,.55);backdrop-filter:blur(10px);
+      color:rgba(233,238,247,.92);cursor:pointer;display:flex;align-items:center;justify-content:center;
+      font-size:22px;z-index:5;}
+    .kc-prev{left:10px;}
+    .kc-next{right:10px;}
+    @media (max-width: 980px){ .kc-nav{display:none;} }
+
+    /* Lightbox */
+    .kc-lb{position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+      background:rgba(0,0,0,.86);padding:18px;z-index:9999;}
+    .kc-lb.open{display:flex;}
+    .kc-lb figure{margin:0;max-width:min(1200px,95vw);width:100%;}
+    .kc-lb img{width:100%;max-height:90vh;object-fit:contain;border-radius:22px;
+      border:1px solid rgba(255,255,255,.16);background:#000;box-shadow:0 20px 60px rgba(0,0,0,.55);}
+    .kc-lb .lb-btn{position:fixed;top:18px;right:18px;}
+    .kc-lb .lb-prev,.kc-lb .lb-next{position:fixed;top:50%;transform:translateY(-50%);}
+    .kc-lb .lb-prev{left:18px;}
+    .kc-lb .lb-next{right:18px;}
+  </style>
+
+<style>
+@media (max-width: 900px){
+  .nav-dd-menu{
+    position: static !important;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .nav-dd.is-open .nav-dd-menu{ display:flex !important; }
+}
+</style>
+
+
+<style>
+/* ==================================================
+   K-Culture Gallery patch
+   - Title: "Gallery" (match Portfolio/Video tone)
+   - Back navigation (same style as Awards/Posters)
+   - Mobile: always show K-Culture submenu (no double-tap)
+   ================================================== */
+
+/* Back Navigation */
+.back-nav{
+  width: min(1100px, 100%);
+  margin: 18px auto 6px;
+  padding: 0 18px;
+}
+.back-link{
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 12px;
+  opacity: .85;
+}
+.back-link::before{ content: "← "; }
+.back-link:hover{ opacity: 1; }
+
+/* Title scale tweak */
+.hero-title--kc{
+  letter-spacing: .02em;
+}
+
+/* Mobile: keep submenu always visible */
+@media (max-width: 900px){
+  .back-nav{ margin: 14px auto 4px; }
+  .back-link{ font-size: 11px; }
+
+  .nav-dd-menu{
+    position: static !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 6px;
+  }
+  .nav-dd-menu .nav-pill{
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+</style>
+
+</head>
+
+<body>
+  <!-- index와 동일한 헤더/네비 구조 유지 -->
+  <header class="site-header">
+    <div class="brand">
+      <div class="brand-title">ARA KOREA</div>
+      <div class="brand-sub">Immersive K‑Culture · Art Film &amp; Performance</div>
+    </div>
+
+    <nav class="top-nav" aria-label="Primary">
+    <a class="nav-pill" href="index.html">Home</a>
+    <a class="nav-pill" href="about.html">About</a>
+
+    <div class="nav-dd">
+      <a class="nav-pill is-active" href="kculture.html">K‑Culture</a>
+      <div class="nav-dd-menu">
+        <a class="nav-dd-item nav-pill is-active" href="kculture-gallery.html">Gallery</a>
+        <a class="nav-dd-item nav-pill" href="kculture-portfolio.html">Portfolio</a>
+        <a class="nav-dd-item nav-pill" href="kculture-video.html">Video</a>
+      </div>
+    </div>
+
+    <a class="nav-pill" href="news.html">News</a>
+    <a class="nav-pill" href="contact.html">Contact</a>
+  </nav>
+  </header>
+
+  <main class="kc-wrap">
+    <div class="back-nav">
+      <a href="kculture.html" class="back-link">BACK</a>
+    </div>
+    <h1 class="hero-title hero-title--kc" style="margin:8px 0 10px;">Gallery</h1>
+
+    <div class="kc-intro">
+      <p>
+        컨셉별 4개 슬라이더 갤러리입니다. PC에서는 한 줄에 3장, 모바일에서는 1장씩 넘겨보도록 구성했습니다.<br/>
+        이미지를 클릭하면 크게 볼 수 있습니다. (키보드: ← → / ESC)
+      </p>
+    </div>
+
+
+    <section class="kc-section">
+      <div class="kc-head">
+        <h2 class="kc-title">1. Nature / Ritual</h2>
+        <p class="kc-sub">자연·의식의 이미지를 중심으로 구성</p>
+      </div>
+
+      <div class="kc-slider" data-slider="s1">
+        <button class="kc-nav kc-prev" type="button" aria-label="Previous">‹</button>
+        <div class="kc-track" tabindex="0" aria-label="1. Nature / Ritual gallery">
+
+          <a class="kc-card js-lb" href="images/kc_c1_01.jpg" data-group="s1">
+            <img src="images/kc_c1_01.jpg" alt="1. Nature / Ritual 1">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c1_02.jpg" data-group="s1">
+            <img src="images/kc_c1_02.jpg" alt="1. Nature / Ritual 2">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c1_03.jpg" data-group="s1">
+            <img src="images/kc_c1_03.jpg" alt="1. Nature / Ritual 3">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c1_04.jpg" data-group="s1">
+            <img src="images/kc_c1_04.jpg" alt="1. Nature / Ritual 4">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c1_05.jpg" data-group="s1">
+            <img src="images/kc_c1_05.jpg" alt="1. Nature / Ritual 5">
+          </a>
+        </div>
+        <button class="kc-nav kc-next" type="button" aria-label="Next">›</button>
+      </div>
+    </section>
+
+
+    <section class="kc-section">
+      <div class="kc-head">
+        <h2 class="kc-title">2. Vocal / Hanbok</h2>
+        <p class="kc-sub">보컬·한복의 질감과 호흡</p>
+      </div>
+
+      <div class="kc-slider" data-slider="s2">
+        <button class="kc-nav kc-prev" type="button" aria-label="Previous">‹</button>
+        <div class="kc-track" tabindex="0" aria-label="2. Vocal / Hanbok gallery">
+
+          <a class="kc-card js-lb" href="images/kc_c2_01.jpg" data-group="s2">
+            <img src="images/kc_c2_01.jpg" alt="2. Vocal / Hanbok 1">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c2_02.jpg" data-group="s2">
+            <img src="images/kc_c2_02.jpg" alt="2. Vocal / Hanbok 2">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c2_03.jpg" data-group="s2">
+            <img src="images/kc_c2_03.jpg" alt="2. Vocal / Hanbok 3">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c2_04.jpg" data-group="s2">
+            <img src="images/kc_c2_04.jpg" alt="2. Vocal / Hanbok 4">
+          </a>
+        </div>
+        <button class="kc-nav kc-next" type="button" aria-label="Next">›</button>
+      </div>
+    </section>
+
+
+    <section class="kc-section">
+      <div class="kc-head">
+        <h2 class="kc-title">3. Mask / Movement</h2>
+        <p class="kc-sub">가면·움직임·무대의 리듬</p>
+      </div>
+
+      <div class="kc-slider" data-slider="s3">
+        <button class="kc-nav kc-prev" type="button" aria-label="Previous">‹</button>
+        <div class="kc-track" tabindex="0" aria-label="3. Mask / Movement gallery">
+
+          <a class="kc-card js-lb" href="images/kc_c3_01.jpg" data-group="s3">
+            <img src="images/kc_c3_01.jpg" alt="3. Mask / Movement 1">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c3_02.jpg" data-group="s3">
+            <img src="images/kc_c3_02.jpg" alt="3. Mask / Movement 2">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c3_03.jpg" data-group="s3">
+            <img src="images/kc_c3_03.jpg" alt="3. Mask / Movement 3">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c3_04.jpg" data-group="s3">
+            <img src="images/kc_c3_04.jpg" alt="3. Mask / Movement 4">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c3_05.jpg" data-group="s3">
+            <img src="images/kc_c3_05.jpg" alt="3. Mask / Movement 5">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c3_06.jpg" data-group="s3">
+            <img src="images/kc_c3_06.jpg" alt="3. Mask / Movement 6">
+          </a>
+        </div>
+        <button class="kc-nav kc-next" type="button" aria-label="Next">›</button>
+      </div>
+    </section>
+
+
+    <section class="kc-section">
+      <div class="kc-head">
+        <h2 class="kc-title">4. Concert / Ensemble</h2>
+        <p class="kc-sub">콘서트·앙상블의 장면</p>
+      </div>
+
+      <div class="kc-slider" data-slider="s4">
+        <button class="kc-nav kc-prev" type="button" aria-label="Previous">‹</button>
+        <div class="kc-track" tabindex="0" aria-label="4. Concert / Ensemble gallery">
+
+          <a class="kc-card js-lb" href="images/kc_c4_01.jpg" data-group="s4">
+            <img src="images/kc_c4_01.jpg" alt="4. Concert / Ensemble 1">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c4_02.jpg" data-group="s4">
+            <img src="images/kc_c4_02.jpg" alt="4. Concert / Ensemble 2">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c4_03.jpg" data-group="s4">
+            <img src="images/kc_c4_03.jpg" alt="4. Concert / Ensemble 3">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c4_04.jpg" data-group="s4">
+            <img src="images/kc_c4_04.jpg" alt="4. Concert / Ensemble 4">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c4_05.jpg" data-group="s4">
+            <img src="images/kc_c4_05.jpg" alt="4. Concert / Ensemble 5">
+          </a>
+
+          <a class="kc-card js-lb" href="images/kc_c4_06.jpg" data-group="s4">
+            <img src="images/kc_c4_06.jpg" alt="4. Concert / Ensemble 6">
+          </a>
+        </div>
+        <button class="kc-nav kc-next" type="button" aria-label="Next">›</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-head">ARA KOREA</div>
+        <div class="footer-text">Immersive K‑Culture · Art Film &amp; Performance</div>
+      </div>
+      <div>
+        <div class="footer-head">Contact</div>
+        <div class="footer-text">info@akenm.com</div>
+        <div class="footer-text">02-400-7151</div>
+      </div>
+      <div>
+        <div>
+        <div class="footer-head">Social</div>
+        <div class="footer-text">
+          <a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> ·
+          <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> ·
+          <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 ARA KOREA Space Art Project</div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="kc-lb" id="kcLb" aria-hidden="true">
+    <button class="btn btn-ghost lb-btn" type="button" id="kcLbClose">Close ✕</button>
+    <button class="btn btn-ghost lb-prev" type="button" id="kcLbPrev">←</button>
+    <figure><img id="kcLbImg" alt="Expanded view"/></figure>
+    <button class="btn btn-ghost lb-next" type="button" id="kcLbNext">→</button>
+  </div>
+
+  <script>
+    // Slider buttons
+    (function(){
+      const sliders = document.querySelectorAll('.kc-slider');
+      sliders.forEach(sl => {
+        const track = sl.querySelector('.kc-track');
+        const prev = sl.querySelector('.kc-prev');
+        const next = sl.querySelector('.kc-next');
+        if(!track || !prev || !next) return;
+
+        const step = () => track.clientWidth * 0.92; // one "page"
+        prev.addEventListener('click', () => track.scrollBy({left: -step(), behavior:'smooth'}));
+        next.addEventListener('click', () => track.scrollBy({left:  step(), behavior:'smooth'}));
+      });
+    })();
+
+    // Lightbox for all images (grouped per slider)
+    (function(){
+      const links = Array.from(document.querySelectorAll('a.js-lb'));
+      const lb = document.getElementById('kcLb');
+      const img = document.getElementById('kcLbImg');
+      const close = document.getElementById('kcLbClose');
+      const prev = document.getElementById('kcLbPrev');
+      const next = document.getElementById('kcLbNext');
+      if(!links.length) return;
+
+      let group = '';
+      let groupLinks = [];
+      let i = 0;
+
+      const setGroup = (g) => {
+        group = g;
+        groupLinks = links.filter(a => a.dataset.group === g);
+      };
+
+      const openAt = (idx) => {
+        i = idx;
+        img.src = groupLinks[i].getAttribute('href');
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeLb = () => {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+        img.src = '';
+      };
+
+      const prevImg = () => openAt((i - 1 + groupLinks.length) % groupLinks.length);
+      const nextImg = () => openAt((i + 1) % groupLinks.length);
+
+      links.forEach(a => {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          const g = a.dataset.group || '';
+          setGroup(g);
+          openAt(groupLinks.indexOf(a));
+        });
+      });
+
+      close.addEventListener('click', closeLb);
+      lb.addEventListener('click', (e) => { if(e.target === lb) closeLb(); });
+      prev.addEventListener('click', prevImg);
+      next.addEventListener('click', nextImg);
+
+      window.addEventListener('keydown', (e) => {
+        if(!lb.classList.contains('open')) return;
+        if(e.key === 'Escape') closeLb();
+        if(e.key === 'ArrowLeft') prevImg();
+        if(e.key === 'ArrowRight') nextImg();
+      });
+    })();
+  </script>
+<script>
+(function(){
+  const dd = document.querySelector('[data-dd]');
+  if(!dd) return;
+  const trigger = dd.querySelector('[data-dd-trigger]');
+  const menu = dd.querySelector('[data-dd-menu]');
+  if(!trigger || !menu) return;
+
+  const isTouch = window.matchMedia && window.matchMedia('(hover: none)').matches;
+
+  if(isTouch){
+    trigger.addEventListener('click', (e) => {
+      if(!dd.classList.contains('is-open')){
+        e.preventDefault();
+        dd.classList.add('is-open');
+        trigger.setAttribute('aria-expanded','true');
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if(!dd.contains(e.target)){
+        dd.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape'){
+      dd.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded','false');
+    }
+  });
+})();
+</script>
+
+<script>
+(function(){
+  function isMobile(){ return window.matchMedia('(max-width: 900px)').matches; }
+  const dd = document.querySelector('.nav-dd');
+  if(!dd) return;
+  const trigger = dd.querySelector('.nav-pill');
+  const menu = dd.querySelector('.nav-dd-menu');
+  if(!trigger || !menu) return;
+
+  trigger.addEventListener('click', function(e){
+    if(!isMobile()) return;
+    e.preventDefault();
+    dd.classList.toggle('is-open');
+  });
+
+  document.addEventListener('click', function(e){
+    if(!isMobile()) return;
+    if(!dd.contains(e.target)) dd.classList.remove('is-open');
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ARA KOREA · K‑Culture</title>
+  <!-- 캐시 무력화용 버전 파라미터: 업로드 후에도 변경이 안 보일 때 매우 효과적 -->
+  <link rel="stylesheet" href="styles.css?v=20251218"/>
+
+<style>
+/* ==================================================
+   K-Culture Mobile FIX (v5)
+   - Images stay visible
+   - Add 1cm black icon row UNDER each image (mobile only)
+   - Reduce vertical length
+   - PC untouched
+   ================================================== */
+
+@media (max-width: 900px){
+
+  /* dropdown touch (keep existing behavior) */
+  .nav-dd-menu{
+    position: static !important;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 6px;
+  }
+  .nav-dd.is-open .nav-dd-menu{ display:flex !important; }
+
+  /* grid */
+  .kc-grid{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .kc-card{
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  /* image: video-like height */
+  .kc-card img{
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    object-fit: cover !important;
+  }
+
+  /* remove big black caption blocks */
+  .kc-caption,
+  .kc-label{
+    display: none !important;
+  }
+
+  /* 1cm icon bar UNDER image */
+  .kc-iconbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    height: 38px;           /* ≈ 1cm */
+    margin-top: 8px;
+    background: #000;
+    border-radius: 10px;
+  }
+
+  .kc-iconbar span{
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #fff;
+  }
+
+  /* tighten bottom space */
+  .section{ padding-bottom: 0 !important; }
+}
+</style>
+
+<style>
+/* ==================================================
+   K-Culture Mobile Cleanup (v6)
+   - Remove the long black empty area under GALLERY/PORTFOLIO/VIDEO bars on mobile
+   (caused by fixed/min heights or pseudo elements)
+   ================================================== */
+@media (max-width: 900px){
+  .kc-card{
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    padding-bottom: 0 !important;
+    background: transparent !important;
+  }
+  .kc-card::before,
+  .kc-card::after{
+    content: none !important;
+    display: none !important;
+  }
+  /* If any inner wrappers reserve height, neutralize */
+  .kc-media,
+  .kc-thumb,
+  .kc-body{
+    height: auto !important;
+    min-height: 0 !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <div class="brand-title">ARA KOREA</div>
+    <div class="brand-sub">Immersive K‑Culture · Art Film &amp; Performance</div>
+  </div>
+
+  <nav aria-label="Primary" class="top-nav">
+    <a class="nav-pill" href="index.html">Home</a>
+    <a class="nav-pill" href="about.html">About</a>
+
+    <div class="nav-dd">
+      <a class="nav-pill is-active" href="kculture.html">K‑Culture</a>
+      <div class="nav-dd-menu">
+        <a class="nav-dd-item nav-pill" href="kculture-gallery.html">Gallery</a>
+        <a class="nav-dd-item nav-pill" href="kculture-portfolio.html">Portfolio</a>
+        <a class="nav-dd-item nav-pill" href="kculture-video.html">Video</a>
+      </div>
+    </div>
+
+    <a class="nav-pill" href="news.html">News</a>
+    <a class="nav-pill" href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="page">
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">K‑Culture</h2>
+      <p class="section-sub">
+        공연에서 출발한 K‑Culture 프로젝트를 기록, 확장, 아카이브하는 세 가지 방향입니다.
+      </p>
+    </div>
+
+    <div class="kc-grid">
+      <a class="kc-card" href="kculture-gallery.html">
+        <img src="images/kc_c1_03.jpg" alt="K‑Culture Gallery"/>
+    <div class="kc-iconbar" aria-hidden="true">
+      <span>GALLERY</span>
+    </div>
+    
+        <div class="kc-caption"></div>
+        <div class="kc-label">Gallery</div>
+      </a>
+
+      <a class="kc-card" href="kculture-portfolio.html">
+        <img src="images/kc_c3_04.jpg" alt="K‑Culture Portfolio"/>
+    <div class="kc-iconbar" aria-hidden="true">
+      <span>PORTFOLIO</span>
+    </div>
+    
+        <div class="kc-caption"></div>
+        <div class="kc-label">Portfolio</div>
+      </a>
+
+      <a class="kc-card" href="kculture-video.html">
+        <img src="images/kc_c4_05.jpg" alt="K‑Culture Video"/>
+    <div class="kc-iconbar" aria-hidden="true">
+      <span>VIDEO</span>
+    </div>
+    
+        <div class="kc-caption"></div>
+        <div class="kc-label">Video</div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-head">Contact</div>
+      <div class="footer-text">E‑mail: info@akenm.com</div>
+      <div class="footer-text">Tel: 02‑400‑7151</div>
+    </div>
+    <div>
+      <div class="footer-head">Social</div>
+      <div class="footer-text"><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div>
+    </div>
+    <div>
+      <div class="footer-head">Shop</div>
+      <div class="footer-text"><a href="https://arakorea.shop" target="_blank" rel="noopener noreferrer">ARAKOREA.SHOP</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">© ARA KOREA Space Art Project</div>
+</footer>
+
+</body>
+</html>

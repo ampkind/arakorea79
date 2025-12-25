@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Congratulatory Messages · ARA KOREA</title>
+  <link rel="stylesheet" href="styles.css?v=20251218-99"/>
+  <style>
+    .doc-grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:start;
+    }
+    .doc-frame{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      box-shadow: 0 18px 50px rgba(0,0,0,.28);
+      overflow:hidden;
+      min-height: 520px;
+    }
+    .doc-frame iframe, .doc-frame object, .doc-frame embed{
+      width:100%; height:100%;
+      border:0; display:block;
+      min-height: 520px;
+    }
+    .doc-text{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: 0 18px 50px rgba(0,0,0,.28);
+      padding:18px;
+    }
+    .doc-kicker{
+      color:rgba(69,182,255,.85);
+      letter-spacing:.18em;
+      font-size:11px;
+      margin-bottom:10px;
+    }
+    .doc-h{
+      margin:0 0 8px;
+      font-size:20px;
+      letter-spacing:.02em;
+    }
+    .doc-meta{
+      color:rgba(233,238,247,.72);
+      font-size:13px;
+      line-height:1.6;
+      margin:0 0 12px;
+    }
+    .doc-body{
+      color:rgba(233,238,247,.86);
+      font-size:13px;
+      line-height:1.75;
+      margin:0;
+      white-space:pre-line;
+    }
+    .doc-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    @media (max-width: 980px){
+      .doc-grid{ grid-template-columns: 1fr; }
+      .doc-frame iframe, .doc-frame object, .doc-frame embed{ min-height: 420px; }
+    }
+  </style>
+
+<style>
+/* Back Navigation */
+.back-nav{
+  width: min(1100px, 100%);
+  margin: 18px auto 6px;
+  padding: 0 18px;
+}
+.back-link{
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 12px;
+  opacity: .85;
+}
+.back-link::before{
+  content: "← ";
+}
+.back-link:hover{ opacity: 1; }
+
+@media (max-width: 900px){
+  .back-nav{ margin: 14px auto 4px; }
+  .back-link{ font-size: 11px; }
+}
+</style>
+
+
+<style>
+/* ==================================================
+   Congratulatory Messages page patch
+   - Mobile: always show K-Culture submenu (no double-tap)
+   ================================================== */
+@media (max-width: 900px){
+  /* Always show submenu on mobile so K-Culture remains single-tap navigable */
+  .nav-dd-menu{
+    position: static !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 6px;
+  }
+  .nav-dd-menu .nav-pill{
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <div class="brand-title">ARA KOREA</div>
+    <div class="brand-sub">Immersive K-Culture · Art Film &amp; Performance</div>
+  </div>
+
+  <nav aria-label="Primary" class="top-nav">
+    <a class="nav-pill" href="index.html">Home</a>
+    <a class="nav-pill" href="about.html">About</a>
+
+    <div class="nav-dd">
+      <a class="nav-pill is-active" href="kculture.html">K-Culture</a>
+      <div class="nav-dd-menu">
+        <a class="nav-dd-item nav-pill" href="kculture-gallery.html">Gallery</a>
+        <a class="nav-dd-item nav-pill" href="kculture-portfolio.html">Portfolio</a>
+        <a class="nav-dd-item nav-pill" href="kculture-video.html">Video</a>
+      </div>
+    </div>
+
+    <a class="nav-pill" href="news.html">News</a>
+    <a class="nav-pill" href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="page">
+
+  <div class="back-nav">
+    <a href="kculture-portfolio.html" class="back-link">BACK</a>
+  </div>
+
+  <section class="section" style="padding-top:10px;">
+    <div class="section-head">
+      <h2 class="section-title">Congratulatory Messages</h2>
+      <p class="section-sub">축사 원문(PDF) 미리보기와 영문 번역을 함께 제공합니다.</p>
+    </div>
+
+    <div class="doc-actions">
+      <a class="btn btn-primary" href="documents/congratulatory_2016_yonah_martin.pdf" download>Download PDF</a>
+      <a class="btn btn-ghost" href="documents/congratulatory_2016_yonah_martin.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+    </div>
+
+    <div class="doc-grid">
+      <!-- LEFT: PDF Preview -->
+      <div class="doc-frame" aria-label="PDF Preview">
+        <object data="documents/congratulatory_2016_yonah_martin.pdf#page=1&zoom=100" type="application/pdf">
+          <iframe title="Congratulatory message PDF preview" src="documents/congratulatory_2016_yonah_martin.pdf#page=1&zoom=100"></iframe>
+        </object>
+      </div>
+
+      <!-- RIGHT: English Translation -->
+      <div class="doc-text" aria-label="English Translation">
+        <div class="doc-kicker">OFFICIAL MESSAGE</div>
+        <h3 class="doc-h">Congratulatory Message</h3>
+        <p class="doc-meta">
+          The Hon. Yonah Martin<br/>
+          Deputy Leader of the Opposition in the Senate of Canada<br/>
+          Co-Chair, Canada–Korea Inter-Parliamentary Friendship Group<br/>
+          <span class="accent">October 22, 2016</span>
+        </p>
+
+        <p class="doc-body">
+It is a great honor to extend my greetings to the campaign “ARA KOREA – Korea United as One,” hosted by the Chuncheon National Museum and AMPKIND.
+
+This event, held in harmony with nature at the Chuncheon National Museum, introduces Korea’s traditional music to contemporary audiences and highlights the excellence of Korea’s cultural heritage, including Arirang and Ganggangsullae. I believe this occasion will provide a meaningful moment of rest and reflection for people of all generations living in today’s fast-paced society.
+
+The musicians and performers who compose and perform original works such as “Piano of the Sky,” inspired by the Gangwon folk song Hanobaeknyeon, “Gangwon Sullae,” a reinterpretation of traditional melodies with percussion, and Gangwon Arirang, serve as cultural ambassadors who elevate the national brand of the Republic of Korea.
+
+I would also like to extend my applause to the organizers, sponsors, staff, and volunteers who planned, supported, and hosted this meaningful event.
+
+On behalf of the Senate of Canada, I wish this campaign great success and hope all participants return home with lasting and cherished memories.
+
+Thank you.
+
+The Hon. Yonah Martin
+        </p>
+      </div>
+    </div>
+
+    
+
+
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-head">Contact</div>
+      <div class="footer-text">E-mail: info@akenm.com</div>
+      <div class="footer-text">Tel: 02-400-7151</div>
+    </div>
+    <div>
+      <div class="footer-head">Social</div>
+      <div class="footer-text"><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div>
+    </div>
+    <div>
+      <div class="footer-head">Shop</div>
+      <div class="footer-text"><a href="https://arakorea.shop" target="_blank" rel="noopener noreferrer">ARAKOREA.SHOP</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">© ARA KOREA Space Art Project</div>
+</footer>
+
+</body>
+</html>

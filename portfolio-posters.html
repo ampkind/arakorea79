@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Posters · ARA KOREA</title>
+  <link rel="stylesheet" href="styles.css?v=20251219-3"/>
+
+  <style>
+    .year-block{ margin-top: 26px; }
+    .poster-year{
+      margin: 22px 0 10px;
+      font-size: 18px;
+      font-weight: 850;
+      letter-spacing: .04em;
+    }
+
+    .poster-list{ display:flex; flex-direction:column; gap:14px; }
+
+    .poster-item{
+      display:grid;
+      grid-template-columns: minmax(220px, 320px) 1fr;
+      gap: 14px;
+      padding: 14px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 18px 50px rgba(0,0,0,.22);
+      overflow:hidden;
+    }
+
+    .poster-thumb{
+      position:relative;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+      background: rgba(0,0,0,.35);
+      cursor: zoom-in;
+      min-height: 280px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .poster-thumb img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+      transform: scale(1.01);
+      transition: transform .35s ease;
+    }
+    .poster-thumb:hover img{ transform: scale(1.04); }
+
+    .thumb-chip{
+      position:absolute;
+      left:12px; bottom:12px;
+      padding:6px 10px;
+      font-size:12px;
+      border-radius:999px;
+      background:rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.18);
+      color:rgba(255,255,255,.92);
+      backdrop-filter: blur(8px);
+      pointer-events:none;
+      white-space:nowrap;
+    }
+
+    .poster-text{
+      padding: 4px 4px 4px 2px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap: 8px;
+    }
+
+    .pt-title{
+      font-size: 16px;
+      font-weight: 850;
+      letter-spacing: .02em;
+      margin: 0;
+    }
+
+    .pt-sub{
+      margin: 0;
+      font-size: 13px;
+      color: rgba(233,238,247,.78);
+      line-height: 1.55;
+    }
+
+    .pt-meta{
+      margin-top: 2px;
+      font-size: 12px;
+      color: rgba(233,238,247,.64);
+    }
+
+    .pt-actions{
+      margin-top: 8px;
+      display:flex;
+      gap: 8px;
+      flex-wrap:wrap;
+    }
+
+    /* Lightbox */
+    .lb{
+      position:fixed; inset:0;
+      display:none;
+      align-items:center; justify-content:center;
+      background:rgba(0,0,0,.86);
+      z-index:9999;
+      padding:18px;
+    }
+    .lb.open{ display:flex; }
+    .lb-inner{
+      max-width: 96vw;
+      max-height: 92vh;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:center;
+    }
+    .lb img{
+      max-width: 96vw;
+      max-height: 84vh;
+      border-radius: 22px;
+      border:1px solid rgba(255,255,255,.18);
+      background:#000;
+      box-shadow: 0 24px 70px rgba(0,0,0,.55);
+    }
+    .lb-cap{
+      max-width: 96vw;
+      color: rgba(233,238,247,.86);
+      font-size: 13px;
+      line-height: 1.5;
+      text-align:center;
+    }
+    .lb-close{
+      position: fixed;
+      top: 18px;
+      right: 18px;
+    }
+
+    @media (max-width: 980px){
+      .poster-item{ grid-template-columns: 1fr; }
+      .poster-thumb{ min-height: 360px; }
+    }
+  </style>
+<style>
+/* ==================================================
+   Posters page patch
+   - BACK link (same style as Awards)
+   - Mobile: always show K-Culture submenu (no double-tap)
+   ================================================== */
+
+/* Back Navigation */
+.back-nav{
+  width: min(1100px, 100%);
+  margin: 18px auto 6px;
+  padding: 0 18px;
+}
+.back-link{
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 12px;
+  opacity: .85;
+}
+.back-link::before{ content: "← "; }
+.back-link:hover{ opacity: 1; }
+
+@media (max-width: 900px){
+  .back-nav{ margin: 14px auto 4px; }
+  .back-link{ font-size: 11px; }
+
+  /* Always show submenu on mobile so K-Culture remains single-tap navigable */
+  .nav-dd-menu{
+    position: static !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 6px;
+  }
+  .nav-dd-menu .nav-pill{
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <div class="brand-title">ARA KOREA</div>
+    <div class="brand-sub">Immersive K-Culture · Art Film &amp; Performance</div>
+  </div>
+
+  <nav aria-label="Primary" class="top-nav">
+    <a class="nav-pill" href="index.html">Home</a>
+    <a class="nav-pill" href="about.html">About</a>
+
+    <div class="nav-dd">
+      <a class="nav-pill is-active" href="kculture.html">K-Culture</a>
+      <div class="nav-dd-menu">
+        <a class="nav-dd-item nav-pill" href="kculture-gallery.html">Gallery</a>
+        <a class="nav-dd-item nav-pill" href="kculture-portfolio.html">Portfolio</a>
+        <a class="nav-dd-item nav-pill is-active" href="portfolio-posters.html">Posters</a>
+      </div>
+    </div>
+
+    <a class="nav-pill" href="news.html">News</a>
+    <a class="nav-pill" href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="page">
+
+  <div class="back-nav">
+    <a href="kculture-portfolio.html" class="back-link">BACK</a>
+  </div>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">Posters</h2>
+      <p class="section-sub">ARA KOREA 프로젝트 및 공연의 공식 포스터 아카이브.</p>
+    </div>
+
+    <!-- 2025 -->
+    <div class="year-block">
+      <div class="poster-year">2025</div>
+      <div class="poster-list">
+        <article class="poster-item">
+          <a class="poster-thumb js-poster" href="images/KakaoTalk_Photo_2025-12-14-13-46-06.jpeg"
+             data-caption="2025 · WOOSOOZOO IV — 시간의 유령">
+            <img src="images/KakaoTalk_Photo_2025-12-14-13-46-06.jpeg" data-variants="images/KakaoTalk_Photo_2025-12-14-13-46-06.jpeg" alt="WOOSOOZOO IV — 시간의 유령 (2025)" onerror="if(!this.dataset.fbk){this.dataset.fbk=1;this.src=\'images/award_2018_01.jpg\'; this.closest(\'a\').setAttribute(\'href\',\'images/award_2018_01.jpg\');}" class="poster-img">
+            <div class="thumb-chip">View</div>
+          </a>
+          <div class="poster-text">
+            <h3 class="pt-title">WOOSOOZOO IV — 시간의 유령</h3>
+            <p class="pt-sub">WOOSOOZOO 연작의 네 번째 공연 포스터로, 시간과 기억의 층위를 음악과 시각 구조로 풀어낸 무대 프로젝트.</p>
+            <div class="pt-meta">Performance Poster · 2025</div>
+            <div class="pt-actions">
+              <a class="btn btn-primary js-poster" href="images/KakaoTalk_Photo_2025-12-14-13-46-06.jpeg" data-caption="2025 · WOOSOOZOO IV — 시간의 유령" data-fallback="images/award_2018_01.jpg">Open</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- 2024 -->
+    <div class="year-block">
+      <div class="poster-year">2024</div>
+      <div class="poster-list">
+        <article class="poster-item">
+          <a class="poster-thumb js-poster" href="images/KakaoTalk_Photo_2025-12-14-13-49-46.jpeg"
+             data-caption="2024 · 시뮬라크르 시뮬라시옹">
+            <img src="images/KakaoTalk_Photo_2025-12-14-13-49-46.jpeg" data-variants="images/KakaoTalk_Photo_2025-12-14-13-49-46.jpeg" alt="시뮬라크르 시뮬라시옹 (2024)" class="poster-img">
+            <div class="thumb-chip">View</div>
+          </a>
+          <div class="poster-text">
+            <h3 class="pt-title">시뮬라크르 시뮬라시옹</h3>
+            <p class="pt-sub">강원특별자치도 문화예술 지원 프로젝트로 제작된 공연 포스터로, 시뮬라크르와 재현의 개념을 무대예술 언어로 탐구한 공연 작품.</p>
+            <div class="pt-meta">Performance Poster · 2024</div>
+            <div class="pt-actions">
+              <a class="btn btn-primary js-poster" href="images/KakaoTalk_Photo_2025-12-14-13-49-46.jpeg" data-caption="2024 · 시뮬라크르 시뮬라시옹">Open</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- 2021 -->
+    
+    <!-- 2023 -->
+    <div class="year-block">
+      <div class="poster-year">2023</div>
+      <div class="poster-list">
+        <article class="poster-item">
+          <a class="poster-thumb js-poster" href="images/482346488_958284439841144_1068308214917701251_n.jpg"
+             data-caption="2023 · GANGA">
+            <img src="images/482346488_958284439841144_1068308214917701251_n.jpg"
+                 alt="GANGA (2023)" class="poster-img">
+            <div class="thumb-chip">View</div>
+          </a>
+          <div class="poster-text">
+            <h3 class="pt-title">GANGA</h3>
+            <p class="pt-sub">2023.10.10(화) 7:30PM · 축제극장 몸짓. 한-인도 수교 50주년 맥락에서 기획된 공연 포스터로, 실루엣과 수면(물결) 레이어를 통해 이동·기억·연결의 이미지를 제시.</p>
+            <div class="pt-meta">Performance Poster · 2023</div>
+            <div class="pt-actions">
+              <a class="btn btn-primary js-poster"
+                 href="images/482346488_958284439841144_1068308214917701251_n.jpg"
+                 data-caption="2023 · GANGA">Open</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+
+    <!-- 2022 -->
+    <div class="year-block">
+      <div class="poster-year">2022</div>
+      <div class="poster-list">
+
+        <article class="poster-item">
+          <a class="poster-thumb js-poster" href="images/484070509_3942198472695125_9084831473239045664_n copy.jpg"
+             data-caption="2022 · WOOSOOZOO III">
+            <img src="images/484070509_3942198472695125_9084831473239045664_n copy.jpg"
+                 alt="WOOSOOZOO III (2022)" class="poster-img">
+            <div class="thumb-chip">View</div>
+          </a>
+          <div class="poster-text">
+            <h3 class="pt-title">WOOSOOZOO III</h3>
+            <p class="pt-sub">2022.12.02(금) 7:30PM · 축제극장 몸짓. 춘천문화재단 선정 프로젝트(표기 기준)로 제작된 연작 공연 포스터.</p>
+            <div class="pt-meta">Performance Poster · 2022</div>
+            <div class="pt-actions">
+              <a class="btn btn-primary js-poster"
+                 href="images/484070509_3942198472695125_9084831473239045664_n copy.jpg"
+                 data-caption="2022 · WOOSOOZOO III">Open</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="poster-item">
+          <a class="poster-thumb js-poster" href="images/Screen Shot 2025-12-14 at 1.58.13 PM.png"
+             data-caption="2022 · 뉴런 앤트로포우제 (Neuron Anthropause)">
+            <img src="images/Screen Shot 2025-12-14 at 1.58.13 PM.png"
+                 alt="뉴런 앤트로포우제 (2022)" class="poster-img">
+            <div class="thumb-chip">View</div>
+          </a>
+          <div class="poster-text">
+            <h3 class="pt-title">뉴런 앤트로포우제 (Neuron Anthropause)</h3>
+            <p class="pt-sub">2022.09.20(화) 7:30PM · 축제극장 몸짓. 2022 전문예술 창작지원 선정 프로젝트로, 데이터·지각·환경의 층위를 시각언어로 압축한 공연 포스터.</p>
+            <div class="pt-meta">Performance Poster · 2022</div>
+            <div class="pt-actions">
+              <a class="btn btn-primary js-poster"
+                 href="images/Screen Shot 2025-12-14 at 1.58.13 PM.png"
+                 data-caption="2022 · 뉴런 앤트로포우제 (Neuron Anthropause)">Open</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+<div class="year-block">
+      <div class="poster-year">2021</div>
+      <div class="poster-list">
+        <article class="poster-item">
+          <a class="poster-thumb js-poster" href="images/poster_2019_02.jpg"
+             data-caption="2021 · 현상과 현실의 혼합">
+            <img src="images/poster_2019_02.jpg" alt="현상과 현실의 혼합 (2021)" class="poster-img">
+            <div class="thumb-chip">View</div>
+          </a>
+          <div class="poster-text">
+            <h3 class="pt-title">현상과 현실의 혼합</h3>
+            <p class="pt-sub">전자음악과 시각 미디어를 결합한 복합예술 공연 포스터로, 동시대 기술과 감각의 경계를 탐구한 무대 작품.</p>
+            <div class="pt-meta">Performance Poster · 2021</div>
+            <div class="pt-actions">
+              <a class="btn btn-primary js-poster" href="images/poster_2019_02.jpg" data-caption="2021 · 현상과 현실의 혼합">Open</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- 2020 -->
+    <div class="year-block">
+      <div class="poster-year">2020</div>
+      <div class="poster-list">
+        <article class="poster-item">
+          <a class="poster-thumb js-poster" href="images/poster_2020_starofara_01.jpg"
+             data-caption="2020 · STAR OF ARA">
+            <img src="images/poster_2020_starofara_01.jpg" alt="STAR OF ARA (2020)" class="poster-img">
+            <div class="thumb-chip">View</div>
+          </a>
+          <div class="poster-text">
+            <h3 class="pt-title">STAR OF ARA</h3>
+            <p class="pt-sub">환경부 지정 멸종위기 야생생물을 주제로 한 공모 캠페인 포스터로, 생태 보전과 예술의 사회적 역할을 시각적으로 제시한 작업.</p>
+            <div class="pt-meta">Campaign Poster · 2020</div>
+            <div class="pt-actions">
+              <a class="btn btn-primary js-poster" href="images/poster_2020_starofara_01.jpg" data-caption="2020 · STAR OF ARA">Open</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- 2019 -->
+    <div class="year-block">
+      <div class="poster-year">2019</div>
+      <div class="poster-list">
+
+        <article class="poster-item">
+          <a class="poster-thumb js-poster" href="images/campaign_totalfashion_01.jpg"
+             data-caption="2019 · TOTAL FASHION CONTEST — MOIRE FRINGE">
+            <img src="images/campaign_totalfashion_01.jpg" alt="TOTAL FASHION CONTEST — MOIRE FRINGE (2019)" class="poster-img">
+            <div class="thumb-chip">View</div>
+          </a>
+          <div class="poster-text">
+            <h3 class="pt-title">TOTAL FASHION CONTEST — MOIRE FRINGE</h3>
+            <p class="pt-sub">전통 문양과 시각적 간섭(Moiré) 개념을 주제로 한 패션 공모전 포스터로, 문화유산과 디자인의 결합을 실험한 캠페인 작업.</p>
+            <div class="pt-meta">Campaign Poster · 2019</div>
+            <div class="pt-actions">
+              <a class="btn btn-primary js-poster" href="images/campaign_totalfashion_01.jpg" data-caption="2019 · TOTAL FASHION CONTEST — MOIRE FRINGE">Open</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="poster-item">
+          <a class="poster-thumb js-poster" href="images/poster_2019_01.jpg"
+             data-caption="2019 · MOIRE FRINGE — 소리의 잠, 빛살무늬 앞에서">
+            <img src="images/poster_2019_01.jpg" alt="MOIRE FRINGE — 소리의 잠, 빛살무늬 앞에서 (2019)" class="poster-img">
+            <div class="thumb-chip">View</div>
+          </a>
+          <div class="poster-text">
+            <h3 class="pt-title">MOIRE FRINGE — 소리의 잠, 빛살무늬 앞에서</h3>
+            <p class="pt-sub">전통음악과 시각예술을 결합한 공연 포스터로, 패턴과 소리의 관계를 무대 예술로 확장한 실험적 프로젝트.</p>
+            <div class="pt-meta">Performance Poster · 2019</div>
+            <div class="pt-actions">
+              <a class="btn btn-primary js-poster" href="images/poster_2019_01.jpg" data-caption="2019 · MOIRE FRINGE — 소리의 잠, 빛살무늬 앞에서">Open</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- 2018 -->
+    <div class="year-block">
+      <div class="poster-year">2018</div>
+      <div class="poster-list">
+        <article class="poster-item">
+          <a class="poster-thumb js-poster" href="images/499936459_4011679885746983_5460856873638963254_n.jpg"
+             data-caption="2018 · 제14회 ARA KOREA 캠페인 — DOKDO CONTEST">
+            <img src="images/499936459_4011679885746983_5460856873638963254_n.jpg" alt="DOKDO CONTEST (2018)" class="poster-img">
+            <div class="thumb-chip">View</div>
+          </a>
+          <div class="poster-text">
+            <h3 class="pt-title">제14회 ARA KOREA 캠페인 — DOKDO CONTEST</h3>
+            <p class="pt-sub">독도를 주제로 한 공모 캠페인 포스터로, 시각예술을 통해 영토와 정체성에 대한 인식을 확장하고자 한 ARA KOREA 프로젝트.</p>
+            <div class="pt-meta">Campaign Poster · 2018</div>
+            <div class="pt-actions">
+              <a class="btn btn-primary js-poster" href="images/499936459_4011679885746983_5460856873638963254_n.jpg" data-caption="2018 · 제14회 ARA KOREA 캠페인 — DOKDO CONTEST">Open</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- 2016 -->
+    
+    <!-- 2018 (additional) -->
+    <div class="year-block">
+      <div class="poster-year">2018</div>
+      <div class="poster-list">
+
+        <article class="poster-item">
+          <a class="poster-thumb js-poster" href="images/Screen Shot 2025-12-14 at 1.56.27 PM.png"
+             data-caption="2018 · 우주 (宇)">
+            <img src="images/Screen Shot 2025-12-14 at 1.56.27 PM.png"
+                 alt="우주 (2018)" class="poster-img">
+            <div class="thumb-chip">View</div>
+          </a>
+          <div class="poster-text">
+            <h3 class="pt-title">우주 (宇)</h3>
+            <p class="pt-sub">2018.10.12(금) 7:30PM · 일신홀. ‘눈으로 듣는 공감 멜로디’ 콘셉트로 구성된 공연 포스터로, 인물 클로즈업과 타이포그래피로 정서적 집중을 강화.</p>
+            <div class="pt-meta">Performance Poster · 2018</div>
+            <div class="pt-actions">
+              <a class="btn btn-primary js-poster"
+                 href="images/Screen Shot 2025-12-14 at 1.56.27 PM.png"
+                 data-caption="2018 · 우주 (宇)">Open</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+<div class="year-block">
+      <div class="poster-year">2016</div>
+      <div class="poster-list">
+        <article class="poster-item">
+          <a class="poster-thumb js-poster" href="images/495329488_3996062030642102_8200693670765285384_n.jpg"
+             data-caption="2016 · ARA KOREA — 모두가 하나되는 대한민국">
+            <img src="images/495329488_3996062030642102_8200693670765285384_n.jpg" alt="ARA KOREA — 모두가 하나되는 대한민국 (2016)"
+                  onerror="this.closest(\'.poster-item\').style.display=\'none\';" class="poster-img">>
+            <div class="thumb-chip">View</div>
+          </a>
+          <div class="poster-text">
+            <h3 class="pt-title">ARA KOREA — 모두가 하나되는 대한민국</h3>
+            <p class="pt-sub">국립춘천박물관에서 개최된 ARA KOREA 캠페인 공연 포스터로, 전통예술을 현대적 무대 언어로 확장한 초기 프로젝트를 상징한다.</p>
+            <div class="pt-meta">Campaign Poster · 2016</div>
+            <div class="pt-actions">
+              <a class="btn btn-primary js-poster" href="images/495329488_3996062030642102_8200693670765285384_n.jpg" data-caption="2016 · ARA KOREA — 모두가 하나되는 대한민국">Open</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+  
+    <!-- 2014 -->
+    <div class="year-block">
+      <div class="poster-year">2014</div>
+      <div class="poster-list">
+        <article class="poster-item">
+          <a class="poster-thumb js-poster" href="images/490023889_3964539623794343_434611979167858566_n.jpg"
+             data-caption="2014 · 독도 동영상 공모전">
+            <img src="images/490023889_3964539623794343_434611979167858566_n.jpg"
+                 alt="독도 동영상 공모전 (2014)" class="poster-img">
+            <div class="thumb-chip">View</div>
+          </a>
+          <div class="poster-text">
+            <h3 class="pt-title">독도 동영상 공모전</h3>
+            <p class="pt-sub">2014년 진행된 독도 주제 영상 공모전 포스터. 외교부 후원 하에 대중 참여형 콘텐츠 제작을 통해 독도 인식 확산을 도모한 캠페인.</p>
+            <div class="pt-meta">Campaign Poster · 2014</div>
+            <div class="pt-actions">
+              <a class="btn btn-primary js-poster"
+                 href="images/490023889_3964539623794343_434611979167858566_n.jpg"
+                 data-caption="2014 · 독도 동영상 공모전">Open</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-head">Contact</div>
+      <div class="footer-text">E-mail: info@akenm.com</div>
+      <div class="footer-text">Tel: 02-400-7151</div>
+    </div>
+    <div>
+      <div class="footer-head">Social</div>
+      <div class="footer-text"><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div>
+    </div>
+    <div>
+      <div class="footer-head">Shop</div>
+      <div class="footer-text"><a href="https://arakorea.shop" target="_blank" rel="noopener noreferrer">ARAKOREA.SHOP</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">© ARA KOREA Space Art Project</div>
+</footer>
+
+<div class="lb" id="lb" aria-hidden="true">
+  <button class="btn btn-ghost lb-close" id="lbClose" type="button">Close ✕</button>
+  <div class="lb-inner" role="dialog" aria-label="Poster viewer">
+    <img id="lbImg" alt="Poster preview"/>
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const links = document.querySelectorAll('.js-poster');
+  const lb = document.getElementById('lb');
+  const img = document.getElementById('lbImg');
+  const cap = document.getElementById('lbCap');
+  const close = document.getElementById('lbClose');
+
+  // Robust image fallback: try common extension/case variants without showing any on-page instructions.
+  const tryNextVariant = (imgEl) => {
+    const list = (imgEl.getAttribute('data-variants') || '').split(',').map(s=>s.trim()).filter(Boolean);
+    if(!list.length) return;
+    const tried = JSON.parse(imgEl.getAttribute('data-tried') || '[]');
+    const next = list.find(u => !tried.includes(u));
+    if(!next) return;
+    tried.push(next);
+    imgEl.setAttribute('data-tried', JSON.stringify(tried));
+    imgEl.src = next;
+    const a = imgEl.closest('a');
+    if(a) a.setAttribute('href', next);
+  };
+
+  // Attach error handler to all poster images
+  document.querySelectorAll('img.poster-img').forEach(imgEl => {
+    imgEl.addEventListener('error', () => tryNextVariant(imgEl));
+  });
+
+
+  const pickHref = (a) => {
+    // If the thumbnail image swapped its src due to onerror, prefer that.
+    const imgEl = a.querySelector('img');
+    if(imgEl && imgEl.getAttribute('src')) return imgEl.getAttribute('src');
+    return a.getAttribute('href');
+  };
+
+  const openLB = (href, caption) => {
+    img.src = href;
+    cap.textContent = caption || '';
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const shut = () => {
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    img.src = '';
+    cap.textContent = '';
+  };
+
+  links.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      openLB(pickHref(a), a.getAttribute('data-caption'));
+    });
+  });
+
+  close.addEventListener('click', shut);
+  lb.addEventListener('click', e => { if(e.target === lb) shut(); });
+  window.addEventListener('keydown', e => { if(e.key === 'Escape') shut(); });
+})();
+</script>
+
+</body>
+</html>
