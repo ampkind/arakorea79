@@ -1,0 +1,487 @@
+/* ARA KOREA unified styles (Home/About/K‑Culture) */
+:root{
+  --bg0:#05070f;
+  --bg1:#061427;
+  --bg2:#0a2740;
+  --text:#e9eef7;
+  --muted:rgba(233,238,247,.72);
+  --line:rgba(255,255,255,.10);
+  --glass:rgba(20,30,45,.45);
+  --glass2:rgba(20,30,45,.30);
+  --accent:#45b6ff;
+  --accent2:#7a63ff;
+  --shadow: 0 20px 60px rgba(0,0,0,.45);
+  --radius: 22px;
+  --radius2: 28px;
+  --max: 1160px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 20% 15%, rgba(40,110,255,.25), transparent 60%),
+    radial-gradient(900px 600px at 85% 35%, rgba(0,180,255,.18), transparent 55%),
+    radial-gradient(900px 700px at 70% 85%, rgba(0,80,120,.25), transparent 60%),
+    linear-gradient(120deg, var(--bg1), var(--bg0) 35%, var(--bg2));
+}
+
+a{color:inherit; text-decoration:none}
+img{max-width:100%; display:block}
+.page{max-width:var(--max); margin:0 auto; padding:28px 18px 70px}
+
+/* Header */
+.site-header{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:22px 18px 6px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+}
+.brand-title{
+  font-weight:800;
+  letter-spacing:.18em;
+  font-size:18px;
+}
+.brand-sub{
+  margin-top:4px;
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:.02em;
+}
+
+.top-nav{
+  display:flex;
+  gap:8px;
+  padding:6px;
+  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+  border:1px solid var(--line);
+  border-radius:999px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  backdrop-filter: blur(10px);
+}
+.nav-pill{
+  font-size:13px;
+  padding:8px 14px;
+  border-radius:999px;
+  color:rgba(233,238,247,.85);
+}
+.nav-pill:hover{ background:rgba(255,255,255,.08) }
+.nav-pill.is-active{
+  background: linear-gradient(135deg, rgba(69,182,255,.95), rgba(122,99,255,.95));
+  color:#061427;
+  font-weight:700;
+}
+
+/* Hero */
+.hero{
+  display:grid;
+  grid-template-columns: 1.05fr 1.2fr;
+  gap:26px;
+  align-items:center;
+  padding: 18px 0 8px;
+}
+.eyebrow{
+  color:rgba(69,182,255,.75);
+  letter-spacing:.28em;
+  font-size:11px;
+  margin-bottom:10px;
+}
+.hero-title{
+  font-size:54px;
+  margin:0 0 12px;
+  letter-spacing:.06em;
+}
+.hero-desc{
+  margin:0 0 18px;
+  color:var(--muted);
+  line-height:1.65;
+  font-size:14px;
+}
+.accent{ color:rgba(69,182,255,.95); font-weight:700 }
+.hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:10px}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 16px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.06);
+  color: rgba(233,238,247,.92);
+  box-shadow: 0 12px 30px rgba(0,0,0,.22);
+  backdrop-filter: blur(10px);
+  font-size:13px;
+  font-weight:600;
+}
+.btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08) }
+.btn-primary{
+  border: none;
+  background: linear-gradient(135deg, rgba(69,182,255,.95), rgba(122,99,255,.95));
+  color:#061427;
+}
+.btn-primary:hover{ filter: brightness(1.05) }
+.btn-ghost{ background: rgba(255,255,255,.04) }
+
+.hero-media .media-frame{
+  border-radius: var(--radius2);
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.35);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+.media-frame{
+  aspect-ratio: 16/9;
+  min-height: 320px;
+}
+.media-frame iframe, .media-frame video{
+  width:100%; height:100%;
+  border:0;
+  display:block;
+}
+
+/* Sections */
+.section{ padding: 26px 0 6px }
+.section-head{ margin: 0 0 14px }
+.section-title{ margin:0; font-size:22px; letter-spacing:.02em }
+.section-sub{ margin:6px 0 0; color:var(--muted); font-size:13px }
+
+.cards-3{
+  margin-top:16px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:14px;
+}
+.card{
+  border-radius: var(--radius);
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  overflow:hidden;
+  box-shadow: 0 16px 40px rgba(0,0,0,.28);
+  height: 240px;
+}
+.card img{
+  width:100%; height:100%;
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.02);
+}
+.card-fallback{
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(233,238,247,.60);
+  font-size:12px;
+}
+
+.text-link{
+  display:inline-block;
+  margin-top:14px;
+  color:rgba(69,182,255,.9);
+  font-weight:700;
+  font-size:13px;
+}
+.text-link:hover{ text-decoration: underline }
+
+.cards-2{
+  margin-top:16px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:14px;
+}
+.panel{
+  border-radius: var(--radius2);
+  border:1px solid rgba(255,255,255,.10);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  padding:18px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.28);
+}
+.panel-warm{
+  background: radial-gradient(800px 400px at 20% 10%, rgba(255,200,140,.14), transparent 55%),
+              linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+}
+.panel-title{ font-weight:800; letter-spacing:.04em; margin-bottom:6px }
+.panel-desc{ color:var(--muted); font-size:13px; line-height:1.6 }
+
+.chip-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px }
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.18);
+  font-size:13px;
+  color:rgba(233,238,247,.92);
+}
+.chip:hover{ background: rgba(255,255,255,.08) }
+
+.shop-card{
+  margin-top:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 16px;
+  border-radius: 18px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.18);
+}
+.shop-kicker{ font-size:12px; opacity:.8; letter-spacing:.06em }
+.shop-title{ font-weight:800 }
+.shop-arrow{ font-weight:900; opacity:.9 }
+
+/* Footer */
+.site-footer{
+  border-top:1px solid rgba(255,255,255,.10);
+  margin-top: 28px;
+  padding: 26px 18px 30px;
+  background: rgba(0,0,0,.14);
+}
+.footer-grid{
+  max-width:var(--max);
+  margin: 0 auto;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:14px;
+}
+.footer-head{ font-weight:800; margin-bottom:8px }
+.footer-text{ color:var(--muted); font-size:13px; line-height:1.6 }
+.footer-bottom{
+  max-width:var(--max);
+  margin:18px auto 0;
+  color:rgba(233,238,247,.50);
+  font-size:12px;
+}
+
+/* Mobile */
+@media (max-width: 980px){
+  .hero{ grid-template-columns: 1fr; }
+  .hero-title{ font-size:44px }
+  .media-frame{ min-height: 260px }
+  .cards-3{ grid-template-columns: 1fr; }
+  .card{ height: 220px }
+  .cards-2{ grid-template-columns: 1fr; }
+  .footer-grid{ grid-template-columns: 1fr; }
+  .site-header{ align-items:flex-start; flex-direction:column; }
+  .top-nav{ width:100%; justify-content:space-between; overflow:auto }
+}
+
+
+/* --- K‑Culture dropdown (consistent across all pages) --- */
+.nav-dd{position:relative;display:inline-flex;align-items:center;}
+.nav-dd-menu{
+  position:absolute;
+  top:calc(100% + 10px);
+  left:0;
+  display:none;
+  flex-direction:column;
+  gap:8px;
+  padding:10px;
+  min-width:160px;
+  background:rgba(10,16,26,.78);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  box-shadow:0 14px 40px rgba(0,0,0,.45);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  z-index:9999;
+}
+.nav-dd:hover .nav-dd-menu,
+.nav-dd:focus-within .nav-dd-menu{display:flex;}
+/* Keep submenu items same “pill” language, but sized for dropdown */
+.nav-dd-menu .nav-pill{
+  width:100%;
+  justify-content:flex-start;
+  padding:10px 14px;
+  border-radius:14px;
+}
+.nav-dd-menu .nav-pill:hover{
+  background:rgba(88,160,255,.92);
+  color:#06101c;
+}
+@media (max-width: 900px){
+  /* On touch devices: tapping K‑Culture focuses it, showing dropdown via :focus-within */
+  .nav-dd-menu{
+    left:auto;
+    right:0;
+    min-width:150px;
+  }
+}
+
+
+/* =========================
+   K-Culture: museum + subtle commerce (APPENDED)
+   ========================= */
+
+.kc-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 8px 0 6px;
+}
+
+.kc-card{
+  position: relative;
+  display:block;
+  border-radius: 18px;
+  overflow:hidden;
+  aspect-ratio: 4 / 5;
+  background: #0b0b0b;
+  box-shadow: 0 12px 30px rgba(0,0,0,.22);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.kc-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.12);
+  pointer-events:none;
+}
+
+.kc-card::after{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  background:
+    radial-gradient(60% 40% at 30% 15%, rgba(255,255,255,.22), transparent 60%),
+    linear-gradient(115deg, transparent 0%, rgba(255,255,255,.10) 35%, transparent 70%);
+  opacity:.22;
+  transform: rotate(-8deg);
+  pointer-events:none;
+}
+
+.kc-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1.01);
+  filter:contrast(1.03) saturate(1.05);
+  transition: transform .65s ease, filter .65s ease;
+}
+
+.kc-label{
+  position:absolute;
+  left:16px;
+  bottom:16px;
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:14px;
+  letter-spacing:.06em;
+  color:rgba(255,255,255,.92);
+  background:rgba(0,0,0,.46);
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(10px);
+}
+
+.kc-caption{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  padding:14px 16px;
+  background:linear-gradient(to top, rgba(0,0,0,.72), rgba(0,0,0,0));
+  pointer-events:none;
+}
+
+.kc-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 46px rgba(0,0,0,.32);
+}
+
+.kc-card:hover img{
+  transform:scale(1.07);
+  filter:contrast(1.06) saturate(1.10);
+}
+
+@media (max-width:900px){
+  .kc-grid{
+    grid-template-columns:1fr;
+    max-width:420px;
+    gap:22px;
+  }
+  .kc-card{
+    aspect-ratio:3/4;
+  }
+}
+
+
+/* Portfolio page: show card labels clearly on cards */
+.portfolio-page .card{ position:relative; }
+.portfolio-page .card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.58), rgba(0,0,0,0) 55%);
+  opacity:.9;
+  pointer-events:none;
+}
+.portfolio-page .card::after{
+  content: attr(aria-label);
+  position:absolute;
+  left:14px;
+  bottom:14px;
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:.08em;
+  color:rgba(255,255,255,.92);
+  background:rgba(0,0,0,.52);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  text-transform:none;
+}
+.portfolio-page .card:hover::after{
+  background: linear-gradient(135deg, rgba(69,182,255,.95), rgba(122,99,255,.95));
+  color:#061427;
+  border-color: rgba(255,255,255,.10);
+}
+
+
+
+/* ==================================================
+   Mobile overflow safety (prevents video/text from sliding sideways)
+   Does not change PC styles.
+   ================================================== */
+@media (max-width: 980px){
+  html, body{ overflow-x:hidden; }
+  .page{ overflow-x:hidden; }
+
+  /* Media frames (YouTube/video) never exceed viewport */
+  .media-frame{ max-width:100%; }
+  .media-frame iframe, .media-frame video{ width:100%; height:100%; }
+
+  /* Text wrapping safety for long tokens on mobile */
+  .hero-desc, .section-sub, .panel-desc, .footer-text{
+    max-width: 100%;
+    overflow-wrap:anywhere;
+    word-break: keep-all;
+  }
+}
+
+/* ==================================================
+   Fix: YouTube iframe should never overflow sideways
+   Applies to PC + mobile, keeps existing design.
+   ================================================== */
+html, body{ overflow-x: hidden; }
+
+.hero-media{ min-width: 0; }
+.media-frame{
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.media-frame iframe{
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
