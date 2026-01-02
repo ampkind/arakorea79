@@ -10,8 +10,8 @@
     .news-grid{
       margin-top:16px;
       display:grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap:14px;
+      grid-template-columns: repeat(2, minmax(360px, 1fr));
+      gap:18px;
     }
     .n-card{
       display:block;
@@ -44,9 +44,14 @@
     }
     .n-body{ padding:14px 14px 16px; }
     .n-meta{ font-size:12px; color: var(--muted); letter-spacing:.02em; }
-    .n-title{ margin-top:6px; font-weight:900; letter-spacing:.02em; font-size:14px; line-height:1.35; }
+    .n-title{ margin-top:8px; font-weight:900; letter-spacing:.02em; font-size:16px; line-height:1.35; }
     @media (max-width: 720px){
-      .news-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); gap:12px; }
+      .news-grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(360px, 1fr));
+      gap:18px;
+    }
       .n-badge{ width:32px; height:32px; }
     }
   </style>
@@ -100,7 +105,19 @@
         <div class="n-title">제 20회 ARA KOREA 캠페인, 국립극장서 진행</div>
       </div>
     </a>
-    <a class="n-card" href="https://www.tenasia.co.kr/article/2021060912604" target="_blank" rel="noopener">
+    
+    <a class="n-card" href="https://www.kmib.co.kr/article/view.asp?arcid=0015979992" target="_blank" rel="noopener">
+      <div class="n-thumb">
+        <img loading="lazy" src="images/kc_gallery_07.jpg" alt="ARA KOREA, 메타버스 가상 사옥 제작 K-컬처 융복합 콘텐츠 기획">
+        <div class="n-badge" aria-hidden="true">↗</div>
+      </div>
+      <div class="n-body">
+        <div class="n-meta">2021.06.23 · 국민일보</div>
+        <div class="n-title">ARA KOREA, 메타버스 가상 사옥 제작 “K-컬처 융복합 콘텐츠 기획”</div>
+      </div>
+    </a>
+
+<a class="n-card" href="https://www.tenasia.co.kr/article/2021060912604" target="_blank" rel="noopener">
       <div class="n-thumb">
         <img loading="lazy" src="images/485169490_3942907175957588_8150731194226765501_n.jpg" alt="홍장혁 AK ENM 디자이너, 영화감독으로 변신">
         <div class="n-badge" aria-hidden="true">↗</div>
