@@ -96,41 +96,56 @@
         </article>
       </section>
 
+      
       <section class="panel" style="margin-top:14px">
         <div class="panel-title">Send a message</div>
-        <div class="panel-desc">This form opens your e-mail client (no server needed).</div>
+        <div class="panel-desc">This form sends directly to our inbox (no email client needed).</div>
 
         <div style="height:12px"></div>
 
-        <form id="contactForm" onsubmit="return false;">
+        <form id="contactForm" method="POST" action="https://formspree.io/f/maqyznbe">
+          <input type="hidden" name="_subject" value="[ARA KOREA] New inquiry"/>
+          <input type="hidden" name="form_type" value="ARAKOREA_CONTACT"/>
+          <!-- Honeypot field (spam protection). Humans should leave this blank. -->
+          <input type="text" name="_gotcha" style="display:none"/>
+
           <div class="form-grid">
             <div>
               <label class="meta" for="name">Name</label>
-              <input class="input" id="name" name="name" type="text" placeholder="Your name" />
+              <input class="input" id="name" name="name" type="text" placeholder="Your name" required />
             </div>
             <div>
               <label class="meta" for="email">Email</label>
-              <input class="input" id="email" name="email" type="email" placeholder="you@example.com" />
+              <input class="input" id="email" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+            <div>
+              <label class="meta" for="phone">Phone (optional)</label>
+              <input class="input" id="phone" name="phone" type="text" placeholder="+82 10-0000-0000" />
+            </div>
+            <div>
+              <label class="meta" for="topic">Topic (optional)</label>
+              <input class="input" id="topic" name="topic" type="text" placeholder="Program / Partnership / Press" />
             </div>
           </div>
 
           <div style="height:12px"></div>
           <div>
             <label class="meta" for="subject">Subject</label>
-            <input class="input" id="subject" name="subject" type="text" placeholder="Inquiry / collaboration" />
+            <input class="input" id="subject" name="subject" type="text" placeholder="Inquiry / collaboration" required />
           </div>
 
           <div style="height:12px"></div>
           <div>
             <label class="meta" for="message">Message</label>
-            <textarea class="textarea" id="message" name="message" placeholder="Write your message"></textarea>
+            <textarea class="textarea" id="message" name="message" placeholder="Write your message" required></textarea>
           </div>
 
           <div style="height:14px"></div>
-          <button class="btn btn-primary" id="sendBtn" type="button">Send</button>
+          <button class="btn btn-primary" id="sendBtn" type="submit">Send</button>
           <span class="meta" id="hint" style="margin-left:10px"></span>
         </form>
       </section>
+
     </div>
   </main>
 
@@ -153,31 +168,17 @@
 <div class="footer-bottom">© ARA KOREA Space Art Project</div>
 </footer>
 
+  
   <script>
-    const to = 'info@akenm.com';
+    const form = document.getElementById('contactForm');
     const btn = document.getElementById('sendBtn');
     const hint = document.getElementById('hint');
 
-    function safe(v){ return (v||'').trim(); }
-
-    btn.addEventListener('click', () => {
-      const name = safe(document.getElementById('name').value);
-      const email = safe(document.getElementById('email').value);
-      const subject = safe(document.getElementById('subject').value) || 'ARA KOREA inquiry';
-      const message = safe(document.getElementById('message').value);
-
-      const lines = [];
-      if (name) lines.push('Name: ' + name);
-      if (email) lines.push('Email: ' + email);
-      lines.push('');
-      lines.push(message || '(No message)');
-
-      const body = encodeURIComponent(lines.join('\n'));
-      const subj = encodeURIComponent(subject);
-
-      const url = `mailto:${to}?subject=${subj}&body=${body}`;
-      window.location.href = url;
-      hint.textContent = 'Opening your email client…';
+    form.addEventListener('submit', () => {
+      btn.disabled = true;
+      hint.textContent = 'Sending…';
+      // Formspree will redirect to a confirmation page by default.
+      // If you prefer staying on the same page, we can switch to AJAX submission.
     });
   </script>
 </body>
