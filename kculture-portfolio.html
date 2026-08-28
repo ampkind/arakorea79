@@ -1,214 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>ARA KOREA · K-Culture · Portfolio</title>
-  <!-- 캐시 무력화: 숫자만 바꾸면 즉시 반영됩니다 -->
-  <link rel="stylesheet" href="styles.css?v=20251218-99"/>
-  <style>
-    /* 이 페이지에서만 강제로 라벨/프리뷰가 보이도록(캐시 영향 최소화) */
-    .card{ position:relative; }
-    .portfolio-label{
-      position:absolute; left:16px; bottom:16px;
-      padding:10px 16px;
-      border-radius:999px;
-      font-size:14px; font-weight:800;
-      letter-spacing:.06em;
-      color:#061427;
-      background: linear-gradient(135deg, rgba(69,182,255,.95), rgba(122,99,255,.95));
-      box-shadow: 0 10px 28px rgba(0,0,0,.38);
-      z-index:5;
-      pointer-events:none;
-      white-space:nowrap;
-    }
-    /* PDF 미리보기(카드 내부) */
-    .card .card-preview{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      border:0;
-    }
-    .card .card-preview object,
-    .card .card-preview iframe,
-    .card .card-preview embed{
-      width:100%; height:100%;
-      border:0;
-      display:block;
-    }
-    /* 미리보기 위를 클릭해도 카드 링크가 동작하도록 */
-    .card-preview, .card-preview *{ pointer-events:none; }
-  </style>
-<style>
-/* ==================================================
-   Mobile Nav Dropdown Fix
-   - Tap K-Culture to toggle submenu vertically on mobile
-   - PC hover behavior remains
-   ================================================== */
-@media (max-width: 900px){
-  .nav-dd-menu{
-    position: static !important;
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    padding-top: 6px;
-  }
-  .nav-dd.is-open .nav-dd-menu{ display: flex !important; }
-  .nav-dd-menu .nav-pill{ width: 100%; justify-content: flex-start; }
-  .nav-dd-menu a:active{ transform: scale(0.99); }
-}
-</style>
-
-<style>
-/* ==================================================
-   K-Culture Portfolio patch
-   - Back navigation (same style as Awards/Posters)
-   - Mobile: always show K-Culture submenu (no double-tap)
-   ================================================== */
-
-/* Back Navigation */
-.back-nav{
-  width: min(1100px, 100%);
-  margin: 18px auto 6px;
-  padding: 0 18px;
-}
-.back-link{
-  display: inline-block;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 12px;
-  opacity: .85;
-}
-.back-link::before{ content: "← "; }
-.back-link:hover{ opacity: 1; }
-
-@media (max-width: 900px){
-  .back-nav{ margin: 14px auto 4px; }
-  .back-link{ font-size: 11px; }
-
-  /* Always show submenu on mobile so K-Culture remains single-tap navigable */
-  .nav-dd-menu{
-    position: static !important;
-    display: flex !important;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    padding-top: 6px;
-  }
-  .nav-dd-menu .nav-pill{
-    width: 100%;
-    justify-content: flex-start;
-  }
-}
-</style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio · ARA KOREA</title>
+  <meta name="description" content="ARA KOREA의 수상 기록과 축사, 공연 포스터를 한곳에서 살펴보는 K-Culture 포트폴리오입니다.">
+  <meta name="keywords" content="ARA KOREA, K-Culture, 포트폴리오, 수상 기록, 축사, 공연 포스터, 공연예술 아카이브">
+  <link rel="canonical" href="https://arakorea.org/kculture-portfolio">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ARA KOREA">
+  <meta property="og:title" content="Portfolio · ARA KOREA">
+  <meta property="og:description" content="Awards, messages and visual records from the ARA KOREA archive.">
+  <meta property="og:url" content="https://arakorea.org/kculture-portfolio">
+  <meta property="og:image" content="https://arakorea.org/images/og-arakorea-kakao.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css?v=20260827">
 </head>
-<body>
-
-<header class="site-header">
-<div class="brand">
-<div class="brand-title">ARA KOREA</div>
-<div class="brand-sub">Immersive K‑Culture · Art Film &amp; Performance</div>
-</div>
-<nav aria-label="Primary" class="top-nav"><a class="nav-pill" href="index.html">Home</a><a class="nav-pill" href="about.html">About</a><div class="nav-dd"><a class="nav-pill is-active" href="kculture.html">K‑Culture</a><div class="nav-dd-menu"><a class="nav-dd-item nav-pill" href="kculture-gallery.html">Gallery</a><a class="nav-dd-item nav-pill is-active" href="kculture-portfolio.html">Portfolio</a><a class="nav-dd-item nav-pill" href="kculture-video.html">Video</a></div></div><a class="nav-pill" href="news.html">News</a><a class="nav-pill" href="contact.html">Contact</a></nav>
-</header>
-
-<main class="page">
-
-  <div class="back-nav">
-    <a href="kculture.html" class="back-link">BACK</a>
-  </div>
-
-  <section class="section">
-    <div class="section-head">
-      <h2 class="section-title">Portfolio</h2>
-      <p class="section-sub">
-        ARA KOREA의 결과물을 카테고리별로 정리한 아카이브입니다. 아래에서 항목을 선택해 확인하세요.
-      </p>
-    </div>
-
-    <!-- 3개의 카테고리로 고정: Awards / Congratulatory Messages / Posters -->
-    <div class="cards-3">
-      <a class="card" href="awards.html" aria-label="Awards">
-        <img src="images/award_2020_01.jpg" alt="Awards"
-             onerror="this.remove(); this.parentElement.classList.add('card-fallback');"/>
-        <div class="portfolio-label">Awards</div>
-      </a>
-
-      <a class="card" href="congratulatory-messages.html" aria-label="Congratulatory Messages">
-        <!-- 이미지 대신 PDF 1페이지를 카드에서 바로 미리보기(브라우저에 따라 표시 방식이 다를 수 있음) -->
-        <div class="card-preview" aria-hidden="true">
-          <object data="./congratulatory_2016_yonah_martin.pdf#page=1&zoom=100" type="application/pdf">
-            <iframe src="./congratulatory_2016_yonah_martin.pdf#page=1&zoom=100" title="Congratulatory message preview"></iframe>
-          </object>
+<body class="home-page">
+  <a class="home-skip" href="#main-content">본문 바로가기</a>
+  <header class="home-header" data-home-header>
+    <a class="home-brand" href="/" aria-label="ARA KOREA 홈"><span class="home-brand-name">ARA KOREA</span><span class="home-brand-tag" data-i18n="brandTag">Contemporary K-Culture</span></a>
+    <div class="home-header-tools">
+      <nav class="home-nav" id="home-navigation" aria-label="주요 메뉴">
+        <a href="/" data-i18n="navHome">Home</a><a href="/about" data-i18n="navAbout">About</a><a class="is-active" href="/kculture" aria-current="page" data-i18n="navCulture">K-Culture</a><a href="/news" data-i18n="navNews">News</a><a href="/contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="home-language-menu" data-language-menu>
+        <button class="home-language-trigger" type="button" aria-expanded="false" aria-controls="home-language-options"><span data-language-current>KO</span><span class="home-language-chevron" aria-hidden="true">⌄</span></button>
+        <div class="home-language-options" id="home-language-options" role="menu" aria-label="언어 선택">
+          <button type="button" role="menuitemradio" data-lang="ko" aria-checked="true"><span>한국어</span><small>KO</small></button><button type="button" role="menuitemradio" data-lang="en" aria-checked="false"><span>English</span><small>EN</small></button><button type="button" role="menuitemradio" data-lang="ja" aria-checked="false"><span>日本語</span><small>JA</small></button><button type="button" role="menuitemradio" data-lang="zh" aria-checked="false"><span>中文</span><small>ZH</small></button>
         </div>
-        <div class="portfolio-label">Congratulatory Messages</div>
-      </a>
-
-      <a class="card" href="portfolio-posters.html" aria-label="Posters">
-        <img src="images/KakaoTalk_Photo_2025-12-14-13-46-06.jpeg" alt="Posters" style="object-position:center 85%;" onerror="this.remove(); this.parentElement.classList.add('card-fallback');"/>
-        <div class="portfolio-label">Posters</div>
-      </a>
+      </div>
+      <button class="home-menu-toggle" type="button" aria-expanded="false" aria-controls="home-navigation"><span data-i18n="menu">MENU</span><span class="home-menu-icon" aria-hidden="true"></span></button>
     </div>
-</section>
-</main>
+  </header>
 
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-head">Contact</div>
-      <div class="footer-text">E-mail: info@akenm.com</div>
-      <div class="footer-text">Tel: 02-400-7151</div>
-    </div>
-    <div>
-      <div class="footer-head">Social</div>
-      <div class="footer-text"><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div>
-    </div>
-    <div>
-      <div class="footer-head">Shop</div>
-      <div class="footer-text"><a href="https://arakorea.shop" target="_blank" rel="noopener noreferrer">ARAKOREA.SHOP</a></div>
-    </div>
-  </div>
-  <div class="footer-bottom">© ARA KOREA Space Art Project</div>
-</footer>
+  <main id="main-content">
+    <section class="home-hero" aria-labelledby="portfolio-title">
+      <div class="home-hero-copy">
+        <p class="home-kicker" data-i18n="pfKicker">RECORDS · RECOGNITION · VISUAL HISTORY</p>
+        <h1 id="portfolio-title" class="home-title" aria-label="Portfolio"><span>PORT</span><span>FOLIO</span></h1>
+        <p class="home-lead"><span class="home-copy-line" data-i18n="pfLead1">성과를 기록하고, 함께한 목소리를 보존하며</span><span class="home-copy-line" data-i18n="pfLead2">공연의 시간을 시각적 역사로 이어갑니다.</span></p>
+        <div class="home-actions"><a class="home-action home-action-primary" href="/awards" data-i18n="pfAwardsAction">Explore Awards</a><a class="home-action" href="/portfolio-posters" data-i18n="pfPostersAction">View Posters</a></div>
+      </div>
+      <figure class="home-hero-visual"><img src="images/kc_c3_04.jpg" alt="ARA KOREA 포트폴리오 아카이브" fetchpriority="high"><figcaption><span data-i18n="pfFigure1">Portfolio Archive</span><span data-i18n="pfFigure2">Recognition · Words · Design</span></figcaption></figure>
+      <p class="home-scroll" aria-hidden="true" data-i18n="scroll">SCROLL TO EXPLORE</p>
+    </section>
 
-<script>
-(function(){
-  function isMobile(){ return window.matchMedia && window.matchMedia('(max-width: 900px)').matches; }
-  var dd = document.querySelector('.nav-dd');
-  if(!dd) return;
-  var trigger = dd.querySelector('a.nav-pill'); // K-Culture pill inside .nav-dd
-  var menu = dd.querySelector('.nav-dd-menu');
-  if(!trigger || !menu) return;
+    <section class="home-statement home-reveal" aria-labelledby="portfolio-statement-title">
+      <div class="home-section-index" data-i18n="pfIdentityIndex">01 / PORTFOLIO</div>
+      <div class="home-statement-body">
+        <h2 id="portfolio-statement-title"><span class="home-statement-desktop"><span data-i18n="pfStatement1">작품이 지나온 시간과 사람들의 응원을 모아</span><span data-i18n="pfStatement2">ARA KOREA의 문화적 여정을 기록합니다</span></span><span class="home-statement-mobile" data-i18n="pfStatementMobile">작품이 지나온 시간과 사람들의 응원을 모아 ARA KOREA의 문화적 여정을 기록합니다</span></h2>
+        <p data-i18n="pfStatementBody">수상 기록은 프로젝트가 얻은 공감과 평가를 보여주고, 축사는 문화적 교류의 장면을 전합니다. 공연 포스터는 각 작업의 시대와 시각적 정체성을 담아 ARA KOREA가 축적해 온 창작의 흐름을 하나의 아카이브로 완성합니다.</p>
+      </div>
+    </section>
 
-  trigger.setAttribute('aria-haspopup','true');
-  trigger.setAttribute('aria-expanded','false');
+    <section class="home-culture" aria-labelledby="portfolio-records-title">
+      <div class="home-section-heading home-reveal">
+        <div><div class="home-section-index" data-i18n="pfRecordsIndex">02 / THREE RECORDS</div><h2 id="portfolio-records-title" data-i18n="pfRecordsTitle">Read the Journey</h2></div>
+        <p><span data-i18n="pfRecordsIntro1">성과와 교류, 시각적 기억으로 이어지는</span><span data-i18n="pfRecordsIntro2">세 가지 기록을 살펴보세요.</span></p>
+      </div>
+      <div class="home-culture-grid">
+        <a class="home-culture-card home-culture-card-wide home-reveal" href="/awards"><div class="home-card-image"><img src="images/award_2020_01.jpg" alt="ARA KOREA 수상 기록" loading="lazy"></div><div class="home-card-meta"><span>01</span><h3>AWARDS</h3><span class="home-card-arrow" aria-hidden="true">↗</span></div><p data-i18n="pfAwardsBody">프로젝트의 성과와 주요 이정표를 수상 기록으로 확인합니다.</p></a>
+        <a class="home-culture-card home-culture-card-tall home-reveal" href="/congratulatory-messages"><div class="home-card-image"><img src="images/highlight-1.jpg" alt="ARA KOREA 축사 아카이브" loading="lazy"></div><div class="home-card-meta"><span>02</span><h3>MESSAGES</h3><span class="home-card-arrow" aria-hidden="true">↗</span></div><p data-i18n="pfMessagesBody">문화예술의 가치를 함께 나눈 인사들의 축사와 응원을 만납니다.</p></a>
+        <a class="home-culture-card home-culture-card-full home-reveal" href="/portfolio-posters"><div class="home-card-image"><img src="images/KakaoTalk_Photo_2025-12-14-13-46-06.jpeg" alt="ARA KOREA 공연 포스터" loading="lazy"></div><div class="home-card-meta"><span>03</span><h3>POSTERS</h3><span class="home-card-arrow" aria-hidden="true">↗</span></div><p data-i18n="pfPostersBody">공연의 개념과 분위기를 응축한 포스터로 시각적 역사를 읽습니다.</p></a>
+      </div>
+    </section>
 
-  function close(){
-    dd.classList.remove('is-open');
-    trigger.setAttribute('aria-expanded','false');
+    <section class="home-feature home-reveal" aria-labelledby="portfolio-feature-title">
+      <div class="home-feature-image"><img src="images/highlight-3.jpg" alt="ARA KOREA 공연 기록" loading="lazy"></div>
+      <div class="home-feature-copy"><div class="home-section-index" data-i18n="pfFeatureIndex">03 / CONTEXT</div><p class="home-feature-type" data-i18n="pfFeatureType">A RECORD WITH CULTURAL CONTEXT</p><h2 id="portfolio-feature-title" data-i18n="pfFeatureTitle">Beyond Documentation</h2><p data-i18n="pfFeatureBody">각 자료는 한 시점의 결과를 넘어 작품이 사회와 만난 방식, 사람들과 관계를 맺은 과정, 시각 언어가 변화한 흐름을 보여줍니다. 포트폴리오는 흩어진 기록을 연결해 프로젝트의 문화적 맥락을 더욱 선명하게 전합니다.</p><a class="home-text-link" href="/kculture"><span data-i18n="pfFeatureLink">Return to K-Culture</span> <span aria-hidden="true">→</span></a></div>
+    </section>
+
+    <section class="home-connections" aria-labelledby="portfolio-continue-title">
+      <div class="home-section-heading home-reveal"><div><div class="home-section-index" data-i18n="pfContinueIndex">04 / CONTINUE</div><h2 id="portfolio-continue-title" data-i18n="pfContinueTitle">Explore Further</h2></div></div>
+      <div class="home-connection-list">
+        <a class="home-connection home-reveal" href="/kculture-gallery"><span class="home-connection-number">01</span><strong data-i18n="pfGalleryTitle">GALLERY</strong><span data-i18n="pfGalleryBody">Scenes · Photography</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="/kculture-video"><span class="home-connection-number">02</span><strong data-i18n="pfVideoTitle">VIDEO</strong><span data-i18n="pfVideoBody">Performance · Moving Image</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="/kculture"><span class="home-connection-number">03</span><strong data-i18n="pfCultureTitle">K-CULTURE</strong><span data-i18n="pfCultureBody">Complete Archive</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="home-footer">
+    <div class="home-footer-top"><div><p class="home-footer-label" data-i18n="footerContact">CONTACT</p><a href="mailto:info@akenm.com">info@akenm.com</a><a href="tel:+8224007151">02-400-7151</a></div><div><p class="home-footer-label" data-i18n="footerSocial">SOCIAL</p><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div><p class="home-footer-mark" aria-label="ARA KOREA">AK</p></div>
+    <div class="home-footer-bottom"><span>© ARA KOREA Space Art Project</span><a href="#main-content" data-i18n="backTop">Back to top ↑</a></div>
+  </footer>
+
+  <script type="application/json" id="page-translations">
+  {
+    "ko":{"title":"Portfolio · ARA KOREA","description":"ARA KOREA의 수상 기록과 축사, 공연 포스터를 한곳에서 살펴보는 K-Culture 포트폴리오입니다.","pfKicker":"RECORDS · RECOGNITION · VISUAL HISTORY","pfLead1":"성과를 기록하고, 함께한 목소리를 보존하며","pfLead2":"공연의 시간을 시각적 역사로 이어갑니다.","pfAwardsAction":"Explore Awards","pfPostersAction":"View Posters","pfFigure1":"Portfolio Archive","pfFigure2":"Recognition · Words · Design","pfIdentityIndex":"01 / PORTFOLIO","pfStatement1":"작품이 지나온 시간과 사람들의 응원을 모아","pfStatement2":"ARA KOREA의 문화적 여정을 기록합니다","pfStatementMobile":"작품이 지나온 시간과 사람들의 응원을 모아 ARA KOREA의 문화적 여정을 기록합니다","pfStatementBody":"수상 기록은 프로젝트가 얻은 공감과 평가를 보여주고, 축사는 문화적 교류의 장면을 전합니다. 공연 포스터는 각 작업의 시대와 시각적 정체성을 담아 ARA KOREA가 축적해 온 창작의 흐름을 하나의 아카이브로 완성합니다.","pfRecordsIndex":"02 / THREE RECORDS","pfRecordsTitle":"Read the Journey","pfRecordsIntro1":"성과와 교류, 시각적 기억으로 이어지는","pfRecordsIntro2":"세 가지 기록을 살펴보세요.","pfAwardsBody":"프로젝트의 성과와 주요 이정표를 수상 기록으로 확인합니다.","pfMessagesBody":"문화예술의 가치를 함께 나눈 인사들의 축사와 응원을 만납니다.","pfPostersBody":"공연의 개념과 분위기를 응축한 포스터로 시각적 역사를 읽습니다.","pfFeatureIndex":"03 / CONTEXT","pfFeatureType":"A RECORD WITH CULTURAL CONTEXT","pfFeatureTitle":"Beyond Documentation","pfFeatureBody":"각 자료는 한 시점의 결과를 넘어 작품이 사회와 만난 방식, 사람들과 관계를 맺은 과정, 시각 언어가 변화한 흐름을 보여줍니다. 포트폴리오는 흩어진 기록을 연결해 프로젝트의 문화적 맥락을 더욱 선명하게 전합니다.","pfFeatureLink":"Return to K-Culture","pfContinueIndex":"04 / CONTINUE","pfContinueTitle":"Explore Further","pfGalleryTitle":"GALLERY","pfGalleryBody":"Scenes · Photography","pfVideoTitle":"VIDEO","pfVideoBody":"Performance · Moving Image","pfCultureTitle":"K-CULTURE","pfCultureBody":"Complete Archive"},
+    "en":{"title":"Portfolio · ARA KOREA","description":"Explore ARA KOREA’s K-Culture portfolio of awards, messages and performance posters.","pfKicker":"RECORDS · RECOGNITION · VISUAL HISTORY","pfLead1":"Preserving achievements and the voices shared with us,","pfLead2":"we carry the life of performance into visual history.","pfAwardsAction":"Explore Awards","pfPostersAction":"View Posters","pfFigure1":"Portfolio Archive","pfFigure2":"Recognition · Words · Design","pfIdentityIndex":"01 / PORTFOLIO","pfStatement1":"Gathering the time travelled by each work and the voices around it,","pfStatement2":"we document ARA KOREA’s evolving cultural journey.","pfStatementMobile":"Gathering the time travelled by each work and the voices around it, we document ARA KOREA’s evolving cultural journey.","pfStatementBody":"Awards reveal the recognition and resonance earned by each project, while messages preserve moments of cultural exchange. Performance posters hold the visual identity of their time, bringing ARA KOREA’s creative trajectory together as one connected archive.","pfRecordsIndex":"02 / THREE RECORDS","pfRecordsTitle":"Read the Journey","pfRecordsIntro1":"Explore three records shaped through achievement, exchange","pfRecordsIntro2":"and the visual memory of performance.","pfAwardsBody":"Review the project’s achievements and defining milestones through its awards.","pfMessagesBody":"Encounter words of support from figures who shared the value of cultural exchange.","pfPostersBody":"Read a visual history through posters that distil the concept and atmosphere of each performance.","pfFeatureIndex":"03 / CONTEXT","pfFeatureType":"A RECORD WITH CULTURAL CONTEXT","pfFeatureTitle":"Beyond Documentation","pfFeatureBody":"Each item reaches beyond a single outcome. Together they reveal how a work met its public, formed relationships and developed its visual language. The portfolio connects dispersed records to make the cultural context of every project more visible.","pfFeatureLink":"Return to K-Culture","pfContinueIndex":"04 / CONTINUE","pfContinueTitle":"Explore Further","pfGalleryTitle":"GALLERY","pfGalleryBody":"Scenes · Photography","pfVideoTitle":"VIDEO","pfVideoBody":"Performance · Moving Image","pfCultureTitle":"K-CULTURE","pfCultureBody":"Complete Archive"},
+    "ja":{"title":"ポートフォリオ · ARA KOREA","description":"ARA KOREAの受賞歴、祝辞、舞台ポスターをまとめたKカルチャー・ポートフォリオです。","pfKicker":"記録 · 評価 · 視覚の歴史","pfLead1":"成果と寄せられた声を大切に残し、","pfLead2":"舞台の時間を視覚の歴史へとつなぎます。","pfAwardsAction":"受賞歴を見る","pfPostersAction":"ポスターを見る","pfFigure1":"ポートフォリオ・アーカイブ","pfFigure2":"評価 · 言葉 · デザイン","pfIdentityIndex":"01 / ポートフォリオ","pfStatement1":"作品が歩んだ時間と人々の声を集め、","pfStatement2":"ARA KOREAの文化的な旅を記録します。","pfStatementMobile":"作品が歩んだ時間と人々の声を集め、ARA KOREAの文化的な旅を記録します。","pfStatementBody":"受賞歴は各プロジェクトが得た共感と評価を伝え、祝辞は文化交流の場面を残します。舞台ポスターはその時代と視覚的な個性を映し、ARA KOREAが積み重ねてきた創作の流れを一つのアーカイブとして結びます。","pfRecordsIndex":"02 / 三つの記録","pfRecordsTitle":"歩みを読む","pfRecordsIntro1":"成果、交流、視覚の記憶へと続く","pfRecordsIntro2":"三つの記録をご覧ください。","pfAwardsBody":"受賞歴を通してプロジェクトの成果と主要な節目をたどります。","pfMessagesBody":"文化芸術の価値を共有した方々から寄せられた祝辞と応援をご覧いただけます。","pfPostersBody":"公演の構想と空気を凝縮したポスターから視覚の歴史を読み解きます。","pfFeatureIndex":"03 / 文脈","pfFeatureType":"文化的な文脈を持つ記録","pfFeatureTitle":"記録のその先へ","pfFeatureBody":"一つ一つの資料は、その時点の成果を越えて、作品が社会と出会い、人々と関係を築き、視覚言語を変化させた過程を映します。ポートフォリオは点在する記録を結び、各プロジェクトの文化的背景をより鮮明に伝えます。","pfFeatureLink":"Kカルチャーへ戻る","pfContinueIndex":"04 / 次のアーカイブ","pfContinueTitle":"さらに見る","pfGalleryTitle":"ギャラリー","pfGalleryBody":"場面 · 写真","pfVideoTitle":"映像","pfVideoBody":"舞台 · 動くイメージ","pfCultureTitle":"Kカルチャー","pfCultureBody":"総合アーカイブ"},
+    "zh":{"title":"作品档案 · ARA KOREA","description":"浏览ARA KOREA汇集奖项、贺词与演出海报的韩国文化作品档案。","pfKicker":"记录 · 认可 · 视觉历史","pfLead1":"保存成果与同行者的声音，","pfLead2":"将表演的时间延续为视觉历史。","pfAwardsAction":"浏览奖项","pfPostersAction":"查看海报","pfFigure1":"作品档案","pfFigure2":"认可 · 文字 · 设计","pfIdentityIndex":"01 / 作品档案","pfStatement1":"汇集作品走过的时间与人们的支持，","pfStatement2":"记录ARA KOREA不断发展的文化旅程。","pfStatementMobile":"汇集作品走过的时间与人们的支持，记录ARA KOREA不断发展的文化旅程。","pfStatementBody":"奖项展现项目获得的共鸣与评价，贺词保留文化交流的珍贵场景，演出海报则承载各个时期的视觉特征。三类资料共同连接ARA KOREA持续积累的创作脉络。","pfRecordsIndex":"02 / 三类记录","pfRecordsTitle":"阅读发展历程","pfRecordsIntro1":"从成果与交流到视觉记忆，","pfRecordsIntro2":"走进三类彼此连接的档案。","pfAwardsBody":"通过奖项记录了解项目的重要成果与发展节点。","pfMessagesBody":"阅读与我们共同珍视文化艺术价值的各界人士所写下的祝福与支持。","pfPostersBody":"从凝聚演出理念与氛围的海报中阅读视觉历史。","pfFeatureIndex":"03 / 文化语境","pfFeatureType":"承载文化语境的记录","pfFeatureTitle":"超越记录本身","pfFeatureBody":"每份资料都超越单一成果，呈现作品如何与社会相遇、与人建立关系，以及视觉语言如何演变。作品档案将分散的记录彼此连接，使项目的文化语境更加清晰。","pfFeatureLink":"返回韩国文化","pfContinueIndex":"04 / 继续探索","pfContinueTitle":"进一步浏览","pfGalleryTitle":"画廊","pfGalleryBody":"场景 · 摄影","pfVideoTitle":"影像","pfVideoBody":"表演 · 动态影像","pfCultureTitle":"韩国文化","pfCultureBody":"完整档案"}
   }
-
-  trigger.addEventListener('click', function(e){
-    if(!isMobile()) return; // PC hover stays
-    e.preventDefault();
-    e.stopPropagation();
-    var open = dd.classList.toggle('is-open');
-    trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-
-  document.addEventListener('click', function(e){
-    if(!isMobile()) return;
-    if(dd.contains(e.target)) return;
-    close();
-  });
-
-  window.addEventListener('resize', function(){
-    if(!isMobile()) close();
-  });
-})();
-</script>
+  </script>
+  <script src="site.js?v=20260827-2" defer></script>
 </body>
 </html>

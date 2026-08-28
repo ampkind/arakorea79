@@ -1,201 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>ARA KOREA · K‑Culture</title>
-  <!-- 캐시 무력화용 버전 파라미터: 업로드 후에도 변경이 안 보일 때 매우 효과적 -->
-  <link rel="stylesheet" href="styles.css?v=20251218"/>
-
-<style>
-/* ==================================================
-   K-Culture Mobile FIX (v5)
-   - Images stay visible
-   - Add 1cm black icon row UNDER each image (mobile only)
-   - Reduce vertical length
-   - PC untouched
-   ================================================== */
-
-@media (max-width: 900px){
-
-  /* dropdown touch (keep existing behavior) */
-  .nav-dd-menu{
-    position: static !important;
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    padding-top: 6px;
-  }
-  .nav-dd.is-open .nav-dd-menu{ display:flex !important; }
-
-  /* grid */
-  .kc-grid{
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-
-  .kc-card{
-    width: 100% !important;
-    margin: 0 auto !important;
-  }
-
-  /* image: video-like height */
-  .kc-card img{
-    display: block !important;
-    width: 100% !important;
-    height: auto !important;
-    aspect-ratio: 16 / 9 !important;
-    object-fit: cover !important;
-  }
-
-  /* remove big black caption blocks */
-  .kc-caption,
-  .kc-label{
-    display: none !important;
-  }
-
-  /* 1cm icon bar UNDER image */
-  .kc-iconbar{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    height: 38px;           /* ≈ 1cm */
-    margin-top: 8px;
-    background: #000;
-    border-radius: 10px;
-  }
-
-  .kc-iconbar span{
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .08em;
-    color: #fff;
-  }
-
-  /* tighten bottom space */
-  .section{ padding-bottom: 0 !important; }
-}
-</style>
-
-<style>
-/* ==================================================
-   K-Culture Mobile Cleanup (v6)
-   - Remove the long black empty area under GALLERY/PORTFOLIO/VIDEO bars on mobile
-   (caused by fixed/min heights or pseudo elements)
-   ================================================== */
-@media (max-width: 900px){
-  .kc-card{
-    height: auto !important;
-    min-height: 0 !important;
-    aspect-ratio: auto !important;
-    padding-bottom: 0 !important;
-    background: transparent !important;
-  }
-  .kc-card::before,
-  .kc-card::after{
-    content: none !important;
-    display: none !important;
-  }
-  /* If any inner wrappers reserve height, neutralize */
-  .kc-media,
-  .kc-thumb,
-  .kc-body{
-    height: auto !important;
-    min-height: 0 !important;
-  }
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>K-Culture · ARA KOREA</title>
+  <meta name="description" content="공연에서 출발한 ARA KOREA의 K-Culture 프로젝트를 갤러리, 포트폴리오와 영상 아카이브로 만나보세요.">
+  <meta name="keywords" content="ARA KOREA, K-Culture, 공연예술, 갤러리, 포트폴리오, 영상 아카이브, 미디어아트">
+  <link rel="canonical" href="https://arakorea.org/kculture">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ARA KOREA">
+  <meta property="og:title" content="K-Culture · ARA KOREA">
+  <meta property="og:description" content="An evolving archive of performance, image and cultural memory.">
+  <meta property="og:url" content="https://arakorea.org/kculture">
+  <meta property="og:image" content="https://arakorea.org/images/og-arakorea-kakao.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css?v=20260827">
 </head>
-<body>
-
-<header class="site-header">
-  <div class="brand">
-    <div class="brand-title">ARA KOREA</div>
-    <div class="brand-sub">Immersive K‑Culture · Art Film &amp; Performance</div>
-  </div>
-
-  <nav aria-label="Primary" class="top-nav">
-    <a class="nav-pill" href="index.html">Home</a>
-    <a class="nav-pill" href="about.html">About</a>
-
-    <div class="nav-dd">
-      <a class="nav-pill is-active" href="kculture.html">K‑Culture</a>
-      <div class="nav-dd-menu">
-        <a class="nav-dd-item nav-pill" href="kculture-gallery.html">Gallery</a>
-        <a class="nav-dd-item nav-pill" href="kculture-portfolio.html">Portfolio</a>
-        <a class="nav-dd-item nav-pill" href="kculture-video.html">Video</a>
+<body class="home-page">
+  <a class="home-skip" href="#main-content">본문 바로가기</a>
+  <header class="home-header" data-home-header>
+    <a class="home-brand" href="/" aria-label="ARA KOREA 홈"><span class="home-brand-name">ARA KOREA</span><span class="home-brand-tag" data-i18n="brandTag">Contemporary K-Culture</span></a>
+    <div class="home-header-tools">
+      <nav class="home-nav" id="home-navigation" aria-label="주요 메뉴">
+        <a href="/" data-i18n="navHome">Home</a><a href="/about" data-i18n="navAbout">About</a><a class="is-active" href="/kculture" aria-current="page" data-i18n="navCulture">K-Culture</a><a href="/news" data-i18n="navNews">News</a><a href="/contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="home-language-menu" data-language-menu>
+        <button class="home-language-trigger" type="button" aria-expanded="false" aria-controls="home-language-options"><span data-language-current>KO</span><span class="home-language-chevron" aria-hidden="true">⌄</span></button>
+        <div class="home-language-options" id="home-language-options" role="menu" aria-label="언어 선택">
+          <button type="button" role="menuitemradio" data-lang="ko" aria-checked="true"><span>한국어</span><small>KO</small></button><button type="button" role="menuitemradio" data-lang="en" aria-checked="false"><span>English</span><small>EN</small></button><button type="button" role="menuitemradio" data-lang="ja" aria-checked="false"><span>日本語</span><small>JA</small></button><button type="button" role="menuitemradio" data-lang="zh" aria-checked="false"><span>中文</span><small>ZH</small></button>
+        </div>
       </div>
+      <button class="home-menu-toggle" type="button" aria-expanded="false" aria-controls="home-navigation"><span data-i18n="menu">MENU</span><span class="home-menu-icon" aria-hidden="true"></span></button>
     </div>
+  </header>
 
-    <a class="nav-pill" href="news.html">News</a>
-    <a class="nav-pill" href="contact.html">Contact</a>
-  </nav>
-</header>
+  <main id="main-content">
+    <section class="home-hero" aria-labelledby="kculture-title">
+      <div class="home-hero-copy">
+        <p class="home-kicker" data-i18n="kcKicker">PERFORMANCE · ART FILM · ARCHIVE</p>
+        <h1 id="kculture-title" class="home-title"><span>K-CULTURE</span><span>IN MOTION</span></h1>
+        <p class="home-lead"><span class="home-copy-line" data-i18n="kcLead1">공연에서 태어난 감각을 기록하고,</span><span class="home-copy-line" data-i18n="kcLead2">다음 문화의 시간으로 확장합니다.</span></p>
+        <div class="home-actions"><a class="home-action home-action-primary" href="/kculture-gallery" data-i18n="kcExploreGallery">Explore Gallery</a><a class="home-action" href="/kculture-video" data-i18n="kcWatch">Watch Video</a></div>
+      </div>
+      <figure class="home-hero-visual"><img src="images/highlight-3.jpg" alt="ARA KOREA K-Culture 공연 장면" fetchpriority="high"><figcaption><span data-i18n="kcFigure1">Living Archive</span><span data-i18n="kcFigure2">Stage · Film · Memory</span></figcaption></figure>
+      <p class="home-scroll" aria-hidden="true" data-i18n="scroll">SCROLL TO EXPLORE</p>
+    </section>
 
-<main class="page">
-  <section class="section">
-    <div class="section-head">
-      <h2 class="section-title">K‑Culture</h2>
-      <p class="section-sub">
-        공연에서 출발한 K‑Culture 프로젝트를 기록, 확장, 아카이브하는 세 가지 방향입니다.
-      </p>
-    </div>
+    <section class="home-statement home-reveal" aria-labelledby="kc-statement-title">
+      <div class="home-section-index" data-i18n="kcIdentityIndex">01 / K-CULTURE</div>
+      <div class="home-statement-body">
+        <h2 id="kc-statement-title"><span class="home-statement-desktop"><span data-i18n="kcStatement1">무대의 순간을 살아 있는 기록으로 잇고</span><span data-i18n="kcStatement2">새로운 문화의 흐름을 펼쳐갑니다</span></span><span class="home-statement-mobile" data-i18n="kcStatementMobile">무대의 순간을 살아 있는 기록으로 잇고 새로운 문화의 흐름을 펼쳐갑니다</span></h2>
+        <p data-i18n="kcStatementBody">ARA KOREA의 K-Culture 아카이브는 공연에서 생성된 소리와 움직임, 빛의 감각을 사진과 포스터, 영상으로 이어갑니다. 서로 다른 기록은 작품의 배경과 시간을 입체적으로 보여주며 다음 창작을 위한 문화적 자원이 됩니다.</p>
+      </div>
+    </section>
 
-    <div class="kc-grid">
-      <a class="kc-card" href="kculture-gallery.html">
-        <img src="images/kc_c1_03.jpg" alt="K‑Culture Gallery"/>
-    <div class="kc-iconbar" aria-hidden="true">
-      <span>GALLERY</span>
-    </div>
-    
-        <div class="kc-caption"></div>
-        <div class="kc-label">Gallery</div>
-      </a>
+    <section class="home-culture" aria-labelledby="kc-paths-title">
+      <div class="home-section-heading home-reveal">
+        <div><div class="home-section-index" data-i18n="kcPathsIndex">02 / THREE PATHS</div><h2 id="kc-paths-title" data-i18n="kcPathsTitle">Explore the Archive</h2></div>
+        <p><span data-i18n="kcPathsIntro1">장면과 기록, 움직이는 이미지로 이어지는</span><span data-i18n="kcPathsIntro2">세 가지 아카이브를 만나보세요.</span></p>
+      </div>
+      <div class="home-culture-grid">
+        <a class="home-culture-card home-culture-card-wide home-reveal" href="/kculture-gallery"><div class="home-card-image"><img src="images/kc_c1_03.jpg" alt="K-Culture Gallery" loading="lazy"></div><div class="home-card-meta"><span>01</span><h3>GALLERY</h3><span class="home-card-arrow" aria-hidden="true">↗</span></div><p data-i18n="kcGalleryBody">빛과 신체, 무대 공간이 교차하는 대표 장면을 이미지로 살펴봅니다.</p></a>
+        <a class="home-culture-card home-culture-card-tall home-reveal" href="/kculture-portfolio"><div class="home-card-image"><img src="images/kc_c3_04.jpg" alt="K-Culture Portfolio" loading="lazy"></div><div class="home-card-meta"><span>02</span><h3>PORTFOLIO</h3><span class="home-card-arrow" aria-hidden="true">↗</span></div><p data-i18n="kcPortfolioBody">수상 기록과 축사, 공연 포스터를 통해 프로젝트의 여정을 읽습니다.</p></a>
+        <a class="home-culture-card home-culture-card-full home-reveal" href="/kculture-video"><div class="home-card-image"><img src="images/kc_c4_05.jpg" alt="K-Culture Video" loading="lazy"></div><div class="home-card-meta"><span>03</span><h3>VIDEO</h3><span class="home-card-arrow" aria-hidden="true">↗</span></div><p data-i18n="kcVideoBody">소리와 움직임이 완성한 공연의 시간을 영상 기록으로 다시 만납니다.</p></a>
+      </div>
+    </section>
 
-      <a class="kc-card" href="kculture-portfolio.html">
-        <img src="images/kc_c3_04.jpg" alt="K‑Culture Portfolio"/>
-    <div class="kc-iconbar" aria-hidden="true">
-      <span>PORTFOLIO</span>
-    </div>
-    
-        <div class="kc-caption"></div>
-        <div class="kc-label">Portfolio</div>
-      </a>
+    <section class="home-feature home-reveal" aria-labelledby="kc-feature-title">
+      <div class="home-feature-image"><img src="images/highlight-2.jpg" alt="ARA KOREA 공연예술 아카이브" loading="lazy"></div>
+      <div class="home-feature-copy"><div class="home-section-index" data-i18n="kcFeatureIndex">03 / ARCHIVE IN MOTION</div><p class="home-feature-type" data-i18n="kcFeatureType">FROM STAGE TO CULTURAL MEMORY</p><h2 id="kc-feature-title" data-i18n="kcFeatureTitle">The Stage Continues</h2><p data-i18n="kcFeatureBody">한 번의 공연은 사진과 영상, 디자인과 서사를 만나 더 넓은 시간으로 이동합니다. ARA KOREA는 각 매체의 고유한 언어를 연결해 작품이 지닌 감각과 문화적 맥락을 지속적으로 확장합니다.</p><a class="home-text-link" href="/kculture-video"><span data-i18n="kcFeatureLink">Enter the video archive</span> <span aria-hidden="true">→</span></a></div>
+    </section>
 
-      <a class="kc-card" href="kculture-video.html">
-        <img src="images/kc_c4_05.jpg" alt="K‑Culture Video"/>
-    <div class="kc-iconbar" aria-hidden="true">
-      <span>VIDEO</span>
-    </div>
-    
-        <div class="kc-caption"></div>
-        <div class="kc-label">Video</div>
-      </a>
-    </div>
-  </section>
-</main>
+    <section class="home-connections" aria-labelledby="kc-records-title">
+      <div class="home-section-heading home-reveal"><div><div class="home-section-index" data-i18n="kcRecordsIndex">04 / RECORDS</div><h2 id="kc-records-title" data-i18n="kcRecordsTitle">Inside the Portfolio</h2></div><a class="home-text-link" href="/kculture-portfolio"><span data-i18n="kcViewAll">View all</span> <span aria-hidden="true">→</span></a></div>
+      <div class="home-connection-list">
+        <a class="home-connection home-reveal" href="/awards"><span class="home-connection-number">01</span><strong data-i18n="kcAwardsTitle">AWARDS</strong><span data-i18n="kcAwardsBody">Recognition · Milestones</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="/congratulatory-messages"><span class="home-connection-number">02</span><strong data-i18n="kcMessagesTitle">CONGRATULATORY MESSAGES</strong><span data-i18n="kcMessagesBody">Words · Cultural Exchange</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="/portfolio-posters"><span class="home-connection-number">03</span><strong data-i18n="kcPostersTitle">POSTERS</strong><span data-i18n="kcPostersBody">Visual Identity · Performance History</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
 
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-head">Contact</div>
-      <div class="footer-text">E‑mail: info@akenm.com</div>
-      <div class="footer-text">Tel: 02‑400‑7151</div>
-    </div>
-    <div>
-      <div class="footer-head">Social</div>
-      <div class="footer-text"><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div>
-    </div>
-    <div>
-      <div class="footer-head">Shop</div>
-      <div class="footer-text"><a href="https://arakorea.shop" target="_blank" rel="noopener noreferrer">ARAKOREA.SHOP</a></div>
-    </div>
-  </div>
-  <div class="footer-bottom">© ARA KOREA Space Art Project</div>
-</footer>
+  <footer class="home-footer">
+    <div class="home-footer-top"><div><p class="home-footer-label" data-i18n="footerContact">CONTACT</p><a href="mailto:info@akenm.com">info@akenm.com</a><a href="tel:+8224007151">02-400-7151</a></div><div><p class="home-footer-label" data-i18n="footerSocial">SOCIAL</p><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div><p class="home-footer-mark" aria-label="ARA KOREA">AK</p></div>
+    <div class="home-footer-bottom"><span>© ARA KOREA Space Art Project</span><a href="#main-content" data-i18n="backTop">Back to top ↑</a></div>
+  </footer>
 
+  <script type="application/json" id="page-translations">
+  {
+    "ko":{"title":"K-Culture · ARA KOREA","description":"공연에서 출발한 ARA KOREA의 K-Culture 프로젝트를 갤러리, 포트폴리오와 영상 아카이브로 만나보세요.","kcKicker":"PERFORMANCE · ART FILM · ARCHIVE","kcLead1":"공연에서 태어난 감각을 기록하고,","kcLead2":"다음 문화의 시간으로 확장합니다.","kcExploreGallery":"Explore Gallery","kcWatch":"Watch Video","kcFigure1":"Living Archive","kcFigure2":"Stage · Film · Memory","kcIdentityIndex":"01 / K-CULTURE","kcStatement1":"무대의 순간을 살아 있는 기록으로 잇고","kcStatement2":"새로운 문화의 흐름을 펼쳐갑니다","kcStatementMobile":"무대의 순간을 살아 있는 기록으로 잇고 새로운 문화의 흐름을 펼쳐갑니다","kcStatementBody":"ARA KOREA의 K-Culture 아카이브는 공연에서 생성된 소리와 움직임, 빛의 감각을 사진과 포스터, 영상으로 이어갑니다. 서로 다른 기록은 작품의 배경과 시간을 입체적으로 보여주며 다음 창작을 위한 문화적 자원이 됩니다.","kcPathsIndex":"02 / THREE PATHS","kcPathsTitle":"Explore the Archive","kcPathsIntro1":"장면과 기록, 움직이는 이미지로 이어지는","kcPathsIntro2":"세 가지 아카이브를 만나보세요.","kcGalleryBody":"빛과 신체, 무대 공간이 교차하는 대표 장면을 이미지로 살펴봅니다.","kcPortfolioBody":"수상 기록과 축사, 공연 포스터를 통해 프로젝트의 여정을 읽습니다.","kcVideoBody":"소리와 움직임이 완성한 공연의 시간을 영상 기록으로 다시 만납니다.","kcFeatureIndex":"03 / ARCHIVE IN MOTION","kcFeatureType":"FROM STAGE TO CULTURAL MEMORY","kcFeatureTitle":"The Stage Continues","kcFeatureBody":"한 번의 공연은 사진과 영상, 디자인과 서사를 만나 더 넓은 시간으로 이동합니다. ARA KOREA는 각 매체의 고유한 언어를 연결해 작품이 지닌 감각과 문화적 맥락을 지속적으로 확장합니다.","kcFeatureLink":"Enter the video archive","kcRecordsIndex":"04 / RECORDS","kcRecordsTitle":"Inside the Portfolio","kcViewAll":"View all","kcAwardsTitle":"AWARDS","kcAwardsBody":"Recognition · Milestones","kcMessagesTitle":"CONGRATULATORY MESSAGES","kcMessagesBody":"Words · Cultural Exchange","kcPostersTitle":"POSTERS","kcPostersBody":"Visual Identity · Performance History"},
+    "en":{"title":"K-Culture · ARA KOREA","description":"Explore ARA KOREA’s performance-led K-Culture projects through gallery, portfolio and moving-image archives.","kcKicker":"PERFORMANCE · ART FILM · ARCHIVE","kcLead1":"We preserve the sensibility born on stage","kcLead2":"and extend it into the next chapter of culture.","kcExploreGallery":"Explore Gallery","kcWatch":"Watch Video","kcFigure1":"Living Archive","kcFigure2":"Stage · Film · Memory","kcIdentityIndex":"01 / K-CULTURE","kcStatement1":"Connecting the moment of performance with a living archive,","kcStatement2":"we unfold new currents in contemporary culture.","kcStatementMobile":"Connecting the moment of performance with a living archive, we unfold new currents in contemporary culture.","kcStatementBody":"ARA KOREA’s K-Culture archive carries sound, movement and light from performance into photography, posters and moving image. Each form reveals the work’s context and time from a different angle, becoming a cultural resource for future creation.","kcPathsIndex":"02 / THREE PATHS","kcPathsTitle":"Explore the Archive","kcPathsIntro1":"Discover three archives moving between scenes, records","kcPathsIntro2":"and images shaped through time.","kcGalleryBody":"Encounter defining moments where light, body and stage space converge.","kcPortfolioBody":"Trace the project’s journey through awards, messages and performance posters.","kcVideoBody":"Return to the time of performance through records of sound and movement.","kcFeatureIndex":"03 / ARCHIVE IN MOTION","kcFeatureType":"FROM STAGE TO CULTURAL MEMORY","kcFeatureTitle":"The Stage Continues","kcFeatureBody":"A performance moves into a wider field of time through photography, film, design and narrative. ARA KOREA connects the distinct language of each medium, extending the sensory and cultural context of every work.","kcFeatureLink":"Enter the video archive","kcRecordsIndex":"04 / RECORDS","kcRecordsTitle":"Inside the Portfolio","kcViewAll":"View all","kcAwardsTitle":"AWARDS","kcAwardsBody":"Recognition · Milestones","kcMessagesTitle":"CONGRATULATORY MESSAGES","kcMessagesBody":"Words · Cultural Exchange","kcPostersTitle":"POSTERS","kcPostersBody":"Visual Identity · Performance History"},
+    "ja":{"title":"Kカルチャー · ARA KOREA","description":"舞台から生まれたARA KOREAのKカルチャー・プロジェクトを、ギャラリー、ポートフォリオ、映像アーカイブでご覧ください。","kcKicker":"舞台 · アートフィルム · アーカイブ","kcLead1":"舞台から生まれた感覚を記録し、","kcLead2":"次の文化の時間へと広げます。","kcExploreGallery":"ギャラリーを見る","kcWatch":"映像を見る","kcFigure1":"生きたアーカイブ","kcFigure2":"舞台 · 映画 · 記憶","kcIdentityIndex":"01 / Kカルチャー","kcStatement1":"舞台の瞬間を生きた記録へと結び、","kcStatement2":"新たな文化の流れをひらきます。","kcStatementMobile":"舞台の瞬間を生きた記録へと結び、新たな文化の流れをひらきます。","kcStatementBody":"ARA KOREAのKカルチャー・アーカイブは、舞台で生まれた音、動き、光の感覚を写真、ポスター、映像へとつなぎます。異なる記録は作品の背景と時間を立体的に映し、次の創作のための文化資源となります。","kcPathsIndex":"02 / 三つの方向","kcPathsTitle":"アーカイブを見る","kcPathsIntro1":"場面、記録、動くイメージへと続く","kcPathsIntro2":"三つのアーカイブをご覧ください。","kcGalleryBody":"光、身体、舞台空間が交差する代表的な場面を写真でたどります。","kcPortfolioBody":"受賞歴、祝辞、舞台ポスターを通してプロジェクトの歩みを読み解きます。","kcVideoBody":"音と動きがつくり上げた舞台の時間を映像記録で再び体験します。","kcFeatureIndex":"03 / 動き続ける記録","kcFeatureType":"舞台から文化の記憶へ","kcFeatureTitle":"舞台は続いていく","kcFeatureBody":"一度の舞台は写真、映像、デザイン、物語と出会い、より広い時間へ移動します。ARA KOREAは各媒体の言語を結び、作品の感覚と文化的背景を持続的に広げます。","kcFeatureLink":"映像アーカイブへ","kcRecordsIndex":"04 / 記録","kcRecordsTitle":"ポートフォリオの内側","kcViewAll":"すべて見る","kcAwardsTitle":"受賞歴","kcAwardsBody":"評価 · 軌跡","kcMessagesTitle":"祝辞","kcMessagesBody":"言葉 · 文化交流","kcPostersTitle":"ポスター","kcPostersBody":"視覚表現 · 舞台の歴史"},
+    "zh":{"title":"韩国文化 · ARA KOREA","description":"通过画廊、作品档案与影像记录，探索源自表演现场的ARA KOREA韩国文化项目。","kcKicker":"表演 · 艺术电影 · 档案","kcLead1":"记录诞生于舞台的感知，","kcLead2":"延展至文化的下一段时间。","kcExploreGallery":"浏览画廊","kcWatch":"观看影像","kcFigure1":"鲜活档案","kcFigure2":"舞台 · 电影 · 记忆","kcIdentityIndex":"01 / 韩国文化","kcStatement1":"将舞台瞬间连接为鲜活记录，","kcStatement2":"展开当代文化的全新脉络。","kcStatementMobile":"将舞台瞬间连接为鲜活记录，展开当代文化的全新脉络。","kcStatementBody":"ARA KOREA的韩国文化档案将表演中的声音、动作与光线延续至摄影、海报和影像。不同形式从多个角度呈现作品的背景与时间，并成为未来创作的文化资源。","kcPathsIndex":"02 / 三条路径","kcPathsTitle":"探索档案","kcPathsIntro1":"从场景、记录到流动影像，","kcPathsIntro2":"走进三种彼此连接的档案。","kcGalleryBody":"通过影像观看光线、身体与舞台空间交汇的代表场景。","kcPortfolioBody":"从奖项、贺词与演出海报中阅读项目的发展历程。","kcVideoBody":"通过声音与动作的影像记录，再次进入表演发生的时间。","kcFeatureIndex":"03 / 流动档案","kcFeatureType":"从舞台走向文化记忆","kcFeatureTitle":"舞台仍在延续","kcFeatureBody":"一场表演通过摄影、影像、设计与叙事进入更广阔的时间。ARA KOREA连接各媒介独特的语言，持续扩展作品的感知与文化语境。","kcFeatureLink":"进入影像档案","kcRecordsIndex":"04 / 记录","kcRecordsTitle":"作品档案内页","kcViewAll":"查看全部","kcAwardsTitle":"奖项","kcAwardsBody":"认可 · 里程碑","kcMessagesTitle":"贺词","kcMessagesBody":"文字 · 文化交流","kcPostersTitle":"海报","kcPostersBody":"视觉识别 · 表演历史"}
+  }
+  </script>
+  <script src="site.js?v=20260827-2" defer></script>
 </body>
 </html>

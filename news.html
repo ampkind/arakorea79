@@ -1,260 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>ARA KOREA · News</title>
-  <link rel="stylesheet" href="styles.css?v=20251219-news9"/>
-  <style>
-    /* Match Video page scale + rhythm */
-    .news-grid{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns: repeat(2, minmax(360px, 1fr));
-      gap:18px;
-    }
-    .n-card{
-      display:block;
-      text-decoration:none;
-      color:inherit;
-      padding:0;
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius: var(--radius);
-      overflow:hidden;
-      box-shadow: 0 18px 50px rgba(0,0,0,.28);
-      transition: transform .16s ease, border-color .16s ease, background .16s ease;
-    }
-    .n-card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,.16);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-    }
-    .n-thumb{ position:relative; aspect-ratio:16/9; background: rgba(0,0,0,.35); }
-    .n-thumb img{ width:100%; height:100%; object-fit:cover; display:block; filter: saturate(1.05) contrast(1.02); }
-    .n-badge{
-      position:absolute; top:10px; right:10px;
-      width:34px; height:34px; border-radius:999px;
-      display:grid; place-items:center;
-      background: rgba(8,12,20,.55);
-      border:1px solid rgba(255,255,255,.14);
-      color: rgba(233,238,247,.92);
-      font-weight:900;
-      backdrop-filter: blur(6px);
-    }
-    .n-body{ padding:14px 14px 16px; }
-    .n-meta{ font-size:12px; color: var(--muted); letter-spacing:.02em; }
-    .n-title{ margin-top:8px; font-weight:900; letter-spacing:.02em; font-size:16px; line-height:1.35; }
-    @media (max-width: 720px){
-      .news-grid{
-        margin-top:16px;
-        display:grid;
-        grid-template-columns: 1fr; /* ✅ Mobile: one card per row */
-        gap:14px;
-      }
-      .n-badge{ width:32px; height:32px; }
-    }
-  </style>
-<style>
-/* ==================================================
-   Mobile Nav Dropdown Fix
-   - On mobile, tap K-Culture to toggle submenu vertically
-   - PC hover behavior remains
-   ================================================== */
-@media (max-width: 900px){
-  .nav-dd-menu{
-    position: static !important;
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    padding-top: 6px;
-  }
-  .nav-dd.is-open .nav-dd-menu{ display: flex !important; }
-  .nav-dd-menu .nav-pill{ width: 100%; justify-content: flex-start; }
-  .nav-dd-menu a:active{ transform: scale(0.99); }
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News · ARA KOREA</title>
+  <meta name="description" content="ARA KOREA의 문화예술 캠페인, 공연, 영화와 국제 활동을 다룬 주요 언론 보도를 소개합니다.">
+  <meta name="keywords" content="ARA KOREA, 뉴스, 언론 보도, K-Culture, AMPKIND, WOOSOOZOO, 문화예술 캠페인">
+  <link rel="canonical" href="https://arakorea.org/news">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ARA KOREA">
+  <meta property="og:title" content="News · ARA KOREA">
+  <meta property="og:description" content="Press coverage of ARA KOREA’s cultural campaigns, performance and film projects.">
+  <meta property="og:url" content="https://arakorea.org/news">
+  <meta property="og:image" content="https://arakorea.org/images/484824809_3942906992624273_2135314006987886125_n.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css?v=20260827">
 </head>
-<body>
-
-<header class="site-header">
-<div class="brand">
-<div class="brand-title">ARA KOREA</div>
-<div class="brand-sub">Immersive K‑Culture · Art Film &amp; Performance</div>
-</div>
-<nav aria-label="Primary" class="top-nav"><a class="nav-pill" href="index.html">Home</a><a class="nav-pill" href="about.html">About</a><div class="nav-dd"><a class="nav-pill" href="kculture.html">K‑Culture</a><div class="nav-dd-menu"><a class="nav-dd-item nav-pill" href="kculture-gallery.html">Gallery</a><a class="nav-dd-item nav-pill" href="kculture-portfolio.html">Portfolio</a><a class="nav-dd-item nav-pill" href="kculture-video.html">Video</a></div></div><a class="nav-pill is-active" href="news.html">News</a><a class="nav-pill" href="contact.html">Contact</a></nav>
-</header>
-
-<main class="page">
-  <section class="section">
-    <div class="section-head">
-      <h2 class="section-title">News</h2>
-      <p class="section-sub">ARA KOREA 관련 기사·보도를 모았습니다. 카드를 클릭하면 원문으로 이동합니다.</p>
+<body class="home-page">
+  <a class="home-skip" href="#main-content">본문 바로가기</a>
+  <header class="home-header" data-home-header>
+    <a class="home-brand" href="/" aria-label="ARA KOREA 홈"><span class="home-brand-name">ARA KOREA</span><span class="home-brand-tag" data-i18n="brandTag">Contemporary K-Culture</span></a>
+    <div class="home-header-tools">
+      <nav class="home-nav" id="home-navigation" aria-label="주요 메뉴">
+        <a href="/" data-i18n="navHome">Home</a><a href="/about" data-i18n="navAbout">About</a><a href="/kculture" data-i18n="navCulture">K-Culture</a><a class="is-active" href="/news" aria-current="page" data-i18n="navNews">News</a><a href="/contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="home-language-menu" data-language-menu>
+        <button class="home-language-trigger" type="button" aria-expanded="false" aria-controls="home-language-options"><span data-language-current>KO</span><span class="home-language-chevron" aria-hidden="true">⌄</span></button>
+        <div class="home-language-options" id="home-language-options" role="menu" aria-label="언어 선택">
+          <button type="button" role="menuitemradio" data-lang="ko" aria-checked="true"><span>한국어</span><small>KO</small></button><button type="button" role="menuitemradio" data-lang="en" aria-checked="false"><span>English</span><small>EN</small></button><button type="button" role="menuitemradio" data-lang="ja" aria-checked="false"><span>日本語</span><small>JA</small></button><button type="button" role="menuitemradio" data-lang="zh" aria-checked="false"><span>中文</span><small>ZH</small></button>
+        </div>
+      </div>
+      <button class="home-menu-toggle" type="button" aria-expanded="false" aria-controls="home-navigation"><span data-i18n="menu">MENU</span><span class="home-menu-icon" aria-hidden="true"></span></button>
     </div>
+  </header>
 
-    <div class="news-grid">
-      
-    <a class="n-card" href="https://view.asiae.co.kr/article/2024062516202456882" target="_blank" rel="noopener">
-      <div class="n-thumb">
-        <img loading="lazy" src="images/484824809_3942906992624273_2135314006987886125_n.jpg" alt="제 20회 ARA KOREA 캠페인, 국립극장서 진행">
-        <div class="n-badge" aria-hidden="true">↗</div>
+  <main id="main-content">
+    <section class="home-hero" aria-labelledby="news-title">
+      <div class="home-hero-copy">
+        <p class="home-kicker" data-i18n="nwKicker">PRESS · STORIES · PUBLIC RECORD</p>
+        <h1 id="news-title" class="home-title"><span>NEWS</span><span>ARCHIVE</span></h1>
+        <p class="home-lead"><span class="home-copy-line" data-i18n="nwLead1">문화예술의 현장에서 시작된 이야기를 모아,</span><span class="home-copy-line" data-i18n="nwLead2">ARA KOREA가 사회와 만난 시간을 기록합니다.</span></p>
+        <div class="home-actions"><a class="home-action home-action-primary" href="#featured-news" data-i18n="nwExploreAction">Explore News</a><a class="home-action" href="/contact" data-i18n="nwContactAction">Contact Us</a></div>
       </div>
-      <div class="n-body">
-        <div class="n-meta">2024.06.25 · 아시아경제</div>
-        <div class="n-title">제 20회 ARA KOREA 캠페인, 국립극장서 진행</div>
-      </div>
-    </a>
-    
-    <a class="n-card" href="https://www.kmib.co.kr/article/view.asp?arcid=0015979992" target="_blank" rel="noopener">
-      <div class="n-thumb">
-        <img loading="lazy" src="images/kc_gallery_07.jpg" alt="ARA KOREA, 메타버스 가상 사옥 제작 K-컬처 융복합 콘텐츠 기획">
-        <div class="n-badge" aria-hidden="true">↗</div>
-      </div>
-      <div class="n-body">
-        <div class="n-meta">2021.06.23 · 국민일보</div>
-        <div class="n-title">ARA KOREA, 메타버스 가상 사옥 제작 “K-컬처 융복합 콘텐츠 기획”</div>
-      </div>
-    </a>
+      <figure class="home-hero-visual"><img src="images/484824809_3942906992624273_2135314006987886125_n.jpg" alt="제20회 ARA KOREA 캠페인" fetchpriority="high"><figcaption><span data-i18n="nwFigure1">Press Archive</span><span data-i18n="nwFigure2">2010—2024</span></figcaption></figure>
+      <p class="home-scroll" aria-hidden="true" data-i18n="scroll">SCROLL TO EXPLORE</p>
+    </section>
 
-<a class="n-card" href="https://www.tenasia.co.kr/article/2021060912604" target="_blank" rel="noopener">
-      <div class="n-thumb">
-        <img loading="lazy" src="images/485169490_3942907175957588_8150731194226765501_n.jpg" alt="홍장혁 AK ENM 디자이너, 영화감독으로 변신">
-        <div class="n-badge" aria-hidden="true">↗</div>
+    <section class="home-statement home-reveal" aria-labelledby="news-statement-title">
+      <div class="home-section-index" data-i18n="nwIdentityIndex">01 / IN THE PRESS</div>
+      <div class="home-statement-body">
+        <h2 id="news-statement-title"><span class="home-statement-desktop"><span data-i18n="nwStatement1">공연과 캠페인, 영화와 국제 활동의 장면을 모아</span><span data-i18n="nwStatement2">문화가 사회 안에서 확장된 흐름을 보여줍니다</span></span><span class="home-statement-mobile" data-i18n="nwStatementMobile">공연과 캠페인, 영화와 국제 활동의 장면을 모아 문화가 사회 안에서 확장된 흐름을 보여줍니다</span></h2>
+        <p data-i18n="nwStatementBody">언론 보도는 작품이 관객과 만나고 공공의 관심으로 이어진 과정을 담습니다. 국립극장의 문화 캠페인부터 메타버스와 예술영화, 독도와 사회적 연대를 다룬 활동까지, 이 아카이브는 ARA KOREA의 작업이 시대와 교류해 온 궤적을 전합니다.</p>
       </div>
-      <div class="n-body">
-        <div class="n-meta">2021.06.09 · 텐아시아</div>
-        <div class="n-title">홍장혁 AK ENM 디자이너, 영화감독으로 변신</div>
-      </div>
-    </a>
-    <a class="n-card" href="https://www.mk.co.kr/news/society/9313914" target="_blank" rel="noopener">
-      <div class="n-thumb">
-        <img loading="lazy" src="images/485355590_3942907025957603_6243261820216136500_n.jpg" alt="캐나다 NGO단체 AMPKIND의 홍장혁 대표, "소외된 아이들을 위하여" 캠페인 진행">
-        <div class="n-badge" aria-hidden="true">↗</div>
-      </div>
-      <div class="n-body">
-        <div class="n-meta">2020.04.27 · 매일경제</div>
-        <div class="n-title">캐나다 NGO단체 AMPKIND의 홍장혁 대표, "소외된 아이들을 위하여" 캠페인 진행</div>
-      </div>
-    </a>
-    <a class="n-card" href="https://www.joongang.co.kr/article/23882989" target="_blank" rel="noopener">
-      <div class="n-thumb">
-        <img loading="lazy" src="images/485369476_3942906925957613_1568461047967456194_n.jpg" alt="(기사) ARA KOREA 관련 보도">
-        <div class="n-badge" aria-hidden="true">↗</div>
-      </div>
-      <div class="n-body">
-        <div class="n-meta">2020 · 중앙일보</div>
-        <div class="n-title">(기사) ARA KOREA 관련 보도</div>
-      </div>
-    </a>
-    <a class="n-card" href="https://www.joongang.co.kr/article/23588661" target="_blank" rel="noopener">
-      <div class="n-thumb">
-        <img loading="lazy" src="images/121232786_2729987273916257_4362950511581445374_n.jpg" alt="(기사) ARA KOREA 관련 보도">
-        <div class="n-badge" aria-hidden="true">↗</div>
-      </div>
-      <div class="n-body">
-        <div class="n-meta">2019 · 중앙일보</div>
-        <div class="n-title">(기사) ARA KOREA 관련 보도</div>
-      </div>
-    </a>
-    <a class="n-card" href="https://www.donga.com/news/article/all/20180918/92057480/1" target="_blank" rel="noopener">
-      <div class="n-thumb">
-        <img loading="lazy" src="images/122042250_2739215636326754_4672311896625978431_n.jpg" alt="작곡가 안성희, 작품발표회 ‘우수주(宇受宙)’ 개최">
-        <div class="n-badge" aria-hidden="true">↗</div>
-      </div>
-      <div class="n-body">
-        <div class="n-meta">2018.09.18 · 동아일보</div>
-        <div class="n-title">작곡가 안성희, 작품발표회 ‘우수주(宇受宙)’ 개최</div>
-      </div>
-    </a>
-    <a class="n-card" href="https://www.kmib.co.kr/article/view.asp?arcid=0012075908&code=61171811&cp=nv" target="_blank" rel="noopener">
-      <div class="n-thumb">
-        <img loading="lazy" src="images/122125478_2739215656326752_1873859719647836337_n.jpg" alt="AMPKIND, 헐리우드 배우에게 '독도 손수건' 증정 ...">
-        <div class="n-badge" aria-hidden="true">↗</div>
-      </div>
-      <div class="n-body">
-        <div class="n-meta">2018.01.24 · 국민일보</div>
-        <div class="n-title">AMPKIND, 헐리우드 배우에게 '독도 손수건' 증정 ...</div>
-      </div>
-    </a>
-    <a class="n-card" href="https://overseas.mofa.go.kr/ca-vancouver-ko/brd/m_4585/view.do?seq=1108800" target="_blank" rel="noopener">
-      <div class="n-thumb">
-        <img loading="lazy" src="images/485168515_3942907119290927_5614158193156420756_n.jpg" alt="독도 동영상 공모전 개최 안내문">
-        <div class="n-badge" aria-hidden="true">↗</div>
-      </div>
-      <div class="n-body">
-        <div class="n-meta">2014.11.13 · 외교부(주밴쿠버총영사관)</div>
-        <div class="n-title">독도 동영상 공모전 개최 안내문</div>
-      </div>
-    </a>
-    <a class="n-card" href="https://www.vanchosun.com/news/main/frame.php?main=1&boardId=18&sbdtype=&bdId=33527" target="_blank" rel="noopener">
-      <div class="n-thumb">
-        <img loading="lazy" src="images/485366975_3942907092624263_5578525996519766544_n.jpg" alt="올림픽에서 독도 수호 캠페인">
-        <div class="n-badge" aria-hidden="true">↗</div>
-      </div>
-      <div class="n-body">
-        <div class="n-meta">2010.02.12 · 밴쿠버 조선일보</div>
-        <div class="n-title">올림픽에서 독도 수호 캠페인</div>
-      </div>
-    </a>
-    </div>
-  </section>
-</main>
+    </section>
 
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-head">Contact</div>
-      <div class="footer-text">E-mail: info@akenm.com</div>
-      <div class="footer-text">Tel: 02-400-7151</div>
-    </div>
-    <div>
-      <div class="footer-head">Social</div>
-      <div class="footer-text"><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div>
-    </div>
-    <div>
-      <div class="footer-head">Shop</div>
-      <div class="footer-text"><a href="https://arakorea.shop" target="_blank" rel="noopener noreferrer">ARAKOREA.SHOP</a></div>
-    </div>
-  </div>
-  <div class="footer-bottom">© ARA KOREA Space Art Project</div>
-</footer>
+    <section class="home-culture" id="featured-news" aria-labelledby="featured-news-title">
+      <div class="home-section-heading home-reveal">
+        <div><div class="home-section-index" data-i18n="nwFeaturedIndex">02 / FEATURED STORIES</div><h2 id="featured-news-title" data-i18n="nwFeaturedTitle">Recent Coverage</h2></div>
+        <p><span data-i18n="nwFeaturedIntro1">문화 캠페인과 창작 프로젝트의 현재를 다룬</span><span data-i18n="nwFeaturedIntro2">주요 언론 보도를 살펴보세요.</span></p>
+      </div>
+      <div class="home-culture-grid">
+        <a class="home-culture-card home-culture-card-wide home-reveal" href="https://view.asiae.co.kr/article/2024062516202456882" target="_blank" rel="noopener noreferrer"><div class="home-card-image"><img src="images/484824809_3942906992624273_2135314006987886125_n.jpg" alt="제20회 ARA KOREA 캠페인 국립극장 진행" loading="lazy"></div><div class="home-card-meta"><span>01</span><h3>아시아경제</h3><span class="home-card-arrow" aria-hidden="true">↗</span></div><p data-i18n="nwTitle1">제20회 ARA KOREA 캠페인, 국립극장서 진행</p></a>
+        <a class="home-culture-card home-culture-card-tall home-reveal" href="https://www.kmib.co.kr/article/view.asp?arcid=0015979992" target="_blank" rel="noopener noreferrer"><div class="home-card-image"><img src="images/kc_gallery_07.jpg" alt="ARA KOREA 메타버스 가상 사옥" loading="lazy"></div><div class="home-card-meta"><span>02</span><h3>국민일보</h3><span class="home-card-arrow" aria-hidden="true">↗</span></div><p data-i18n="nwTitle2">ARA KOREA, 메타버스 가상 사옥 제작</p></a>
+        <a class="home-culture-card home-culture-card-full home-reveal" href="https://www.tenasia.co.kr/article/2021060912604" target="_blank" rel="noopener noreferrer"><div class="home-card-image"><img src="images/485169490_3942907175957588_8150731194226765501_n.jpg" alt="홍장혁 AK ENM 디자이너 영화감독 변신" loading="lazy"></div><div class="home-card-meta"><span>03</span><h3>텐아시아</h3><span class="home-card-arrow" aria-hidden="true">↗</span></div><p data-i18n="nwTitle3">홍장혁 AK ENM 디자이너, 영화감독으로 변신</p></a>
+      </div>
+    </section>
 
-<script>
-(function(){
-  function isMobile(){ return window.matchMedia && window.matchMedia('(max-width: 900px)').matches; }
-  var dd = document.querySelector('.nav-dd');
-  if(!dd) return;
-  var trigger = dd.querySelector('a.nav-pill'); // K-Culture pill inside .nav-dd
-  var menu = dd.querySelector('.nav-dd-menu');
-  if(!trigger || !menu) return;
+    <section class="home-feature home-reveal" aria-labelledby="news-feature-title">
+      <div class="home-feature-image"><img src="images/highlight-2.jpg" alt="ARA KOREA 문화예술 프로젝트" loading="lazy"></div>
+      <div class="home-feature-copy"><div class="home-section-index" data-i18n="nwFeatureIndex">03 / PUBLIC RECORD</div><p class="home-feature-type" data-i18n="nwFeatureType">FROM PROJECT TO PUBLIC CONVERSATION</p><h2 id="news-feature-title" data-i18n="nwFeatureTitle">Stories Across Time</h2><p data-i18n="nwFeatureBody">각 기사는 한 시기의 소식을 넘어 작품이 사회적 의제와 만난 방식, 새로운 매체로 이동한 과정, 국제적 네트워크가 형성된 배경을 보여줍니다. 축적된 보도는 ARA KOREA의 문화적 활동이 넓어져 온 시간을 입체적으로 연결합니다.</p><a class="home-text-link" href="#news-list"><span data-i18n="nwFeatureLink">View the complete archive</span> <span aria-hidden="true">↓</span></a></div>
+    </section>
 
-  trigger.setAttribute('aria-haspopup','true');
-  trigger.setAttribute('aria-expanded','false');
+    <section class="home-connections" id="news-list" aria-labelledby="news-list-title">
+      <div class="home-section-heading home-reveal"><div><div class="home-section-index" data-i18n="nwArchiveIndex">04 / PRESS ARCHIVE</div><h2 id="news-list-title" data-i18n="nwArchiveTitle">More Stories</h2></div></div>
+      <div class="home-connection-list">
+        <a class="home-connection home-reveal" href="https://www.mk.co.kr/news/society/9313914" target="_blank" rel="noopener noreferrer"><span class="home-connection-number">04</span><strong data-i18n="nwTitle4">AMPKIND, 소외된 아이들을 위한 캠페인 진행</strong><span>2020.04.27 · 매일경제</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="https://www.joongang.co.kr/article/23882989" target="_blank" rel="noopener noreferrer"><span class="home-connection-number">05</span><strong data-i18n="nwTitle5">ARA KOREA · 중앙일보 보도</strong><span>2020 · 중앙일보</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="https://www.joongang.co.kr/article/23588661" target="_blank" rel="noopener noreferrer"><span class="home-connection-number">06</span><strong data-i18n="nwTitle6">ARA KOREA · 중앙일보 보도</strong><span>2019 · 중앙일보</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="https://www.donga.com/news/article/all/20180918/92057480/1" target="_blank" rel="noopener noreferrer"><span class="home-connection-number">07</span><strong data-i18n="nwTitle7">작곡가 안성희, 작품발표회 ‘우수주(宇受宙)’ 개최</strong><span>2018.09.18 · 동아일보</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="https://www.kmib.co.kr/article/view.asp?arcid=0012075908&amp;code=61171811&amp;cp=nv" target="_blank" rel="noopener noreferrer"><span class="home-connection-number">08</span><strong data-i18n="nwTitle8">AMPKIND, 할리우드 배우에게 독도 손수건 증정</strong><span>2018.01.24 · 국민일보</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="https://overseas.mofa.go.kr/ca-vancouver-ko/brd/m_4585/view.do?seq=1108800" target="_blank" rel="noopener noreferrer"><span class="home-connection-number">09</span><strong data-i18n="nwTitle9">독도 동영상 공모전 개최 안내</strong><span>2014.11.13 · 주밴쿠버총영사관</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="https://www.vanchosun.com/news/main/frame.php?main=1&amp;boardId=18&amp;sbdtype=&amp;bdId=33527" target="_blank" rel="noopener noreferrer"><span class="home-connection-number">10</span><strong data-i18n="nwTitle10">올림픽에서 독도 수호 캠페인</strong><span>2010.02.12 · 밴쿠버 조선일보</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
 
-  function close(){
-    dd.classList.remove('is-open');
-    trigger.setAttribute('aria-expanded','false');
+  <footer class="home-footer">
+    <div class="home-footer-top"><div><p class="home-footer-label" data-i18n="footerContact">CONTACT</p><a href="mailto:info@akenm.com">info@akenm.com</a><a href="tel:+8224007151">02-400-7151</a></div><div><p class="home-footer-label" data-i18n="footerSocial">SOCIAL</p><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div><p class="home-footer-mark" aria-label="ARA KOREA">AK</p></div>
+    <div class="home-footer-bottom"><span>© ARA KOREA Space Art Project</span><a href="#main-content" data-i18n="backTop">Back to top ↑</a></div>
+  </footer>
+
+  <script type="application/json" id="page-translations">
+  {
+    "ko":{"title":"News · ARA KOREA","description":"ARA KOREA의 문화예술 캠페인, 공연, 영화와 국제 활동을 다룬 주요 언론 보도를 소개합니다.","nwKicker":"PRESS · STORIES · PUBLIC RECORD","nwLead1":"문화예술의 현장에서 시작된 이야기를 모아,","nwLead2":"ARA KOREA가 사회와 만난 시간을 기록합니다.","nwExploreAction":"Explore News","nwContactAction":"Contact Us","nwFigure1":"Press Archive","nwFigure2":"2010—2024","nwIdentityIndex":"01 / IN THE PRESS","nwStatement1":"공연과 캠페인, 영화와 국제 활동의 장면을 모아","nwStatement2":"문화가 사회 안에서 확장된 흐름을 보여줍니다","nwStatementMobile":"공연과 캠페인, 영화와 국제 활동의 장면을 모아 문화가 사회 안에서 확장된 흐름을 보여줍니다","nwStatementBody":"언론 보도는 작품이 관객과 만나고 공공의 관심으로 이어진 과정을 담습니다. 국립극장의 문화 캠페인부터 메타버스와 예술영화, 독도와 사회적 연대를 다룬 활동까지, 이 아카이브는 ARA KOREA의 작업이 시대와 교류해 온 궤적을 전합니다.","nwFeaturedIndex":"02 / FEATURED STORIES","nwFeaturedTitle":"Recent Coverage","nwFeaturedIntro1":"문화 캠페인과 창작 프로젝트의 현재를 다룬","nwFeaturedIntro2":"주요 언론 보도를 살펴보세요.","nwTitle1":"제20회 ARA KOREA 캠페인, 국립극장서 진행","nwTitle2":"ARA KOREA, 메타버스 가상 사옥 제작","nwTitle3":"홍장혁 AK ENM 디자이너, 영화감독으로 변신","nwFeatureIndex":"03 / PUBLIC RECORD","nwFeatureType":"FROM PROJECT TO PUBLIC CONVERSATION","nwFeatureTitle":"Stories Across Time","nwFeatureBody":"각 기사는 한 시기의 소식을 넘어 작품이 사회적 의제와 만난 방식, 새로운 매체로 이동한 과정, 국제적 네트워크가 형성된 배경을 보여줍니다. 축적된 보도는 ARA KOREA의 문화적 활동이 넓어져 온 시간을 입체적으로 연결합니다.","nwFeatureLink":"View the complete archive","nwArchiveIndex":"04 / PRESS ARCHIVE","nwArchiveTitle":"More Stories","nwTitle4":"AMPKIND, 소외된 아이들을 위한 캠페인 진행","nwTitle5":"ARA KOREA · 중앙일보 보도","nwTitle6":"ARA KOREA · 중앙일보 보도","nwTitle7":"작곡가 안성희, 작품발표회 ‘우수주(宇受宙)’ 개최","nwTitle8":"AMPKIND, 할리우드 배우에게 독도 손수건 증정","nwTitle9":"독도 동영상 공모전 개최 안내","nwTitle10":"올림픽에서 독도 수호 캠페인"},
+    "en":{"title":"News · ARA KOREA","description":"Press coverage of ARA KOREA’s cultural campaigns, performances, films and international activities.","nwKicker":"PRESS · STORIES · PUBLIC RECORD","nwLead1":"Gathering stories that began in the cultural field,","nwLead2":"we document where ARA KOREA met the wider public.","nwExploreAction":"Explore News","nwContactAction":"Contact Us","nwFigure1":"Press Archive","nwFigure2":"2010—2024","nwIdentityIndex":"01 / IN THE PRESS","nwStatement1":"Bringing together performance, campaigns, film and global activity,","nwStatement2":"we reveal how culture expanded through public life.","nwStatementMobile":"Bringing together performance, campaigns, film and global activity, we reveal how culture expanded through public life.","nwStatementBody":"Press coverage records the passage from creative work to public attention. From a cultural campaign at the National Theater to metaverse projects, art film and initiatives addressing Dokdo and social solidarity, this archive traces how ARA KOREA has engaged with its time.","nwFeaturedIndex":"02 / FEATURED STORIES","nwFeaturedTitle":"Recent Coverage","nwFeaturedIntro1":"Explore major reports on the present direction","nwFeaturedIntro2":"of cultural campaigns and creative projects.","nwTitle1":"The 20th ARA KOREA Campaign Held at the National Theater","nwTitle2":"ARA KOREA Creates a Metaverse Virtual Headquarters","nwTitle3":"AK ENM Designer Hong Jang-hyuk Turns to Film Directing","nwFeatureIndex":"03 / PUBLIC RECORD","nwFeatureType":"FROM PROJECT TO PUBLIC CONVERSATION","nwFeatureTitle":"Stories Across Time","nwFeatureBody":"Each article reaches beyond the news of one period. Together they show how the works met social concerns, moved into new media and formed international networks. The accumulated coverage connects the expanding cultural activity of ARA KOREA across time.","nwFeatureLink":"View the complete archive","nwArchiveIndex":"04 / PRESS ARCHIVE","nwArchiveTitle":"More Stories","nwTitle4":"AMPKIND Conducts a Campaign for Marginalized Children","nwTitle5":"ARA KOREA · JoongAng Ilbo Coverage","nwTitle6":"ARA KOREA · JoongAng Ilbo Coverage","nwTitle7":"Composer SungHie Ahn Presents WOOSOOZOO","nwTitle8":"AMPKIND Presents Dokdo Handkerchiefs to Hollywood Actors","nwTitle9":"Notice for the Dokdo Video Contest","nwTitle10":"Dokdo Campaign at the Winter Olympics"},
+    "ja":{"title":"ニュース · ARA KOREA","description":"ARA KOREAの文化芸術キャンペーン、舞台、映画、国際活動を伝える主な報道をご紹介します。","nwKicker":"報道 · 物語 · 公共記録","nwLead1":"文化芸術の現場から始まった物語を集め、","nwLead2":"ARA KOREAが社会と出会った時間を記録します。","nwExploreAction":"ニュースを見る","nwContactAction":"お問い合わせ","nwFigure1":"報道アーカイブ","nwFigure2":"2010—2024","nwIdentityIndex":"01 / メディア掲載","nwStatement1":"舞台、キャンペーン、映画、国際活動の場面を集め、","nwStatement2":"文化が社会の中で広がった流れを映します。","nwStatementMobile":"舞台、キャンペーン、映画、国際活動の場面を集め、文化が社会の中で広がった流れを映します。","nwStatementBody":"報道は、作品が観客と出会い、公共の関心へと広がった過程を残します。国立劇場での文化キャンペーンからメタバース、アートフィルム、独島と社会的連帯を扱う活動まで、ARA KOREAが時代と交流してきた軌跡をご覧いただけます。","nwFeaturedIndex":"02 / 主な報道","nwFeaturedTitle":"最近のニュース","nwFeaturedIntro1":"文化キャンペーンと創作プロジェクトの現在を伝える","nwFeaturedIntro2":"主な報道をご覧ください。","nwTitle1":"第20回ARA KOREAキャンペーン、国立劇場で開催","nwTitle2":"ARA KOREA、メタバース仮想本社を制作","nwTitle3":"AK ENMデザイナーのホン・ジャンヒョク、映画監督へ","nwFeatureIndex":"03 / 公共記録","nwFeatureType":"プロジェクトから社会の対話へ","nwFeatureTitle":"時をつなぐ物語","nwFeatureBody":"各記事は一時期のニュースを越え、作品が社会的な課題と出会い、新しい媒体へ移り、国際的なネットワークを築いた背景を映します。積み重なった報道は、ARA KOREAの文化活動が広がってきた時間を立体的につなぎます。","nwFeatureLink":"すべての報道を見る","nwArchiveIndex":"04 / 報道アーカイブ","nwArchiveTitle":"その他のニュース","nwTitle4":"AMPKIND、疎外された子どもたちのためのキャンペーンを実施","nwTitle5":"ARA KOREA · 中央日報報道","nwTitle6":"ARA KOREA · 中央日報報道","nwTitle7":"作曲家アン・ソンヒ、作品発表会『WOOSOOZOO』を開催","nwTitle8":"AMPKIND、ハリウッド俳優へ独島ハンカチを贈呈","nwTitle9":"独島映像コンテスト開催案内","nwTitle10":"冬季五輪で独島キャンペーン"},
+    "zh":{"title":"新闻 · ARA KOREA","description":"浏览有关ARA KOREA文化艺术活动、表演、电影与国际项目的重要媒体报道。","nwKicker":"报道 · 故事 · 公共记录","nwLead1":"汇集源自文化艺术现场的故事，","nwLead2":"记录ARA KOREA与社会相遇的时间。","nwExploreAction":"浏览新闻","nwContactAction":"联系我们","nwFigure1":"媒体档案","nwFigure2":"2010—2024","nwIdentityIndex":"01 / 媒体报道","nwStatement1":"汇集表演、文化活动、电影与国际项目，","nwStatement2":"呈现文化在社会中不断拓展的轨迹。","nwStatementMobile":"汇集表演、文化活动、电影与国际项目，呈现文化在社会中不断拓展的轨迹。","nwStatementBody":"媒体报道保存作品与观众相遇并进入公共关注的过程。从国立剧场的文化活动到元宇宙、艺术电影，以及围绕独岛和社会联结展开的项目，这份档案呈现ARA KOREA与时代交流的发展轨迹。","nwFeaturedIndex":"02 / 重点报道","nwFeaturedTitle":"近期报道","nwFeaturedIntro1":"浏览关注文化活动与创作项目现状的","nwFeaturedIntro2":"重要媒体报道。","nwTitle1":"第20届ARA KOREA活动在国立剧场举行","nwTitle2":"ARA KOREA打造元宇宙虚拟总部","nwTitle3":"AK ENM设计师洪章赫转型电影导演","nwFeatureIndex":"03 / 公共记录","nwFeatureType":"从项目走向公共对话","nwFeatureTitle":"跨越时间的故事","nwFeatureBody":"每篇报道都超越单一时期的消息，呈现作品如何回应社会议题、进入新媒介并形成国际网络。持续积累的媒体记录立体连接ARA KOREA文化活动不断拓展的时间。","nwFeatureLink":"查看完整报道档案","nwArchiveIndex":"04 / 媒体档案","nwArchiveTitle":"更多报道","nwTitle4":"AMPKIND开展关爱边缘儿童活动","nwTitle5":"ARA KOREA · 中央日报报道","nwTitle6":"ARA KOREA · 中央日报报道","nwTitle7":"作曲家安成姬举办作品发表会《WOOSOOZOO》","nwTitle8":"AMPKIND向好莱坞演员赠送独岛手帕","nwTitle9":"独岛视频征集活动公告","nwTitle10":"冬奥会期间开展独岛宣传活动"}
   }
-
-  trigger.addEventListener('click', function(e){
-    if(!isMobile()) return;
-    e.preventDefault();
-    e.stopPropagation();
-    var open = dd.classList.toggle('is-open');
-    trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-
-  document.addEventListener('click', function(e){
-    if(!isMobile()) return;
-    if(dd.contains(e.target)) return;
-    close();
-  });
-
-  window.addEventListener('resize', function(){
-    if(!isMobile()) close();
-  });
-})();
-</script>
+  </script>
+  <script src="site.js?v=20260827-2" defer></script>
 </body>
 </html>

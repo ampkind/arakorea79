@@ -1,229 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Congratulatory Messages · ARA KOREA</title>
-  <link rel="stylesheet" href="styles.css?v=20251218-99"/>
-  <style>
-    .doc-grid{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-      align-items:start;
-    }
-    .doc-frame{
-      border-radius: var(--radius2);
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.22);
-      box-shadow: 0 18px 50px rgba(0,0,0,.28);
-      overflow:hidden;
-      min-height: 520px;
-    }
-    .doc-frame iframe, .doc-frame object, .doc-frame embed{
-      width:100%; height:100%;
-      border:0; display:block;
-      min-height: 520px;
-    }
-    .doc-text{
-      border-radius: var(--radius2);
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: 0 18px 50px rgba(0,0,0,.28);
-      padding:18px;
-    }
-    .doc-kicker{
-      color:rgba(69,182,255,.85);
-      letter-spacing:.18em;
-      font-size:11px;
-      margin-bottom:10px;
-    }
-    .doc-h{
-      margin:0 0 8px;
-      font-size:20px;
-      letter-spacing:.02em;
-    }
-    .doc-meta{
-      color:rgba(233,238,247,.72);
-      font-size:13px;
-      line-height:1.6;
-      margin:0 0 12px;
-    }
-    .doc-body{
-      color:rgba(233,238,247,.86);
-      font-size:13px;
-      line-height:1.75;
-      margin:0;
-      white-space:pre-line;
-    }
-    .doc-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-    @media (max-width: 980px){
-      .doc-grid{ grid-template-columns: 1fr; }
-      .doc-frame iframe, .doc-frame object, .doc-frame embed{ min-height: 420px; }
-    }
-  </style>
-
-<style>
-/* Back Navigation */
-.back-nav{
-  width: min(1100px, 100%);
-  margin: 18px auto 6px;
-  padding: 0 18px;
-}
-.back-link{
-  display: inline-block;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 12px;
-  opacity: .85;
-}
-.back-link::before{
-  content: "← ";
-}
-.back-link:hover{ opacity: 1; }
-
-@media (max-width: 900px){
-  .back-nav{ margin: 14px auto 4px; }
-  .back-link{ font-size: 11px; }
-}
-</style>
-
-
-<style>
-/* ==================================================
-   Congratulatory Messages page patch
-   - Mobile: always show K-Culture submenu (no double-tap)
-   ================================================== */
-@media (max-width: 900px){
-  /* Always show submenu on mobile so K-Culture remains single-tap navigable */
-  .nav-dd-menu{
-    position: static !important;
-    display: flex !important;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    padding-top: 6px;
-  }
-  .nav-dd-menu .nav-pill{
-    width: 100%;
-    justify-content: flex-start;
-  }
-}
-</style>
-
+  <meta name="description" content="ARA KOREA의 문화예술 활동에 전해진 공식 축사와 국제 문화교류의 기록을 소개합니다.">
+  <meta name="keywords" content="ARA KOREA, 축사, Yonah Martin, Canada Korea, 문화교류, ARA KOREA Korea United as One">
+  <link rel="canonical" href="https://arakorea.org/congratulatory-messages">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ARA KOREA">
+  <meta property="og:title" content="Congratulatory Messages · ARA KOREA">
+  <meta property="og:description" content="Official words of support and cultural exchange from the ARA KOREA archive.">
+  <meta property="og:url" content="https://arakorea.org/congratulatory-messages">
+  <meta property="og:image" content="https://arakorea.org/images/og-arakorea-kakao.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css?v=20260827">
 </head>
-<body>
-
-<header class="site-header">
-  <div class="brand">
-    <div class="brand-title">ARA KOREA</div>
-    <div class="brand-sub">Immersive K-Culture · Art Film &amp; Performance</div>
-  </div>
-
-  <nav aria-label="Primary" class="top-nav">
-    <a class="nav-pill" href="index.html">Home</a>
-    <a class="nav-pill" href="about.html">About</a>
-
-    <div class="nav-dd">
-      <a class="nav-pill is-active" href="kculture.html">K-Culture</a>
-      <div class="nav-dd-menu">
-        <a class="nav-dd-item nav-pill" href="kculture-gallery.html">Gallery</a>
-        <a class="nav-dd-item nav-pill" href="kculture-portfolio.html">Portfolio</a>
-        <a class="nav-dd-item nav-pill" href="kculture-video.html">Video</a>
+<body class="home-page">
+  <a class="home-skip" href="#main-content">본문 바로가기</a>
+  <header class="home-header" data-home-header>
+    <a class="home-brand" href="/" aria-label="ARA KOREA 홈"><span class="home-brand-name">ARA KOREA</span><span class="home-brand-tag" data-i18n="brandTag">Contemporary K-Culture</span></a>
+    <div class="home-header-tools">
+      <nav class="home-nav" id="home-navigation" aria-label="주요 메뉴">
+        <a href="/" data-i18n="navHome">Home</a><a href="/about" data-i18n="navAbout">About</a><a class="is-active" href="/kculture" aria-current="page" data-i18n="navCulture">K-Culture</a><a href="/news" data-i18n="navNews">News</a><a href="/contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="home-language-menu" data-language-menu>
+        <button class="home-language-trigger" type="button" aria-expanded="false" aria-controls="home-language-options"><span data-language-current>KO</span><span class="home-language-chevron" aria-hidden="true">⌄</span></button>
+        <div class="home-language-options" id="home-language-options" role="menu" aria-label="언어 선택">
+          <button type="button" role="menuitemradio" data-lang="ko" aria-checked="true"><span>한국어</span><small>KO</small></button><button type="button" role="menuitemradio" data-lang="en" aria-checked="false"><span>English</span><small>EN</small></button><button type="button" role="menuitemradio" data-lang="ja" aria-checked="false"><span>日本語</span><small>JA</small></button><button type="button" role="menuitemradio" data-lang="zh" aria-checked="false"><span>中文</span><small>ZH</small></button>
+        </div>
       </div>
+      <button class="home-menu-toggle" type="button" aria-expanded="false" aria-controls="home-navigation"><span data-i18n="menu">MENU</span><span class="home-menu-icon" aria-hidden="true"></span></button>
     </div>
+  </header>
 
-    <a class="nav-pill" href="news.html">News</a>
-    <a class="nav-pill" href="contact.html">Contact</a>
-  </nav>
-</header>
-
-<main class="page">
-
-  <div class="back-nav">
-    <a href="kculture-portfolio.html" class="back-link">BACK</a>
-  </div>
-
-  <section class="section" style="padding-top:10px;">
-    <div class="section-head">
-      <h2 class="section-title">Congratulatory Messages</h2>
-      <p class="section-sub">축사 원문(PDF) 미리보기와 영문 번역을 함께 제공합니다.</p>
-    </div>
-
-    <div class="doc-actions">
-      <a class="btn btn-primary" href="./congratulatory_2016_yonah_martin.pdf" download>Download PDF</a>
-      <a class="btn btn-ghost" href="./congratulatory_2016_yonah_martin.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
-    </div>
-
-    <div class="doc-grid">
-      <!-- LEFT: PDF Preview -->
-      <div class="doc-frame" aria-label="PDF Preview">
-        <object data="./congratulatory_2016_yonah_martin.pdf#page=1&zoom=100" type="application/pdf">
-          <iframe title="Congratulatory message PDF preview" src="./congratulatory_2016_yonah_martin.pdf#page=1&zoom=100"></iframe>
-        </object>
+  <main id="main-content">
+    <section class="home-hero" aria-labelledby="messages-title">
+      <div class="home-hero-copy">
+        <p class="home-kicker" data-i18n="cmKicker">WORDS · SOLIDARITY · CULTURAL EXCHANGE</p>
+        <h1 id="messages-title" class="home-title" aria-label="Congratulatory Messages"><span>VOICES</span><span>ACROSS</span></h1>
+        <p class="home-lead"><span class="home-copy-line" data-i18n="cmLead1">문화예술의 가치를 함께한 목소리를 보존하고,</span><span class="home-copy-line" data-i18n="cmLead2">국경을 잇는 교류의 의미를 오늘에 전합니다.</span></p>
+        <div class="home-actions"><a class="home-action home-action-primary" href="/congratulatory_2016_yonah_martin.pdf" target="_blank" rel="noopener noreferrer" data-i18n="cmOpenAction">Open Original PDF</a><a class="home-action" href="/congratulatory_2016_yonah_martin.pdf" download data-i18n="cmDownloadAction">Download PDF</a></div>
       </div>
+      <figure class="home-hero-visual"><img src="images/highlight-3.jpg" alt="ARA KOREA 문화예술 교류 장면" fetchpriority="high"><figcaption><span data-i18n="cmFigure1">Official Message Archive</span><span data-i18n="cmFigure2">Canada · Korea · 2016</span></figcaption></figure>
+      <p class="home-scroll" aria-hidden="true" data-i18n="scroll">SCROLL TO EXPLORE</p>
+    </section>
 
-      <!-- RIGHT: English Translation -->
-      <div class="doc-text" aria-label="English Translation">
-        <div class="doc-kicker">OFFICIAL MESSAGE</div>
-        <h3 class="doc-h">Congratulatory Message</h3>
-        <p class="doc-meta">
-          The Hon. Yonah Martin<br/>
-          Deputy Leader of the Opposition in the Senate of Canada<br/>
-          Co-Chair, Canada–Korea Inter-Parliamentary Friendship Group<br/>
-          <span class="accent">October 22, 2016</span>
-        </p>
-
-        <p class="doc-body">
-It is a great honor to extend my greetings to the campaign “ARA KOREA – Korea United as One,” hosted by the Chuncheon National Museum and AMPKIND.
-
-This event, held in harmony with nature at the Chuncheon National Museum, introduces Korea’s traditional music to contemporary audiences and highlights the excellence of Korea’s cultural heritage, including Arirang and Ganggangsullae. I believe this occasion will provide a meaningful moment of rest and reflection for people of all generations living in today’s fast-paced society.
-
-The musicians and performers who compose and perform original works such as “Piano of the Sky,” inspired by the Gangwon folk song Hanobaeknyeon, “Gangwon Sullae,” a reinterpretation of traditional melodies with percussion, and Gangwon Arirang, serve as cultural ambassadors who elevate the national brand of the Republic of Korea.
-
-I would also like to extend my applause to the organizers, sponsors, staff, and volunteers who planned, supported, and hosted this meaningful event.
-
-On behalf of the Senate of Canada, I wish this campaign great success and hope all participants return home with lasting and cherished memories.
-
-Thank you.
-
-The Hon. Yonah Martin
-        </p>
+    <section class="home-statement home-reveal" aria-labelledby="messages-statement-title">
+      <div class="home-section-index" data-i18n="cmIdentityIndex">01 / WORDS OF SUPPORT</div>
+      <div class="home-statement-body">
+        <h2 id="messages-statement-title"><span class="home-statement-desktop"><span data-i18n="cmStatement1">예술을 향한 지지와 연대의 언어를 모아</span><span data-i18n="cmStatement2">문화가 연결하는 더 넓은 세계를 기록합니다</span></span><span class="home-statement-mobile" data-i18n="cmStatementMobile">예술을 향한 지지와 연대의 언어를 모아 문화가 연결하는 더 넓은 세계를 기록합니다</span></h2>
+        <p data-i18n="cmStatementBody">공식 축사는 한 행사를 기념하는 문서를 넘어 서로 다른 지역과 세대가 문화의 가치에 공감한 순간을 보여줍니다. ARA KOREA는 공연과 캠페인을 통해 형성된 국제적 연대와 교류의 언어를 보존하며 창작이 사회와 맺어 온 관계를 이어갑니다.</p>
       </div>
-    </div>
+    </section>
 
-    
+    <section class="home-feature home-reveal" aria-labelledby="official-message-title">
+      <div class="home-feature-image"><img src="images/highlight-1.jpg" alt="ARA KOREA Korea United as One 캠페인" loading="lazy"></div>
+      <div class="home-feature-copy"><div class="home-section-index" data-i18n="cmOfficialIndex">02 / OFFICIAL MESSAGE</div><p class="home-feature-type">OCTOBER 22, 2016 · CANADA</p><h2 id="official-message-title">The Hon.<br>Yonah Martin</h2><p data-i18n="cmOfficialMeta">캐나다 상원 야당 부대표 · 캐나다–한국 의원친선협회 공동의장</p><a class="home-text-link" href="/congratulatory_2016_yonah_martin.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="cmOriginalLink">View the original document</span> <span aria-hidden="true">↗</span></a></div>
+    </section>
 
+    <section class="home-statement home-reveal" aria-labelledby="translation-title">
+      <div class="home-section-index" data-i18n="cmTranslationIndex">03 / ENGLISH TRANSLATION</div>
+      <div class="home-statement-body">
+        <h2 id="translation-title"><span class="home-statement-desktop"><span data-i18n="cmTranslation1">ARA KOREA – Korea United as One</span><span data-i18n="cmTranslation2">Official Congratulatory Message</span></span><span class="home-statement-mobile" data-i18n="cmTranslationMobile">ARA KOREA – Korea United as One Official Congratulatory Message</span></h2>
+        <p lang="en">It is a great honor to extend my greetings to the campaign “ARA KOREA – Korea United as One,” hosted by the Chuncheon National Museum and AMPKIND.<br><br>This event, held in harmony with nature at the Chuncheon National Museum, introduces Korea’s traditional music to contemporary audiences and highlights the excellence of Korea’s cultural heritage, including Arirang and Ganggangsullae. I believe this occasion will provide a meaningful moment of rest and reflection for people of all generations living in today’s fast-paced society.<br><br>The musicians and performers who compose and perform original works such as “Piano of the Sky,” inspired by the Gangwon folk song Hanobaeknyeon, “Gangwon Sullae,” a reinterpretation of traditional melodies with percussion, and Gangwon Arirang, serve as cultural ambassadors who elevate the national brand of the Republic of Korea.<br><br>I would also like to extend my applause to the organizers, sponsors, staff, and volunteers who planned, supported, and hosted this meaningful event.<br><br>On behalf of the Senate of Canada, I wish this campaign great success and hope all participants return home with lasting and cherished memories.<br><br>Thank you.<br><br><strong>The Hon. Yonah Martin</strong><br>Deputy Leader of the Opposition in the Senate of Canada<br>Co-Chair, Canada–Korea Inter-Parliamentary Friendship Group</p>
+      </div>
+    </section>
 
-  </section>
-</main>
+    <section class="home-connections" aria-labelledby="messages-continue-title">
+      <div class="home-section-heading home-reveal"><div><div class="home-section-index" data-i18n="cmContinueIndex">04 / CONTINUE</div><h2 id="messages-continue-title" data-i18n="cmContinueTitle">Inside the Portfolio</h2></div></div>
+      <div class="home-connection-list">
+        <a class="home-connection home-reveal" href="/awards"><span class="home-connection-number">01</span><strong data-i18n="cmAwardsTitle">AWARDS</strong><span data-i18n="cmAwardsBody">Recognition · Milestones</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="/portfolio-posters"><span class="home-connection-number">02</span><strong data-i18n="cmPostersTitle">POSTERS</strong><span data-i18n="cmPostersBody">Visual Identity · Performance History</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="/kculture-portfolio"><span class="home-connection-number">03</span><strong data-i18n="cmPortfolioTitle">PORTFOLIO</strong><span data-i18n="cmPortfolioBody">Complete Records</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
 
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-head">Contact</div>
-      <div class="footer-text">E-mail: info@akenm.com</div>
-      <div class="footer-text">Tel: 02-400-7151</div>
-    </div>
-    <div>
-      <div class="footer-head">Social</div>
-      <div class="footer-text"><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div>
-    </div>
-    <div>
-      <div class="footer-head">Shop</div>
-      <div class="footer-text"><a href="https://arakorea.shop" target="_blank" rel="noopener noreferrer">ARAKOREA.SHOP</a></div>
-    </div>
-  </div>
-  <div class="footer-bottom">© ARA KOREA Space Art Project</div>
-</footer>
+  <footer class="home-footer">
+    <div class="home-footer-top"><div><p class="home-footer-label" data-i18n="footerContact">CONTACT</p><a href="mailto:info@akenm.com">info@akenm.com</a><a href="tel:+8224007151">02-400-7151</a></div><div><p class="home-footer-label" data-i18n="footerSocial">SOCIAL</p><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div><p class="home-footer-mark" aria-label="ARA KOREA">AK</p></div>
+    <div class="home-footer-bottom"><span>© ARA KOREA Space Art Project</span><a href="#main-content" data-i18n="backTop">Back to top ↑</a></div>
+  </footer>
 
+  <script type="application/json" id="page-translations">
+  {
+    "ko":{"title":"Congratulatory Messages · ARA KOREA","description":"ARA KOREA의 문화예술 활동에 전해진 공식 축사와 국제 문화교류의 기록을 소개합니다.","cmKicker":"WORDS · SOLIDARITY · CULTURAL EXCHANGE","cmLead1":"문화예술의 가치를 함께한 목소리를 보존하고,","cmLead2":"국경을 잇는 교류의 의미를 오늘에 전합니다.","cmOpenAction":"Open Original PDF","cmDownloadAction":"Download PDF","cmFigure1":"Official Message Archive","cmFigure2":"Canada · Korea · 2016","cmIdentityIndex":"01 / WORDS OF SUPPORT","cmStatement1":"예술을 향한 지지와 연대의 언어를 모아","cmStatement2":"문화가 연결하는 더 넓은 세계를 기록합니다","cmStatementMobile":"예술을 향한 지지와 연대의 언어를 모아 문화가 연결하는 더 넓은 세계를 기록합니다","cmStatementBody":"공식 축사는 한 행사를 기념하는 문서를 넘어 서로 다른 지역과 세대가 문화의 가치에 공감한 순간을 보여줍니다. ARA KOREA는 공연과 캠페인을 통해 형성된 국제적 연대와 교류의 언어를 보존하며 창작이 사회와 맺어 온 관계를 이어갑니다.","cmOfficialIndex":"02 / OFFICIAL MESSAGE","cmOfficialMeta":"캐나다 상원 야당 부대표 · 캐나다–한국 의원친선협회 공동의장","cmOriginalLink":"View the original document","cmTranslationIndex":"03 / ENGLISH TRANSLATION","cmTranslation1":"ARA KOREA – Korea United as One","cmTranslation2":"Official Congratulatory Message","cmTranslationMobile":"ARA KOREA – Korea United as One Official Congratulatory Message","cmContinueIndex":"04 / CONTINUE","cmContinueTitle":"Inside the Portfolio","cmAwardsTitle":"AWARDS","cmAwardsBody":"Recognition · Milestones","cmPostersTitle":"POSTERS","cmPostersBody":"Visual Identity · Performance History","cmPortfolioTitle":"PORTFOLIO","cmPortfolioBody":"Complete Records"},
+    "en":{"title":"Congratulatory Messages · ARA KOREA","description":"Explore official messages of support and records of international cultural exchange from ARA KOREA.","cmKicker":"WORDS · SOLIDARITY · CULTURAL EXCHANGE","cmLead1":"Preserving voices that affirm the value of culture,","cmLead2":"we carry the meaning of exchange across borders and time.","cmOpenAction":"Open Original PDF","cmDownloadAction":"Download PDF","cmFigure1":"Official Message Archive","cmFigure2":"Canada · Korea · 2016","cmIdentityIndex":"01 / WORDS OF SUPPORT","cmStatement1":"Gathering words of support and solidarity for the arts,","cmStatement2":"we document a wider world connected through culture.","cmStatementMobile":"Gathering words of support and solidarity for the arts, we document a wider world connected through culture.","cmStatementBody":"An official message reaches beyond the commemoration of one event. It reveals a moment when different regions and generations shared a belief in cultural value. ARA KOREA preserves the language of international solidarity formed through performance and campaigns, continuing the relationship between creative work and society.","cmOfficialIndex":"02 / OFFICIAL MESSAGE","cmOfficialMeta":"Deputy Leader of the Opposition in the Senate of Canada · Co-Chair, Canada–Korea Inter-Parliamentary Friendship Group","cmOriginalLink":"View the original document","cmTranslationIndex":"03 / ENGLISH TRANSLATION","cmTranslation1":"ARA KOREA – Korea United as One","cmTranslation2":"Official Congratulatory Message","cmTranslationMobile":"ARA KOREA – Korea United as One Official Congratulatory Message","cmContinueIndex":"04 / CONTINUE","cmContinueTitle":"Inside the Portfolio","cmAwardsTitle":"AWARDS","cmAwardsBody":"Recognition · Milestones","cmPostersTitle":"POSTERS","cmPostersBody":"Visual Identity · Performance History","cmPortfolioTitle":"PORTFOLIO","cmPortfolioBody":"Complete Records"},
+    "ja":{"title":"祝辞 · ARA KOREA","description":"ARA KOREAの文化芸術活動に寄せられた公式祝辞と国際文化交流の記録をご紹介します。","cmKicker":"言葉 · 連帯 · 文化交流","cmLead1":"文化芸術の価値を共有した声を残し、","cmLead2":"国境を結ぶ交流の意味を今へ伝えます。","cmOpenAction":"原文PDFを開く","cmDownloadAction":"PDFをダウンロード","cmFigure1":"公式メッセージ・アーカイブ","cmFigure2":"カナダ · 韓国 · 2016","cmIdentityIndex":"01 / 支援の言葉","cmStatement1":"芸術への支援と連帯の言葉を集め、","cmStatement2":"文化が結ぶより広い世界を記録します。","cmStatementMobile":"芸術への支援と連帯の言葉を集め、文化が結ぶより広い世界を記録します。","cmStatementBody":"公式祝辞は一つの行事を記念する文書を越え、異なる地域と世代が文化の価値を共有した瞬間を映します。ARA KOREAは舞台とキャンペーンから生まれた国際的な連帯と交流の言葉を保存し、創作が社会と築いてきた関係を未来へつなぎます。","cmOfficialIndex":"02 / 公式メッセージ","cmOfficialMeta":"カナダ上院野党副代表 · カナダ・韓国議員友好協会共同議長","cmOriginalLink":"原文を見る","cmTranslationIndex":"03 / 英訳","cmTranslation1":"ARA KOREA – Korea United as One","cmTranslation2":"公式祝辞","cmTranslationMobile":"ARA KOREA – Korea United as One 公式祝辞","cmContinueIndex":"04 / 次の記録","cmContinueTitle":"ポートフォリオの内側","cmAwardsTitle":"受賞歴","cmAwardsBody":"評価 · 軌跡","cmPostersTitle":"ポスター","cmPostersBody":"視覚表現 · 舞台の歴史","cmPortfolioTitle":"ポートフォリオ","cmPortfolioBody":"すべての記録"},
+    "zh":{"title":"贺词 · ARA KOREA","description":"浏览支持ARA KOREA文化艺术活动的官方贺词与国际文化交流记录。","cmKicker":"文字 · 联结 · 文化交流","cmLead1":"保存认同文化艺术价值的声音，","cmLead2":"将跨越国界的交流意义延续至今。","cmOpenAction":"打开原文PDF","cmDownloadAction":"下载PDF","cmFigure1":"官方贺词档案","cmFigure2":"加拿大 · 韩国 · 2016","cmIdentityIndex":"01 / 支持之声","cmStatement1":"汇集对艺术的支持与联结之声，","cmStatement2":"记录文化所连接的更广阔世界。","cmStatementMobile":"汇集对艺术的支持与联结之声，记录文化所连接的更广阔世界。","cmStatementBody":"官方贺词超越对单一活动的纪念，呈现不同地区与世代共同认同文化价值的时刻。ARA KOREA保存通过表演和文化活动形成的国际联结与交流语言，延续创作与社会建立的关系。","cmOfficialIndex":"02 / 官方贺词","cmOfficialMeta":"加拿大参议院反对党副领袖 · 加韩议会友好协会共同主席","cmOriginalLink":"查看原始文件","cmTranslationIndex":"03 / 英文译文","cmTranslation1":"ARA KOREA – Korea United as One","cmTranslation2":"官方祝贺辞","cmTranslationMobile":"ARA KOREA – Korea United as One 官方祝贺辞","cmContinueIndex":"04 / 继续探索","cmContinueTitle":"作品档案内页","cmAwardsTitle":"奖项","cmAwardsBody":"认可 · 里程碑","cmPostersTitle":"海报","cmPostersBody":"视觉识别 · 表演历史","cmPortfolioTitle":"作品档案","cmPortfolioBody":"完整记录"}
+  }
+  </script>
+  <script src="site.js?v=20260827-2" defer></script>
 </body>
 </html>

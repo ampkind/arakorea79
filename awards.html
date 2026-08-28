@@ -1,123 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>ARA KOREA · Awards</title>
-  <link rel="stylesheet" href="styles.css?v=20251218"/>
-
-<style>
-/* ==================================================
-   Awards Back Navigation
-   - Simple BACK text, uppercase, elegant
-   ================================================== */
-.back-nav{
-  width: min(1100px, 100%);
-  margin: 18px auto 6px;
-  padding: 0 18px;
-}
-.back-link{
-  display: inline-block;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 12px;
-  opacity: .85;
-}
-.back-link::before{
-  content: "← ";
-  letter-spacing: 0;
-}
-.back-link:hover{ opacity: 1; }
-
-@media (max-width: 900px){
-  .back-nav{ margin: 14px auto 4px; }
-  .back-link{ font-size: 11px; }
-}
-</style>
-
-
-<style>
-/* ==================================================
-   Awards page patch
-   - Mobile: always show K-Culture submenu (no double-tap)
-   ================================================== */
-@media (max-width: 900px){
-  /* Always show submenu on mobile so K-Culture remains single-tap navigable */
-  .nav-dd-menu{
-    position: static !important;
-    display: flex !important;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    padding-top: 6px;
-  }
-  .nav-dd-menu .nav-pill{
-    width: 100%;
-    justify-content: flex-start;
-  }
-}
-</style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Awards · ARA KOREA</title>
+  <meta name="description" content="ARA KOREA의 문화예술 캠페인과 프로젝트가 축적해 온 주요 수상 및 인증 기록을 소개합니다.">
+  <meta name="keywords" content="ARA KOREA, 수상 기록, 인증, K-Culture, 문화예술 프로젝트, 공연예술 아카이브">
+  <link rel="canonical" href="https://arakorea.org/awards">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ARA KOREA">
+  <meta property="og:title" content="Awards · ARA KOREA">
+  <meta property="og:description" content="Recognition and milestones from ARA KOREA’s cultural projects.">
+  <meta property="og:url" content="https://arakorea.org/awards">
+  <meta property="og:image" content="https://arakorea.org/images/og-arakorea-kakao.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css?v=20260827">
 </head>
-<body>
-
-<header class="site-header">
-<div class="brand">
-<div class="brand-title">ARA KOREA</div>
-<div class="brand-sub">Immersive K‑Culture · Art Film &amp; Performance</div>
-</div>
-<nav aria-label="Primary" class="top-nav"><a class="nav-pill" href="index.html">Home</a><a class="nav-pill" href="about.html">About</a><div class="nav-dd"><a class="nav-pill" href="kculture.html">K‑Culture</a><div class="nav-dd-menu"><a class="nav-dd-item nav-pill" href="kculture-gallery.html">Gallery</a><a class="nav-dd-item nav-pill is-active" href="kculture-portfolio.html">Portfolio</a><a class="nav-dd-item nav-pill" href="kculture-video.html">Video</a></div></div><a class="nav-pill" href="news.html">News</a><a class="nav-pill" href="contact.html">Contact</a></nav>
-</header>
-
-<main class="page">
-
-<div class="back-nav">
-  <a href="kculture-portfolio.html" class="back-link">BACK</a>
-</div>
-
-  <section class="section" id="awards">
-    <div class="section-head">
-      <h2 class="section-title">Awards</h2>
-      <p class="section-sub">ARA KOREA 캠페인 및 프로젝트의 수상/인증 아카이브입니다.</p>
+<body class="home-page">
+  <a class="home-skip" href="#main-content">본문 바로가기</a>
+  <header class="home-header" data-home-header>
+    <a class="home-brand" href="/" aria-label="ARA KOREA 홈"><span class="home-brand-name">ARA KOREA</span><span class="home-brand-tag" data-i18n="brandTag">Contemporary K-Culture</span></a>
+    <div class="home-header-tools">
+      <nav class="home-nav" id="home-navigation" aria-label="주요 메뉴">
+        <a href="/" data-i18n="navHome">Home</a><a href="/about" data-i18n="navAbout">About</a><a class="is-active" href="/kculture" aria-current="page" data-i18n="navCulture">K-Culture</a><a href="/news" data-i18n="navNews">News</a><a href="/contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="home-language-menu" data-language-menu>
+        <button class="home-language-trigger" type="button" aria-expanded="false" aria-controls="home-language-options"><span data-language-current>KO</span><span class="home-language-chevron" aria-hidden="true">⌄</span></button>
+        <div class="home-language-options" id="home-language-options" role="menu" aria-label="언어 선택">
+          <button type="button" role="menuitemradio" data-lang="ko" aria-checked="true"><span>한국어</span><small>KO</small></button><button type="button" role="menuitemradio" data-lang="en" aria-checked="false"><span>English</span><small>EN</small></button><button type="button" role="menuitemradio" data-lang="ja" aria-checked="false"><span>日本語</span><small>JA</small></button><button type="button" role="menuitemradio" data-lang="zh" aria-checked="false"><span>中文</span><small>ZH</small></button>
+        </div>
+      </div>
+      <button class="home-menu-toggle" type="button" aria-expanded="false" aria-controls="home-navigation"><span data-i18n="menu">MENU</span><span class="home-menu-icon" aria-hidden="true"></span></button>
     </div>
+  </header>
 
-    <!-- Gallery와 동일한 카드 사이즈(.cards-3 + .card height:240px) -->
-    <div class="cards-3">
-      <a class="card" href="images/award_2019_01.jpg" target="_blank" rel="noreferrer" aria-label="Award 2019">
-        <img src="images/award_2019_01.jpg" alt="ARA KOREA Award 2019" onerror="this.remove(); this.parentElement.classList.add('card-fallback');"/>
-      </a>
+  <main id="main-content">
+    <section class="home-hero" aria-labelledby="awards-title">
+      <div class="home-hero-copy">
+        <p class="home-kicker" data-i18n="awKicker">RECOGNITION · MILESTONES · CULTURAL IMPACT</p>
+        <h1 id="awards-title" class="home-title"><span>AWARDS</span><span>ARCHIVE</span></h1>
+        <p class="home-lead"><span class="home-copy-line" data-i18n="awLead1">작품이 사회와 만난 성과를 기록하고,</span><span class="home-copy-line" data-i18n="awLead2">문화예술 프로젝트의 주요 이정표를 이어갑니다.</span></p>
+        <div class="home-actions"><a class="home-action home-action-primary" href="#award-records" data-i18n="awExploreAction">Explore Awards</a><a class="home-action" href="/kculture-portfolio" data-i18n="awPortfolioAction">Back to Portfolio</a></div>
+      </div>
+      <figure class="home-hero-visual"><img src="images/highlight-1.jpg" alt="ARA KOREA 문화예술 프로젝트" fetchpriority="high"><figcaption><span data-i18n="awFigure1">Recognition Archive</span><span data-i18n="awFigure2">2018 · 2019 · 2020</span></figcaption></figure>
+      <p class="home-scroll" aria-hidden="true" data-i18n="scroll">SCROLL TO EXPLORE</p>
+    </section>
 
-      <a class="card" href="images/award_2020_01.jpg" target="_blank" rel="noreferrer" aria-label="Award 2020">
-        <img src="images/award_2020_01.jpg" alt="ARA KOREA Award 2020" onerror="this.remove(); this.parentElement.classList.add('card-fallback');"/>
-      </a>
+    <section class="home-statement home-reveal" aria-labelledby="awards-statement-title">
+      <div class="home-section-index" data-i18n="awIdentityIndex">01 / RECOGNITION</div>
+      <div class="home-statement-body">
+        <h2 id="awards-statement-title"><span class="home-statement-desktop"><span data-i18n="awStatement1">창작의 과정이 공공의 가치와 만나는 순간을 모아</span><span data-i18n="awStatement2">ARA KOREA의 성장과 문화적 성과를 보여줍니다</span></span><span class="home-statement-mobile" data-i18n="awStatementMobile">창작의 과정이 공공의 가치와 만나는 순간을 모아 ARA KOREA의 성장과 문화적 성과를 보여줍니다</span></h2>
+        <p data-i18n="awStatementBody">각 수상과 인증은 한 프로젝트의 결과에 머무르지 않고 새로운 관객과의 접점, 협력의 확장, 다음 작업으로 향하는 동력을 의미합니다. 이 기록은 공연과 캠페인이 축적해 온 사회적 공감과 예술적 진전을 시간의 흐름에 따라 전합니다.</p>
+      </div>
+    </section>
 
-      <a class="card" href="images/award_2018_certificate.jpg" target="_blank" rel="noreferrer" aria-label="Award 2018">
-        <img src="images/award_2018_certificate.jpg" alt="ARA KOREA Award 2018" onerror="this.remove(); this.parentElement.classList.add('card-fallback');"/>
-      </a>
-    </div>
-  </section>
-</main>
+    <section class="home-culture" id="award-records" aria-labelledby="award-records-title">
+      <div class="home-section-heading home-reveal">
+        <div><div class="home-section-index" data-i18n="awRecordsIndex">02 / AWARD RECORDS</div><h2 id="award-records-title" data-i18n="awRecordsTitle">Moments of Recognition</h2></div>
+        <p><span data-i18n="awRecordsIntro1">프로젝트의 성장과 문화적 영향력을 보여주는</span><span data-i18n="awRecordsIntro2">주요 수상 자료를 살펴보세요.</span></p>
+      </div>
+      <div class="home-culture-grid">
+        <a class="home-culture-card home-culture-card-wide home-reveal" href="/images/award_2019_01.jpg" target="_blank" rel="noopener noreferrer"><div class="home-card-image"><img src="images/award_2019_01.jpg" alt="ARA KOREA 2019 수상 기록" loading="lazy"></div><div class="home-card-meta"><span>01</span><h3>2019</h3><span class="home-card-arrow" aria-hidden="true">↗</span></div><p data-i18n="aw2019Body">문화예술 프로젝트의 성과를 담은 2019년 수상 기록</p></a>
+        <a class="home-culture-card home-culture-card-tall home-reveal" href="/images/award_2020_01.jpg" target="_blank" rel="noopener noreferrer"><div class="home-card-image"><img src="images/award_2020_01.jpg" alt="ARA KOREA 2020 수상 기록" loading="lazy"></div><div class="home-card-meta"><span>02</span><h3>2020</h3><span class="home-card-arrow" aria-hidden="true">↗</span></div><p data-i18n="aw2020Body">새로운 문화적 접점과 확장을 보여주는 2020년 수상 기록</p></a>
+        <a class="home-culture-card home-culture-card-full home-reveal" href="/images/award_2018_certificate.jpg" target="_blank" rel="noopener noreferrer"><div class="home-card-image"><img src="images/award_2018_certificate.jpg" alt="ARA KOREA 2018 인증 기록" loading="lazy"></div><div class="home-card-meta"><span>03</span><h3>2018</h3><span class="home-card-arrow" aria-hidden="true">↗</span></div><p data-i18n="aw2018Body">ARA KOREA 프로젝트의 출발과 기반을 보여주는 2018년 인증 기록</p></a>
+      </div>
+    </section>
 
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-head">Contact</div>
-      <div class="footer-text">E-mail: info@akenm.com</div>
-      <div class="footer-text">Tel: 02-400-7151</div>
-    </div>
-    <div>
-      <div class="footer-head">Social</div>
-      <div class="footer-text"><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div>
-    </div>
-    <div>
-      <div class="footer-head">Shop</div>
-      <div class="footer-text"><a href="https://arakorea.shop" target="_blank" rel="noopener noreferrer">ARAKOREA.SHOP</a></div>
-    </div>
-  </div>
-  <div class="footer-bottom">© ARA KOREA Space Art Project</div>
-</footer>
+    <section class="home-feature home-reveal" aria-labelledby="awards-feature-title">
+      <div class="home-feature-image"><img src="images/highlight-2.jpg" alt="ARA KOREA 공연예술 장면" loading="lazy"></div>
+      <div class="home-feature-copy"><div class="home-section-index" data-i18n="awFeatureIndex">03 / MILESTONES</div><p class="home-feature-type" data-i18n="awFeatureType">RECOGNITION BECOMES MOMENTUM</p><h2 id="awards-feature-title" data-i18n="awFeatureTitle">A Continuing Journey</h2><p data-i18n="awFeatureBody">평가와 인정은 지나온 시간을 증명하는 동시에 앞으로의 창작을 견인합니다. ARA KOREA는 축적된 경험을 바탕으로 공연, 영상, 문화 캠페인의 경계를 넓히며 동시대 K-Culture의 새로운 가능성을 이어갑니다.</p><a class="home-text-link" href="/kculture-portfolio"><span data-i18n="awFeatureLink">Return to Portfolio</span> <span aria-hidden="true">→</span></a></div>
+    </section>
 
+    <section class="home-connections" aria-labelledby="awards-continue-title">
+      <div class="home-section-heading home-reveal"><div><div class="home-section-index" data-i18n="awContinueIndex">04 / CONTINUE</div><h2 id="awards-continue-title" data-i18n="awContinueTitle">Inside the Portfolio</h2></div></div>
+      <div class="home-connection-list">
+        <a class="home-connection home-reveal" href="/congratulatory-messages"><span class="home-connection-number">01</span><strong data-i18n="awMessagesTitle">CONGRATULATORY MESSAGES</strong><span data-i18n="awMessagesBody">Words · Cultural Exchange</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="/portfolio-posters"><span class="home-connection-number">02</span><strong data-i18n="awPostersTitle">POSTERS</strong><span data-i18n="awPostersBody">Visual Identity · Performance History</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="/kculture-portfolio"><span class="home-connection-number">03</span><strong data-i18n="awPortfolioTitle">PORTFOLIO</strong><span data-i18n="awPortfolioBody">Complete Records</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="home-footer">
+    <div class="home-footer-top"><div><p class="home-footer-label" data-i18n="footerContact">CONTACT</p><a href="mailto:info@akenm.com">info@akenm.com</a><a href="tel:+8224007151">02-400-7151</a></div><div><p class="home-footer-label" data-i18n="footerSocial">SOCIAL</p><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div><p class="home-footer-mark" aria-label="ARA KOREA">AK</p></div>
+    <div class="home-footer-bottom"><span>© ARA KOREA Space Art Project</span><a href="#main-content" data-i18n="backTop">Back to top ↑</a></div>
+  </footer>
+
+  <script type="application/json" id="page-translations">
+  {
+    "ko":{"title":"Awards · ARA KOREA","description":"ARA KOREA의 문화예술 캠페인과 프로젝트가 축적해 온 주요 수상 및 인증 기록을 소개합니다.","awKicker":"RECOGNITION · MILESTONES · CULTURAL IMPACT","awLead1":"작품이 사회와 만난 성과를 기록하고,","awLead2":"문화예술 프로젝트의 주요 이정표를 이어갑니다.","awExploreAction":"Explore Awards","awPortfolioAction":"Back to Portfolio","awFigure1":"Recognition Archive","awFigure2":"2018 · 2019 · 2020","awIdentityIndex":"01 / RECOGNITION","awStatement1":"창작의 과정이 공공의 가치와 만나는 순간을 모아","awStatement2":"ARA KOREA의 성장과 문화적 성과를 보여줍니다","awStatementMobile":"창작의 과정이 공공의 가치와 만나는 순간을 모아 ARA KOREA의 성장과 문화적 성과를 보여줍니다","awStatementBody":"각 수상과 인증은 한 프로젝트의 결과에 머무르지 않고 새로운 관객과의 접점, 협력의 확장, 다음 작업으로 향하는 동력을 의미합니다. 이 기록은 공연과 캠페인이 축적해 온 사회적 공감과 예술적 진전을 시간의 흐름에 따라 전합니다.","awRecordsIndex":"02 / AWARD RECORDS","awRecordsTitle":"Moments of Recognition","awRecordsIntro1":"프로젝트의 성장과 문화적 영향력을 보여주는","awRecordsIntro2":"주요 수상 자료를 살펴보세요.","aw2019Body":"문화예술 프로젝트의 성과를 담은 2019년 수상 기록","aw2020Body":"새로운 문화적 접점과 확장을 보여주는 2020년 수상 기록","aw2018Body":"ARA KOREA 프로젝트의 출발과 기반을 보여주는 2018년 인증 기록","awFeatureIndex":"03 / MILESTONES","awFeatureType":"RECOGNITION BECOMES MOMENTUM","awFeatureTitle":"A Continuing Journey","awFeatureBody":"평가와 인정은 지나온 시간을 증명하는 동시에 앞으로의 창작을 견인합니다. ARA KOREA는 축적된 경험을 바탕으로 공연, 영상, 문화 캠페인의 경계를 넓히며 동시대 K-Culture의 새로운 가능성을 이어갑니다.","awFeatureLink":"Return to Portfolio","awContinueIndex":"04 / CONTINUE","awContinueTitle":"Inside the Portfolio","awMessagesTitle":"CONGRATULATORY MESSAGES","awMessagesBody":"Words · Cultural Exchange","awPostersTitle":"POSTERS","awPostersBody":"Visual Identity · Performance History","awPortfolioTitle":"PORTFOLIO","awPortfolioBody":"Complete Records"},
+    "en":{"title":"Awards · ARA KOREA","description":"Explore major awards and certifications earned by ARA KOREA’s cultural campaigns and projects.","awKicker":"RECOGNITION · MILESTONES · CULTURAL IMPACT","awLead1":"Documenting where creative work meets its public,","awLead2":"we carry forward the milestones of cultural projects.","awExploreAction":"Explore Awards","awPortfolioAction":"Back to Portfolio","awFigure1":"Recognition Archive","awFigure2":"2018 · 2019 · 2020","awIdentityIndex":"01 / RECOGNITION","awStatement1":"Gathering the moments when creation meets public value,","awStatement2":"we reveal ARA KOREA’s growth and cultural achievements.","awStatementMobile":"Gathering the moments when creation meets public value, we reveal ARA KOREA’s growth and cultural achievements.","awStatementBody":"Each award and certification represents more than the outcome of one project. It marks contact with new audiences, expanding collaboration and momentum toward future work. Together, these records trace the social resonance and artistic development built through performance and cultural campaigns.","awRecordsIndex":"02 / AWARD RECORDS","awRecordsTitle":"Moments of Recognition","awRecordsIntro1":"Explore key materials that reflect the project’s growth","awRecordsIntro2":"and its expanding cultural influence.","aw2019Body":"A 2019 record recognising achievements in cultural and artistic practice","aw2020Body":"A 2020 record marking new cultural connections and continued expansion","aw2018Body":"A 2018 certification reflecting the foundations of the ARA KOREA project","awFeatureIndex":"03 / MILESTONES","awFeatureType":"RECOGNITION BECOMES MOMENTUM","awFeatureTitle":"A Continuing Journey","awFeatureBody":"Recognition both affirms the path already travelled and drives the work ahead. Building on accumulated experience, ARA KOREA extends the boundaries between performance, moving image and cultural campaigns to advance new possibilities in contemporary K-Culture.","awFeatureLink":"Return to Portfolio","awContinueIndex":"04 / CONTINUE","awContinueTitle":"Inside the Portfolio","awMessagesTitle":"CONGRATULATORY MESSAGES","awMessagesBody":"Words · Cultural Exchange","awPostersTitle":"POSTERS","awPostersBody":"Visual Identity · Performance History","awPortfolioTitle":"PORTFOLIO","awPortfolioBody":"Complete Records"},
+    "ja":{"title":"受賞記録 · ARA KOREA","description":"ARA KOREAの文化芸術キャンペーンとプロジェクトが積み重ねてきた主な受賞・認証記録をご紹介します。","awKicker":"評価 · 軌跡 · 文化的インパクト","awLead1":"作品が社会と出会った成果を記録し、","awLead2":"文化芸術プロジェクトの節目を未来へつなぎます。","awExploreAction":"受賞記録を見る","awPortfolioAction":"ポートフォリオへ戻る","awFigure1":"受賞アーカイブ","awFigure2":"2018 · 2019 · 2020","awIdentityIndex":"01 / 評価","awStatement1":"創作が公共の価値と出会う瞬間を集め、","awStatement2":"ARA KOREAの成長と文化的成果を映します。","awStatementMobile":"創作が公共の価値と出会う瞬間を集め、ARA KOREAの成長と文化的成果を映します。","awStatementBody":"それぞれの受賞と認証は、一つの成果にとどまらず、新たな観客との接点、協働の広がり、次の作品へ向かう力を示します。これらの記録は、舞台とキャンペーンが築いてきた社会的共感と芸術的な前進を時間の流れに沿って伝えます。","awRecordsIndex":"02 / 受賞記録","awRecordsTitle":"評価の瞬間","awRecordsIntro1":"プロジェクトの成長と文化的な広がりを示す","awRecordsIntro2":"主な受賞資料をご覧ください。","aw2019Body":"文化芸術プロジェクトの成果を伝える2019年の受賞記録","aw2020Body":"新たな文化的接点と広がりを示す2020年の受賞記録","aw2018Body":"ARA KOREAプロジェクトの出発と基盤を示す2018年の認証記録","awFeatureIndex":"03 / 節目","awFeatureType":"評価が次の力になる","awFeatureTitle":"続いていく歩み","awFeatureBody":"評価はこれまでの時間を証明すると同時に、これからの創作を動かします。ARA KOREAは積み重ねた経験をもとに、舞台、映像、文化キャンペーンの境界を広げ、現代Kカルチャーの新たな可能性をつないでいきます。","awFeatureLink":"ポートフォリオへ戻る","awContinueIndex":"04 / 次の記録","awContinueTitle":"ポートフォリオの内側","awMessagesTitle":"祝辞","awMessagesBody":"言葉 · 文化交流","awPostersTitle":"ポスター","awPostersBody":"視覚表現 · 舞台の歴史","awPortfolioTitle":"ポートフォリオ","awPortfolioBody":"すべての記録"},
+    "zh":{"title":"奖项记录 · ARA KOREA","description":"浏览ARA KOREA文化艺术活动与项目积累的重要奖项和认证记录。","awKicker":"认可 · 里程碑 · 文化影响","awLead1":"记录作品与社会相遇的成果，","awLead2":"延续文化艺术项目的重要里程碑。","awExploreAction":"浏览奖项","awPortfolioAction":"返回作品档案","awFigure1":"奖项档案","awFigure2":"2018 · 2019 · 2020","awIdentityIndex":"01 / 认可","awStatement1":"汇集创作与公共价值相遇的时刻，","awStatement2":"呈现ARA KOREA的成长与文化成果。","awStatementMobile":"汇集创作与公共价值相遇的时刻，呈现ARA KOREA的成长与文化成果。","awStatementBody":"每项奖项与认证都超越单一项目的结果，代表与新观众的接触、合作关系的拓展以及走向下一次创作的动力。这些记录按照时间脉络呈现表演与文化活动所积累的社会共鸣和艺术发展。","awRecordsIndex":"02 / 奖项记录","awRecordsTitle":"获得认可的时刻","awRecordsIntro1":"浏览体现项目成长与文化影响力的","awRecordsIntro2":"重要奖项资料。","aw2019Body":"记录文化艺术项目成果的2019年奖项资料","aw2020Body":"展现新文化连接与持续拓展的2020年奖项资料","aw2018Body":"体现ARA KOREA项目起点与基础的2018年认证资料","awFeatureIndex":"03 / 里程碑","awFeatureType":"认可转化为前行动力","awFeatureTitle":"持续发展的旅程","awFeatureBody":"认可既印证已经走过的时间，也推动未来创作。ARA KOREA以积累的经验为基础，持续拓展表演、影像与文化活动之间的边界，连接当代韩国文化的更多可能。","awFeatureLink":"返回作品档案","awContinueIndex":"04 / 继续探索","awContinueTitle":"作品档案内页","awMessagesTitle":"贺词","awMessagesBody":"文字 · 文化交流","awPostersTitle":"海报","awPostersBody":"视觉识别 · 表演历史","awPortfolioTitle":"作品档案","awPortfolioBody":"完整记录"}
+  }
+  </script>
+  <script src="site.js?v=20260827-2" defer></script>
 </body>
 </html>

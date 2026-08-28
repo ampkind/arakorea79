@@ -1,486 +1,127 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gallery · ARA KOREA</title>
-  <!-- index와 동일한 스타일 파일 사용 -->
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- K‑Culture 전용(슬라이더/라이트박스) 최소 CSS: 기존 톤 유지 -->
-  <style>
-    .kc-wrap{max-width:var(--max);margin:0 auto;padding:28px 18px 70px;}
-    .kc-intro{margin:10px 0 18px;padding:16px 18px;border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);
-      box-shadow:0 16px 40px rgba(0,0,0,.22);}
-    .kc-intro p{margin:0;color:var(--muted);line-height:1.65;font-size:14px;}
-
-    .kc-section{margin-top:18px;}
-    .kc-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:10px;}
-    .kc-title{margin:0;font-size:18px;letter-spacing:.04em;}
-    .kc-sub{margin:0;color:var(--muted);font-size:13px;line-height:1.45;}
-
-    .kc-slider{position:relative;border-radius:var(--radius2);
-      border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);
-      box-shadow:0 16px 46px rgba(0,0,0,.26);overflow:hidden;}
-
-    .kc-track{
-      display:grid;
-      grid-auto-flow:column;
-      grid-auto-columns: calc((100% - 28px) / 3);
-      gap:14px;
-      padding:14px;
-      overflow-x:auto;
-      scroll-snap-type:x mandatory;
-      -webkit-overflow-scrolling:touch;
-    }
-    .kc-track::-webkit-scrollbar{height:0}
-    @media (max-width: 980px){
-      .kc-track{grid-auto-columns: 88%;}
-    }
-
-    .kc-card{display:block;border-radius:18px;overflow:hidden;scroll-snap-align:start;
-      border:1px solid rgba(255,255,255,.10);background:rgba(0,0,0,.25);
-      box-shadow:0 14px 40px rgba(0,0,0,.28);}
-    .kc-card img{width:100%;height:260px;object-fit:cover;display:block;}
-    @media (max-width: 980px){ .kc-card img{height:320px;} }
-
-    .kc-nav{position:absolute;top:50%;transform:translateY(-50%);
-      width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.16);
-      background:rgba(20,30,45,.55);backdrop-filter:blur(10px);
-      color:rgba(233,238,247,.92);cursor:pointer;display:flex;align-items:center;justify-content:center;
-      font-size:22px;z-index:5;}
-    .kc-prev{left:10px;}
-    .kc-next{right:10px;}
-    @media (max-width: 980px){ .kc-nav{display:none;} }
-
-    /* Lightbox */
-    .kc-lb{position:fixed;inset:0;display:none;align-items:center;justify-content:center;
-      background:rgba(0,0,0,.86);padding:18px;z-index:9999;}
-    .kc-lb.open{display:flex;}
-    .kc-lb figure{margin:0;max-width:min(1200px,95vw);width:100%;}
-    .kc-lb img{width:100%;max-height:90vh;object-fit:contain;border-radius:22px;
-      border:1px solid rgba(255,255,255,.16);background:#000;box-shadow:0 20px 60px rgba(0,0,0,.55);}
-    .kc-lb .lb-btn{position:fixed;top:18px;right:18px;}
-    .kc-lb .lb-prev,.kc-lb .lb-next{position:fixed;top:50%;transform:translateY(-50%);}
-    .kc-lb .lb-prev{left:18px;}
-    .kc-lb .lb-next{right:18px;}
-  </style>
-
-<style>
-@media (max-width: 900px){
-  .nav-dd-menu{
-    position: static !important;
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  .nav-dd.is-open .nav-dd-menu{ display:flex !important; }
-}
-</style>
-
-
-<style>
-/* ==================================================
-   K-Culture Gallery patch
-   - Title: "Gallery" (match Portfolio/Video tone)
-   - Back navigation (same style as Awards/Posters)
-   - Mobile: always show K-Culture submenu (no double-tap)
-   ================================================== */
-
-/* Back Navigation */
-.back-nav{
-  width: min(1100px, 100%);
-  margin: 18px auto 6px;
-  padding: 0 18px;
-}
-.back-link{
-  display: inline-block;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 12px;
-  opacity: .85;
-}
-.back-link::before{ content: "← "; }
-.back-link:hover{ opacity: 1; }
-
-/* Title scale tweak */
-.hero-title--kc{
-  letter-spacing: .02em;
-}
-
-/* Mobile: keep submenu always visible */
-@media (max-width: 900px){
-  .back-nav{ margin: 14px auto 4px; }
-  .back-link{ font-size: 11px; }
-
-  .nav-dd-menu{
-    position: static !important;
-    display: flex !important;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    padding-top: 6px;
-  }
-  .nav-dd-menu .nav-pill{
-    width: 100%;
-    justify-content: flex-start;
-  }
-}
-</style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>K-Culture Gallery · ARA KOREA</title>
+  <meta name="description" content="자연과 의식, 한복, 가면, 움직임과 앙상블을 담은 ARA KOREA의 K-Culture 공연예술 이미지 아카이브입니다.">
+  <meta name="keywords" content="ARA KOREA, K-Culture Gallery, 공연예술, 한복, 가면, 무용, 콘서트, 문화예술 아카이브">
+  <link rel="canonical" href="https://arakorea.org/kculture-gallery">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ARA KOREA">
+  <meta property="og:title" content="K-Culture Gallery · ARA KOREA">
+  <meta property="og:description" content="A visual archive spanning nature, ritual, hanbok, movement and ensemble performance.">
+  <meta property="og:url" content="https://arakorea.org/kculture-gallery">
+  <meta property="og:image" content="https://arakorea.org/images/kc_c1_03.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css?v=20260828">
 </head>
-
-<body>
-  <!-- index와 동일한 헤더/네비 구조 유지 -->
-  <header class="site-header">
-    <div class="brand">
-      <div class="brand-title">ARA KOREA</div>
-      <div class="brand-sub">Immersive K‑Culture · Art Film &amp; Performance</div>
-    </div>
-
-    <nav class="top-nav" aria-label="Primary">
-    <a class="nav-pill" href="index.html">Home</a>
-    <a class="nav-pill" href="about.html">About</a>
-
-    <div class="nav-dd">
-      <a class="nav-pill is-active" href="kculture.html">K‑Culture</a>
-      <div class="nav-dd-menu">
-        <a class="nav-dd-item nav-pill is-active" href="kculture-gallery.html">Gallery</a>
-        <a class="nav-dd-item nav-pill" href="kculture-portfolio.html">Portfolio</a>
-        <a class="nav-dd-item nav-pill" href="kculture-video.html">Video</a>
+<body class="home-page">
+  <a class="home-skip" href="#main-content">본문 바로가기</a>
+  <header class="home-header" data-home-header>
+    <a class="home-brand" href="/" aria-label="ARA KOREA 홈"><span class="home-brand-name">ARA KOREA</span><span class="home-brand-tag" data-i18n="brandTag">Contemporary K-Culture</span></a>
+    <div class="home-header-tools">
+      <nav class="home-nav" id="home-navigation" aria-label="주요 메뉴">
+        <a href="/" data-i18n="navHome">Home</a><a href="/about" data-i18n="navAbout">About</a><a class="is-active" href="/kculture" aria-current="page" data-i18n="navCulture">K-Culture</a><a href="/news" data-i18n="navNews">News</a><a href="/contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="home-language-menu" data-language-menu>
+        <button class="home-language-trigger" type="button" aria-expanded="false" aria-controls="home-language-options"><span data-language-current>KO</span><span class="home-language-chevron" aria-hidden="true">⌄</span></button>
+        <div class="home-language-options" id="home-language-options" role="menu" aria-label="언어 선택">
+          <button type="button" role="menuitemradio" data-lang="ko" aria-checked="true"><span>한국어</span><small>KO</small></button><button type="button" role="menuitemradio" data-lang="en" aria-checked="false"><span>English</span><small>EN</small></button><button type="button" role="menuitemradio" data-lang="ja" aria-checked="false"><span>日本語</span><small>JA</small></button><button type="button" role="menuitemradio" data-lang="zh" aria-checked="false"><span>中文</span><small>ZH</small></button>
+        </div>
       </div>
+      <button class="home-menu-toggle" type="button" aria-expanded="false" aria-controls="home-navigation"><span data-i18n="menu">MENU</span><span class="home-menu-icon" aria-hidden="true"></span></button>
     </div>
-
-    <a class="nav-pill" href="news.html">News</a>
-    <a class="nav-pill" href="contact.html">Contact</a>
-  </nav>
   </header>
 
-  <main class="kc-wrap">
-    <div class="back-nav">
-      <a href="kculture.html" class="back-link">BACK</a>
-    </div>
-    <h1 class="hero-title hero-title--kc" style="margin:8px 0 10px;">Gallery</h1>
-
-    <div class="kc-intro">
-      <p>
-        컨셉별 4개 슬라이더 갤러리입니다. PC에서는 한 줄에 3장, 모바일에서는 1장씩 넘겨보도록 구성했습니다.<br/>
-        이미지를 클릭하면 크게 볼 수 있습니다. (키보드: ← → / ESC)
-      </p>
-    </div>
-
-
-    <section class="kc-section">
-      <div class="kc-head">
-        <h2 class="kc-title">1. Nature / Ritual</h2>
-        <p class="kc-sub">자연·의식의 이미지를 중심으로 구성</p>
+  <main id="main-content">
+    <section class="home-hero" aria-labelledby="gallery-title">
+      <div class="home-hero-copy">
+        <p class="home-kicker" data-i18n="galKicker">LIGHT · BODY · STAGE</p>
+        <h1 id="gallery-title" class="home-title"><span>GALLERY</span><span>K-CULTURE</span></h1>
+        <p class="home-lead"><span class="home-copy-line" data-i18n="galLead1">자연과 의식에서 무대와 앙상블까지,</span><span class="home-copy-line" data-i18n="galLead2">공연의 감각을 이미지로 다시 만납니다.</span></p>
+        <div class="home-actions"><a class="home-action home-action-primary" href="#nature-ritual" data-i18n="galExplore">Explore Images</a><a class="home-action" href="/kculture-video" data-i18n="galWatch">Watch Video</a></div>
       </div>
+      <figure class="home-hero-visual"><img src="images/kc_c1_03.jpg" alt="ARA KOREA K-Culture 공연예술 이미지" fetchpriority="high"><figcaption><span data-i18n="galFigure1">21 Image Archive</span><span data-i18n="galFigure2">Four Visual Themes</span></figcaption></figure>
+      <p class="home-scroll" aria-hidden="true" data-i18n="scroll">SCROLL TO EXPLORE</p>
+    </section>
 
-      <div class="kc-slider" data-slider="s1">
-        <button class="kc-nav kc-prev" type="button" aria-label="Previous">‹</button>
-        <div class="kc-track" tabindex="0" aria-label="1. Nature / Ritual gallery">
-
-          <a class="kc-card js-lb" href="images/kc_c1_01.jpg" data-group="s1">
-            <img src="images/kc_c1_01.jpg" alt="1. Nature / Ritual 1">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c1_02.jpg" data-group="s1">
-            <img src="images/kc_c1_02.jpg" alt="1. Nature / Ritual 2">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c1_03.jpg" data-group="s1">
-            <img src="images/kc_c1_03.jpg" alt="1. Nature / Ritual 3">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c1_04.jpg" data-group="s1">
-            <img src="images/kc_c1_04.jpg" alt="1. Nature / Ritual 4">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c1_05.jpg" data-group="s1">
-            <img src="images/kc_c1_05.jpg" alt="1. Nature / Ritual 5">
-          </a>
-        </div>
-        <button class="kc-nav kc-next" type="button" aria-label="Next">›</button>
+    <section class="home-statement home-reveal" aria-labelledby="gallery-statement-title">
+      <div class="home-section-index" data-i18n="galStatementIndex">01 / VISUAL MEMORY</div>
+      <div class="home-statement-body">
+        <h2 id="gallery-statement-title"><span class="home-statement-desktop"><span data-i18n="galStatement1">사라지는 무대의 순간을 이미지에 담아</span><span data-i18n="galStatement2">시간을 건너 이어지는 감각으로 남깁니다</span></span><span class="home-statement-mobile" data-i18n="galStatementMobile">사라지는 무대의 순간을 이미지에 담아 시간을 건너 이어지는 감각으로 남깁니다</span></h2>
+        <p data-i18n="galStatementBody">공연 사진은 한 장면의 형태를 넘어 소리의 밀도, 움직임의 방향, 빛이 머문 시간을 함께 기록합니다. 네 가지 주제로 구성된 이 갤러리는 ARA KOREA의 창작 언어와 공연의 흐름을 서로 다른 시선으로 연결합니다.</p>
       </div>
     </section>
 
-
-    <section class="kc-section">
-      <div class="kc-head">
-        <h2 class="kc-title">2. Vocal / Hanbok</h2>
-        <p class="kc-sub">보컬·한복의 질감과 호흡</p>
-      </div>
-
-      <div class="kc-slider" data-slider="s2">
-        <button class="kc-nav kc-prev" type="button" aria-label="Previous">‹</button>
-        <div class="kc-track" tabindex="0" aria-label="2. Vocal / Hanbok gallery">
-
-          <a class="kc-card js-lb" href="images/kc_c2_01.jpg" data-group="s2">
-            <img src="images/kc_c2_01.jpg" alt="2. Vocal / Hanbok 1">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c2_02.jpg" data-group="s2">
-            <img src="images/kc_c2_02.jpg" alt="2. Vocal / Hanbok 2">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c2_03.jpg" data-group="s2">
-            <img src="images/kc_c2_03.jpg" alt="2. Vocal / Hanbok 3">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c2_04.jpg" data-group="s2">
-            <img src="images/kc_c2_04.jpg" alt="2. Vocal / Hanbok 4">
-          </a>
-        </div>
-        <button class="kc-nav kc-next" type="button" aria-label="Next">›</button>
+    <section class="home-culture" id="nature-ritual" aria-labelledby="nature-title">
+      <div class="home-section-heading home-reveal"><div><div class="home-section-index" data-i18n="galNatureIndex">02 / NATURE · RITUAL</div><h2 id="nature-title" data-i18n="galNatureTitle">Nature / Ritual</h2></div><p><span data-i18n="galNatureIntro1">자연의 형상과 의식의 몸짓이 교차하며</span><span data-i18n="galNatureIntro2">공연의 원형적 이미지를 구성합니다.</span></p></div>
+      <div class="kc-grid">
+        <a class="kc-card home-reveal" href="/images/kc_c1_01.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c1_01.jpg" alt="Nature and Ritual 공연 이미지 1" loading="lazy"><span class="kc-label">NATURE / RITUAL · 01</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c1_02.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c1_02.jpg" alt="Nature and Ritual 공연 이미지 2" loading="lazy"><span class="kc-label">NATURE / RITUAL · 02</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c1_03.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c1_03.jpg" alt="Nature and Ritual 공연 이미지 3" loading="lazy"><span class="kc-label">NATURE / RITUAL · 03</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c1_04.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c1_04.jpg" alt="Nature and Ritual 공연 이미지 4" loading="lazy"><span class="kc-label">NATURE / RITUAL · 04</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c1_05.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c1_05.jpg" alt="Nature and Ritual 공연 이미지 5" loading="lazy"><span class="kc-label">NATURE / RITUAL · 05</span></a>
       </div>
     </section>
 
-
-    <section class="kc-section">
-      <div class="kc-head">
-        <h2 class="kc-title">3. Mask / Movement</h2>
-        <p class="kc-sub">가면·움직임·무대의 리듬</p>
-      </div>
-
-      <div class="kc-slider" data-slider="s3">
-        <button class="kc-nav kc-prev" type="button" aria-label="Previous">‹</button>
-        <div class="kc-track" tabindex="0" aria-label="3. Mask / Movement gallery">
-
-          <a class="kc-card js-lb" href="images/kc_c3_01.jpg" data-group="s3">
-            <img src="images/kc_c3_01.jpg" alt="3. Mask / Movement 1">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c3_02.jpg" data-group="s3">
-            <img src="images/kc_c3_02.jpg" alt="3. Mask / Movement 2">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c3_03.jpg" data-group="s3">
-            <img src="images/kc_c3_03.jpg" alt="3. Mask / Movement 3">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c3_04.jpg" data-group="s3">
-            <img src="images/kc_c3_04.jpg" alt="3. Mask / Movement 4">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c3_05.jpg" data-group="s3">
-            <img src="images/kc_c3_05.jpg" alt="3. Mask / Movement 5">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c3_06.jpg" data-group="s3">
-            <img src="images/kc_c3_06.jpg" alt="3. Mask / Movement 6">
-          </a>
-        </div>
-        <button class="kc-nav kc-next" type="button" aria-label="Next">›</button>
+    <section class="home-culture" aria-labelledby="vocal-title">
+      <div class="home-section-heading home-reveal"><div><div class="home-section-index" data-i18n="galVocalIndex">03 / VOCAL · HANBOK</div><h2 id="vocal-title" data-i18n="galVocalTitle">Vocal / Hanbok</h2></div><p><span data-i18n="galVocalIntro1">목소리의 호흡과 한복의 선이 만나</span><span data-i18n="galVocalIntro2">고유한 색채와 움직임을 펼쳐냅니다.</span></p></div>
+      <div class="kc-grid">
+        <a class="kc-card home-reveal" href="/images/kc_c2_01.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c2_01.jpg" alt="Vocal and Hanbok 공연 이미지 1" loading="lazy"><span class="kc-label">VOCAL / HANBOK · 01</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c2_02.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c2_02.jpg" alt="Vocal and Hanbok 공연 이미지 2" loading="lazy"><span class="kc-label">VOCAL / HANBOK · 02</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c2_03.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c2_03.jpg" alt="Vocal and Hanbok 공연 이미지 3" loading="lazy"><span class="kc-label">VOCAL / HANBOK · 03</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c2_04.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c2_04.jpg" alt="Vocal and Hanbok 공연 이미지 4" loading="lazy"><span class="kc-label">VOCAL / HANBOK · 04</span></a>
       </div>
     </section>
 
-
-    <section class="kc-section">
-      <div class="kc-head">
-        <h2 class="kc-title">4. Concert / Ensemble</h2>
-        <p class="kc-sub">콘서트·앙상블의 장면</p>
-      </div>
-
-      <div class="kc-slider" data-slider="s4">
-        <button class="kc-nav kc-prev" type="button" aria-label="Previous">‹</button>
-        <div class="kc-track" tabindex="0" aria-label="4. Concert / Ensemble gallery">
-
-          <a class="kc-card js-lb" href="images/kc_c4_01.jpg" data-group="s4">
-            <img src="images/kc_c4_01.jpg" alt="4. Concert / Ensemble 1">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c4_02.jpg" data-group="s4">
-            <img src="images/kc_c4_02.jpg" alt="4. Concert / Ensemble 2">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c4_03.jpg" data-group="s4">
-            <img src="images/kc_c4_03.jpg" alt="4. Concert / Ensemble 3">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c4_04.jpg" data-group="s4">
-            <img src="images/kc_c4_04.jpg" alt="4. Concert / Ensemble 4">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c4_05.jpg" data-group="s4">
-            <img src="images/kc_c4_05.jpg" alt="4. Concert / Ensemble 5">
-          </a>
-
-          <a class="kc-card js-lb" href="images/kc_c4_06.jpg" data-group="s4">
-            <img src="images/kc_c4_06.jpg" alt="4. Concert / Ensemble 6">
-          </a>
-        </div>
-        <button class="kc-nav kc-next" type="button" aria-label="Next">›</button>
+    <section class="home-culture" aria-labelledby="mask-title">
+      <div class="home-section-heading home-reveal"><div><div class="home-section-index" data-i18n="galMaskIndex">04 / MASK · MOVEMENT</div><h2 id="mask-title" data-i18n="galMaskTitle">Mask / Movement</h2></div><p><span data-i18n="galMaskIntro1">가면과 신체가 서로 다른 표정을 만들며</span><span data-i18n="galMaskIntro2">무대의 리듬과 긴장을 변화시킵니다.</span></p></div>
+      <div class="kc-grid">
+        <a class="kc-card home-reveal" href="/images/kc_c3_01.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c3_01.jpg" alt="Mask and Movement 공연 이미지 1" loading="lazy"><span class="kc-label">MASK / MOVEMENT · 01</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c3_02.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c3_02.jpg" alt="Mask and Movement 공연 이미지 2" loading="lazy"><span class="kc-label">MASK / MOVEMENT · 02</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c3_03.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c3_03.jpg" alt="Mask and Movement 공연 이미지 3" loading="lazy"><span class="kc-label">MASK / MOVEMENT · 03</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c3_04.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c3_04.jpg" alt="Mask and Movement 공연 이미지 4" loading="lazy"><span class="kc-label">MASK / MOVEMENT · 04</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c3_05.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c3_05.jpg" alt="Mask and Movement 공연 이미지 5" loading="lazy"><span class="kc-label">MASK / MOVEMENT · 05</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c3_06.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c3_06.jpg" alt="Mask and Movement 공연 이미지 6" loading="lazy"><span class="kc-label">MASK / MOVEMENT · 06</span></a>
       </div>
     </section>
 
+    <section class="home-culture" aria-labelledby="concert-title">
+      <div class="home-section-heading home-reveal"><div><div class="home-section-index" data-i18n="galConcertIndex">05 / CONCERT · ENSEMBLE</div><h2 id="concert-title" data-i18n="galConcertTitle">Concert / Ensemble</h2></div><p><span data-i18n="galConcertIntro1">연주자와 무대, 관객의 시간이 모여</span><span data-i18n="galConcertIntro2">하나의 음악적 장면을 완성합니다.</span></p></div>
+      <div class="kc-grid">
+        <a class="kc-card home-reveal" href="/images/kc_c4_01.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c4_01.jpg" alt="Concert and Ensemble 공연 이미지 1" loading="lazy"><span class="kc-label">CONCERT / ENSEMBLE · 01</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c4_02.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c4_02.jpg" alt="Concert and Ensemble 공연 이미지 2" loading="lazy"><span class="kc-label">CONCERT / ENSEMBLE · 02</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c4_03.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c4_03.jpg" alt="Concert and Ensemble 공연 이미지 3" loading="lazy"><span class="kc-label">CONCERT / ENSEMBLE · 03</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c4_04.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c4_04.jpg" alt="Concert and Ensemble 공연 이미지 4" loading="lazy"><span class="kc-label">CONCERT / ENSEMBLE · 04</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c4_05.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c4_05.jpg" alt="Concert and Ensemble 공연 이미지 5" loading="lazy"><span class="kc-label">CONCERT / ENSEMBLE · 05</span></a>
+        <a class="kc-card home-reveal" href="/images/kc_c4_06.jpg" target="_blank" rel="noopener noreferrer"><img src="images/kc_c4_06.jpg" alt="Concert and Ensemble 공연 이미지 6" loading="lazy"><span class="kc-label">CONCERT / ENSEMBLE · 06</span></a>
+      </div>
+    </section>
+
+    <section class="home-connections" aria-labelledby="gallery-connections-title">
+      <div class="home-section-heading home-reveal"><div><div class="home-section-index" data-i18n="galConnectionsIndex">06 / EXPLORE MORE</div><h2 id="gallery-connections-title" data-i18n="galConnectionsTitle">Across the Archive</h2></div></div>
+      <div class="home-connection-list">
+        <a class="home-connection home-reveal" href="/kculture"><span class="home-connection-number">01</span><strong data-i18n="galCultureTitle">K-CULTURE</strong><span data-i18n="galCultureBody">Performance · Art Film · Archive</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="/kculture-portfolio"><span class="home-connection-number">02</span><strong data-i18n="galPortfolioTitle">PORTFOLIO</strong><span data-i18n="galPortfolioBody">Awards · Messages · Posters</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="/kculture-video"><span class="home-connection-number">03</span><strong data-i18n="galVideoTitle">VIDEO ARCHIVE</strong><span data-i18n="galVideoBody">Sound · Movement · Moving Image</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-head">ARA KOREA</div>
-        <div class="footer-text">Immersive K‑Culture · Art Film &amp; Performance</div>
-      </div>
-      <div>
-        <div class="footer-head">Contact</div>
-        <div class="footer-text">info@akenm.com</div>
-        <div class="footer-text">02-400-7151</div>
-      </div>
-      <div>
-        <div>
-        <div class="footer-head">Social</div>
-        <div class="footer-text">
-          <a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> ·
-          <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> ·
-          <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">© 2025 ARA KOREA Space Art Project</div>
+  <footer class="home-footer">
+    <div class="home-footer-top"><div><p class="home-footer-label" data-i18n="footerContact">CONTACT</p><a href="mailto:info@akenm.com">info@akenm.com</a><a href="tel:+8224007151">02-400-7151</a></div><div><p class="home-footer-label" data-i18n="footerSocial">SOCIAL</p><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div><p class="home-footer-mark" aria-label="ARA KOREA">AK</p></div>
+    <div class="home-footer-bottom"><span>© ARA KOREA Space Art Project</span><a href="#main-content" data-i18n="backTop">Back to top ↑</a></div>
   </footer>
 
-  <!-- Lightbox -->
-  <div class="kc-lb" id="kcLb" aria-hidden="true">
-    <button class="btn btn-ghost lb-btn" type="button" id="kcLbClose">Close ✕</button>
-    <button class="btn btn-ghost lb-prev" type="button" id="kcLbPrev">←</button>
-    <figure><img id="kcLbImg" alt="Expanded view"/></figure>
-    <button class="btn btn-ghost lb-next" type="button" id="kcLbNext">→</button>
-  </div>
-
-  <script>
-    // Slider buttons
-    (function(){
-      const sliders = document.querySelectorAll('.kc-slider');
-      sliders.forEach(sl => {
-        const track = sl.querySelector('.kc-track');
-        const prev = sl.querySelector('.kc-prev');
-        const next = sl.querySelector('.kc-next');
-        if(!track || !prev || !next) return;
-
-        const step = () => track.clientWidth * 0.92; // one "page"
-        prev.addEventListener('click', () => track.scrollBy({left: -step(), behavior:'smooth'}));
-        next.addEventListener('click', () => track.scrollBy({left:  step(), behavior:'smooth'}));
-      });
-    })();
-
-    // Lightbox for all images (grouped per slider)
-    (function(){
-      const links = Array.from(document.querySelectorAll('a.js-lb'));
-      const lb = document.getElementById('kcLb');
-      const img = document.getElementById('kcLbImg');
-      const close = document.getElementById('kcLbClose');
-      const prev = document.getElementById('kcLbPrev');
-      const next = document.getElementById('kcLbNext');
-      if(!links.length) return;
-
-      let group = '';
-      let groupLinks = [];
-      let i = 0;
-
-      const setGroup = (g) => {
-        group = g;
-        groupLinks = links.filter(a => a.dataset.group === g);
-      };
-
-      const openAt = (idx) => {
-        i = idx;
-        img.src = groupLinks[i].getAttribute('href');
-        lb.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      };
-
-      const closeLb = () => {
-        lb.classList.remove('open');
-        document.body.style.overflow = '';
-        img.src = '';
-      };
-
-      const prevImg = () => openAt((i - 1 + groupLinks.length) % groupLinks.length);
-      const nextImg = () => openAt((i + 1) % groupLinks.length);
-
-      links.forEach(a => {
-        a.addEventListener('click', (e) => {
-          e.preventDefault();
-          const g = a.dataset.group || '';
-          setGroup(g);
-          openAt(groupLinks.indexOf(a));
-        });
-      });
-
-      close.addEventListener('click', closeLb);
-      lb.addEventListener('click', (e) => { if(e.target === lb) closeLb(); });
-      prev.addEventListener('click', prevImg);
-      next.addEventListener('click', nextImg);
-
-      window.addEventListener('keydown', (e) => {
-        if(!lb.classList.contains('open')) return;
-        if(e.key === 'Escape') closeLb();
-        if(e.key === 'ArrowLeft') prevImg();
-        if(e.key === 'ArrowRight') nextImg();
-      });
-    })();
-  </script>
-<script>
-(function(){
-  const dd = document.querySelector('[data-dd]');
-  if(!dd) return;
-  const trigger = dd.querySelector('[data-dd-trigger]');
-  const menu = dd.querySelector('[data-dd-menu]');
-  if(!trigger || !menu) return;
-
-  const isTouch = window.matchMedia && window.matchMedia('(hover: none)').matches;
-
-  if(isTouch){
-    trigger.addEventListener('click', (e) => {
-      if(!dd.classList.contains('is-open')){
-        e.preventDefault();
-        dd.classList.add('is-open');
-        trigger.setAttribute('aria-expanded','true');
-      }
-    });
-
-    document.addEventListener('click', (e) => {
-      if(!dd.contains(e.target)){
-        dd.classList.remove('is-open');
-        trigger.setAttribute('aria-expanded','false');
-      }
-    });
+  <script type="application/json" id="page-translations">
+  {
+    "ko":{"title":"K-Culture Gallery · ARA KOREA","description":"자연과 의식, 한복, 가면, 움직임과 앙상블을 담은 ARA KOREA의 K-Culture 공연예술 이미지 아카이브입니다.","galKicker":"LIGHT · BODY · STAGE","galLead1":"자연과 의식에서 무대와 앙상블까지,","galLead2":"공연의 감각을 이미지로 다시 만납니다.","galExplore":"Explore Images","galWatch":"Watch Video","galFigure1":"21 Image Archive","galFigure2":"Four Visual Themes","galStatementIndex":"01 / VISUAL MEMORY","galStatement1":"사라지는 무대의 순간을 이미지에 담아","galStatement2":"시간을 건너 이어지는 감각으로 남깁니다","galStatementMobile":"사라지는 무대의 순간을 이미지에 담아 시간을 건너 이어지는 감각으로 남깁니다","galStatementBody":"공연 사진은 한 장면의 형태를 넘어 소리의 밀도, 움직임의 방향, 빛이 머문 시간을 함께 기록합니다. 네 가지 주제로 구성된 이 갤러리는 ARA KOREA의 창작 언어와 공연의 흐름을 서로 다른 시선으로 연결합니다.","galNatureIndex":"02 / NATURE · RITUAL","galNatureTitle":"Nature / Ritual","galNatureIntro1":"자연의 형상과 의식의 몸짓이 교차하며","galNatureIntro2":"공연의 원형적 이미지를 구성합니다.","galVocalIndex":"03 / VOCAL · HANBOK","galVocalTitle":"Vocal / Hanbok","galVocalIntro1":"목소리의 호흡과 한복의 선이 만나","galVocalIntro2":"고유한 색채와 움직임을 펼쳐냅니다.","galMaskIndex":"04 / MASK · MOVEMENT","galMaskTitle":"Mask / Movement","galMaskIntro1":"가면과 신체가 서로 다른 표정을 만들며","galMaskIntro2":"무대의 리듬과 긴장을 변화시킵니다.","galConcertIndex":"05 / CONCERT · ENSEMBLE","galConcertTitle":"Concert / Ensemble","galConcertIntro1":"연주자와 무대, 관객의 시간이 모여","galConcertIntro2":"하나의 음악적 장면을 완성합니다.","galConnectionsIndex":"06 / EXPLORE MORE","galConnectionsTitle":"Across the Archive","galCultureTitle":"K-CULTURE","galCultureBody":"Performance · Art Film · Archive","galPortfolioTitle":"PORTFOLIO","galPortfolioBody":"Awards · Messages · Posters","galVideoTitle":"VIDEO ARCHIVE","galVideoBody":"Sound · Movement · Moving Image"},
+    "en":{"title":"K-Culture Gallery · ARA KOREA","description":"ARA KOREA’s visual performance archive spanning nature, ritual, hanbok, movement and ensemble.","galKicker":"LIGHT · BODY · STAGE","galLead1":"From nature and ritual to stage and ensemble,","galLead2":"we encounter the sensibility of performance through images.","galExplore":"Explore Images","galWatch":"Watch Video","galFigure1":"21 Image Archive","galFigure2":"Four Visual Themes","galStatementIndex":"01 / VISUAL MEMORY","galStatement1":"Holding the fleeting moment of performance within an image,","galStatement2":"we preserve a sensibility that continues across time.","galStatementMobile":"Holding the fleeting moment of performance within an image, we preserve a sensibility that continues across time.","galStatementBody":"Performance photography records more than the shape of a scene. It holds the density of sound, the direction of movement and the time inhabited by light. Organized around four themes, this gallery connects the creative language and performance history of ARA KOREA through distinct perspectives.","galNatureIndex":"02 / NATURE · RITUAL","galNatureTitle":"Nature / Ritual","galNatureIntro1":"Natural forms and ritual gestures intersect","galNatureIntro2":"to shape the archetypal imagery of performance.","galVocalIndex":"03 / VOCAL · HANBOK","galVocalTitle":"Vocal / Hanbok","galVocalIntro1":"Vocal breath meets the lines of hanbok","galVocalIntro2":"to unfold distinctive color and movement.","galMaskIndex":"04 / MASK · MOVEMENT","galMaskTitle":"Mask / Movement","galMaskIntro1":"Mask and body create shifting expressions","galMaskIntro2":"that transform the rhythm and tension of the stage.","galConcertIndex":"05 / CONCERT · ENSEMBLE","galConcertTitle":"Concert / Ensemble","galConcertIntro1":"Performers, stage and audience share one field of time","galConcertIntro2":"to complete a musical scene.","galConnectionsIndex":"06 / EXPLORE MORE","galConnectionsTitle":"Across the Archive","galCultureTitle":"K-CULTURE","galCultureBody":"Performance · Art Film · Archive","galPortfolioTitle":"PORTFOLIO","galPortfolioBody":"Awards · Messages · Posters","galVideoTitle":"VIDEO ARCHIVE","galVideoBody":"Sound · Movement · Moving Image"},
+    "ja":{"title":"Kカルチャー・ギャラリー · ARA KOREA","description":"自然、儀式、韓服、動き、アンサンブルを収めたARA KOREAの舞台芸術イメージ・アーカイブです。","galKicker":"光 · 身体 · 舞台","galLead1":"自然と儀式から舞台とアンサンブルまで、","galLead2":"舞台の感覚をイメージでもう一度体験します。","galExplore":"イメージを見る","galWatch":"映像を見る","galFigure1":"21点のイメージ","galFigure2":"四つの視覚テーマ","galStatementIndex":"01 / 視覚の記憶","galStatement1":"消えゆく舞台の瞬間をイメージに収め、","galStatement2":"時を越えて続く感覚として残します。","galStatementMobile":"消えゆく舞台の瞬間をイメージに収め、時を越えて続く感覚として残します。","galStatementBody":"舞台写真は一場面の形だけでなく、音の密度、動きの方向、光がとどまった時間を記録します。四つのテーマで構成された本ギャラリーは、ARA KOREAの創作言語と舞台の流れを異なる視点から結びます。","galNatureIndex":"02 / 自然 · 儀式","galNatureTitle":"自然 / 儀式","galNatureIntro1":"自然の形と儀式の身振りが交差し、","galNatureIntro2":"舞台の原型的なイメージを形づくります。","galVocalIndex":"03 / 声 · 韓服","galVocalTitle":"声 / 韓服","galVocalIntro1":"声の呼吸と韓服の線が出会い、","galVocalIntro2":"固有の色彩と動きをひらきます。","galMaskIndex":"04 / 仮面 · 動き","galMaskTitle":"仮面 / 動き","galMaskIntro1":"仮面と身体が異なる表情を生み、","galMaskIntro2":"舞台のリズムと緊張を変化させます。","galConcertIndex":"05 / コンサート · アンサンブル","galConcertTitle":"コンサート / アンサンブル","galConcertIntro1":"演奏者、舞台、観客の時間が集まり、","galConcertIntro2":"一つの音楽的な場面を完成させます。","galConnectionsIndex":"06 / さらに見る","galConnectionsTitle":"アーカイブを横断する","galCultureTitle":"Kカルチャー","galCultureBody":"舞台 · アートフィルム · アーカイブ","galPortfolioTitle":"ポートフォリオ","galPortfolioBody":"受賞 · 祝辞 · ポスター","galVideoTitle":"映像アーカイブ","galVideoBody":"音 · 動き · 映像"},
+    "zh":{"title":"韩国文化画廊 · ARA KOREA","description":"收录自然、仪式、韩服、动作与合奏场景的ARA KOREA表演艺术影像档案。","galKicker":"光线 · 身体 · 舞台","galLead1":"从自然与仪式到舞台与合奏，","galLead2":"通过影像再次进入表演的感知。","galExplore":"浏览影像","galWatch":"观看视频","galFigure1":"21幅影像档案","galFigure2":"四个视觉主题","galStatementIndex":"01 / 视觉记忆","galStatement1":"将转瞬即逝的舞台时刻收进影像，","galStatement2":"保留跨越时间持续延伸的感知。","galStatementMobile":"将转瞬即逝的舞台时刻收进影像，保留跨越时间持续延伸的感知。","galStatementBody":"演出摄影记录的不只是场景的形态，还承载声音的密度、动作的方向与光线停留的时间。本画廊以四个主题连接ARA KOREA的创作语言与演出脉络，呈现彼此不同的观看视角。","galNatureIndex":"02 / 自然 · 仪式","galNatureTitle":"自然 / 仪式","galNatureIntro1":"自然形态与仪式动作彼此交汇，","galNatureIntro2":"构成表演中具有原型感的影像。","galVocalIndex":"03 / 声音 · 韩服","galVocalTitle":"声音 / 韩服","galVocalIntro1":"声音的呼吸与韩服的线条相遇，","galVocalIntro2":"展开独特的色彩与动作。","galMaskIndex":"04 / 面具 · 动作","galMaskTitle":"面具 / 动作","galMaskIntro1":"面具与身体创造不同的表情，","galMaskIntro2":"改变舞台的节奏与张力。","galConcertIndex":"05 / 音乐会 · 合奏","galConcertTitle":"音乐会 / 合奏","galConcertIntro1":"演奏者、舞台与观众的时间汇聚，","galConcertIntro2":"共同完成一个音乐场景。","galConnectionsIndex":"06 / 延伸探索","galConnectionsTitle":"穿行于档案之间","galCultureTitle":"韩国文化","galCultureBody":"表演 · 艺术电影 · 档案","galPortfolioTitle":"作品档案","galPortfolioBody":"奖项 · 贺词 · 海报","galVideoTitle":"影像档案","galVideoBody":"声音 · 动作 · 动态影像"}
   }
-
-  document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape'){
-      dd.classList.remove('is-open');
-      trigger.setAttribute('aria-expanded','false');
-    }
-  });
-})();
-</script>
-
-<script>
-(function(){
-  function isMobile(){ return window.matchMedia('(max-width: 900px)').matches; }
-  const dd = document.querySelector('.nav-dd');
-  if(!dd) return;
-  const trigger = dd.querySelector('.nav-pill');
-  const menu = dd.querySelector('.nav-dd-menu');
-  if(!trigger || !menu) return;
-
-  trigger.addEventListener('click', function(e){
-    if(!isMobile()) return;
-    e.preventDefault();
-    dd.classList.toggle('is-open');
-  });
-
-  document.addEventListener('click', function(e){
-    if(!isMobile()) return;
-    if(!dd.contains(e.target)) dd.classList.remove('is-open');
-  });
-})();
-</script>
-
+  </script>
+  <script src="site.js?v=20260827-2" defer></script>
 </body>
 </html>

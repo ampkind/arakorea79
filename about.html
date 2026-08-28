@@ -1,53 +1,99 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>About · ARA KOREA</title>
-<link href="styles.css?v=20251219095614" rel="stylesheet"/>
-<link href="styles_mobile_about_patch.css" rel="stylesheet" media="(max-width: 980px)"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About · ARA KOREA</title>
+  <meta name="description" content="한국 문화의 기억을 공연, 예술영화, 사운드, 무용과 미디어아트로 확장하는 ARA KOREA의 창작 철학과 여정을 소개합니다.">
+  <meta name="keywords" content="ARA KOREA, 아라코리아, WOOSOOZOO, 우수주, 공연예술, 예술영화, 미디어아트, K-Culture">
+  <link rel="canonical" href="https://arakorea.org/about">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ARA KOREA">
+  <meta property="og:title" content="About · ARA KOREA">
+  <meta property="og:description" content="Memory, sound, movement and image—discover the creative language of ARA KOREA.">
+  <meta property="og:url" content="https://arakorea.org/about">
+  <meta property="og:image" content="https://arakorea.org/images/og-arakorea-kakao.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css?v=20260827">
 </head>
-<body class="about-page">
-<header class="site-header">
-<div class="brand">
-<div class="brand-title">ARA KOREA</div>
-<div class="brand-sub">Immersive K‑Culture · Art Film &amp; Performance</div>
-</div>
-<nav aria-label="Primary" class="top-nav"><a class="nav-pill" href="index.html">Home</a><a class="nav-pill is-active" href="about.html">About</a><div class="nav-dd"><a class="nav-pill" href="kculture.html">K‑Culture</a><div class="nav-dd-menu"><a class="nav-dd-item nav-pill" href="kculture-gallery.html">Gallery</a><a class="nav-dd-item nav-pill" href="kculture-portfolio.html">Portfolio</a><a class="nav-dd-item nav-pill" href="kculture-video.html">Video</a></div></div><a class="nav-pill" href="news.html">News</a><a class="nav-pill" href="contact.html">Contact</a></nav>
-</header>
-<main class="page">
-<section class="section" style="padding-top:10px;">
-<div class="section-head">
-<h1 class="hero-title" style="font-size:54px; margin:0;">About<br><span class="nowrap">ARA KOREA</span></h1>
-<p class="hero-desc" style="max-width: 900px; margin-top:10px;">WOOSOOZOO는 637년에 기록된 춘천의 옛 지명 ‘우수주’를 출발점으로, 이를 현대 예술 언어로 재해석하는 프로젝트 시리즈입니다.<br>2018년 첫 무대 이후, ‘우수주’라는 이름이 지닌 음성적 질감과 공간적 기억을 음악을 중심으로 지속적으로 탐구해 오고 있습니다.</p>
-</div>
-<div class="hero-media" style="margin-top:14px; margin-bottom:16px;">
-<div class="media-frame" style="aspect-ratio: 16/9;">
-<iframe allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/3UhGyFxWqmE?rel=0&amp;modestbranding=1" title="About video"></iframe>
-</div>
-</div>
+<body class="home-page">
+  <a class="home-skip" href="#main-content">본문 바로가기</a>
+  <header class="home-header" data-home-header>
+    <a class="home-brand" href="/" aria-label="ARA KOREA 홈"><span class="home-brand-name">ARA KOREA</span><span class="home-brand-tag" data-i18n="brandTag">Contemporary K-Culture</span></a>
+    <div class="home-header-tools">
+      <nav class="home-nav" id="home-navigation" aria-label="주요 메뉴">
+        <a href="/" data-i18n="navHome">Home</a><a class="is-active" href="/about" aria-current="page" data-i18n="navAbout">About</a><a href="/kculture" data-i18n="navCulture">K-Culture</a><a href="/news" data-i18n="navNews">News</a><a href="/contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="home-language-menu" data-language-menu>
+        <button class="home-language-trigger" type="button" aria-expanded="false" aria-controls="home-language-options"><span data-language-current>KO</span><span class="home-language-chevron" aria-hidden="true">⌄</span></button>
+        <div class="home-language-options" id="home-language-options" role="menu" aria-label="언어 선택">
+          <button type="button" role="menuitemradio" data-lang="ko" aria-checked="true"><span>한국어</span><small>KO</small></button><button type="button" role="menuitemradio" data-lang="en" aria-checked="false"><span>English</span><small>EN</small></button><button type="button" role="menuitemradio" data-lang="ja" aria-checked="false"><span>日本語</span><small>JA</small></button><button type="button" role="menuitemradio" data-lang="zh" aria-checked="false"><span>中文</span><small>ZH</small></button>
+        </div>
+      </div>
+      <button class="home-menu-toggle" type="button" aria-expanded="false" aria-controls="home-navigation"><span data-i18n="menu">MENU</span><span class="home-menu-icon" aria-hidden="true"></span></button>
+    </div>
+  </header>
 
-<p class="hero-desc" style="max-width: 900px;">ARA KOREA의 작업은 전통과 현대를 구분하는 경계에서 출발하지 않습니다. 국악과 현대 음악, 퍼포먼스와 영상, 신체와 공간은 서로를 설명하기 위한 요소가 아니라 동시에 존재하며 하나의 시간과 장면을 형성합니다.</p>
-</section>
-</main>
-<footer class="site-footer">
-<div class="footer-grid">
-<div>
-<div class="footer-head">Contact</div>
-<div class="footer-text">E‑mail: info@akenm.com</div>
-<div class="footer-text">Tel: 02‑400‑7151</div>
-</div>
-<div>
-<div class="footer-head">Social</div>
-<div class="footer-text"><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div>
-</div>
-<div>
-<div class="footer-head">Shop</div>
-<div class="footer-text"><a href="https://arakorea.shop" target="_blank" rel="noopener noreferrer">ARAKOREA.SHOP</a></div>
-</div>
-</div>
-<div class="footer-bottom">© ARA KOREA Space Art Project</div>
-</footer>
+  <main id="main-content">
+    <section class="home-hero" aria-labelledby="about-title">
+      <div class="home-hero-copy">
+        <p class="home-kicker" data-i18n="aboutKicker">MEMORY · CULTURE · CONTEMPORARY ART</p>
+        <h1 id="about-title" class="home-title"><span>ABOUT</span><span>ARA KOREA</span></h1>
+        <p class="home-lead"><span class="home-copy-line" data-i18n="aboutLead1">한국 문화의 기억에서 출발해,</span><span class="home-copy-line" data-i18n="aboutLead2">무대와 영상 사이에 새로운 감각의 장면을 설계합니다.</span></p>
+        <div class="home-actions"><a class="home-action home-action-primary" href="/kculture" data-i18n="aboutExplore">Explore K-Culture</a><a class="home-action" href="/contact" data-i18n="aboutContact">Contact</a></div>
+      </div>
+      <figure class="home-hero-visual"><img src="images/highlight-2.jpg" alt="ARA KOREA 공연예술 프로젝트 장면" fetchpriority="high"><figcaption><span data-i18n="aboutFigure1">Creative Archive</span><span data-i18n="aboutFigure2">Memory · Sound · Movement</span></figcaption></figure>
+      <p class="home-scroll" aria-hidden="true" data-i18n="scroll">SCROLL TO EXPLORE</p>
+    </section>
+
+    <section class="home-statement home-reveal" aria-labelledby="origin-title">
+      <div class="home-section-index" data-i18n="aboutOriginIndex">01 / ORIGIN</div>
+      <div class="home-statement-body">
+        <h2 id="origin-title"><span class="home-statement-desktop"><span data-i18n="aboutOriginLine1">오래된 지명의 기억에서 출발해</span><span data-i18n="aboutOriginLine2">오늘의 예술 언어로 확장합니다</span></span><span class="home-statement-mobile" data-i18n="aboutOriginMobile">오래된 지명의 기억에서 출발해 오늘의 예술 언어로 확장합니다</span></h2>
+        <p data-i18n="aboutOriginBody">WOOSOOZOO는 637년에 기록된 춘천의 옛 지명 ‘우수주’에서 출발한 ARA KOREA의 장기 프로젝트입니다. 2018년 첫 무대 이후, 이름이 품은 음성적 질감과 지역의 기억을 음악·무용·영상의 교차점에서 탐구해 왔습니다.</p>
+      </div>
+    </section>
+
+    <section class="home-culture" aria-labelledby="language-title">
+      <div class="home-section-heading home-reveal">
+        <div><div class="home-section-index" data-i18n="aboutLanguageIndex">02 / CREATIVE LANGUAGE</div><h2 id="language-title" data-i18n="aboutLanguageTitle">One Space, Three Senses</h2></div>
+        <p><span data-i18n="aboutLanguageIntro1">소리와 움직임, 이미지가 서로를 연결하며</span><span data-i18n="aboutLanguageIntro2">하나의 시공간을 구성합니다.</span></p>
+      </div>
+      <div class="home-culture-grid">
+        <article class="home-culture-card home-culture-card-wide home-reveal"><div class="home-card-image"><img src="images/kc_c1_03.jpg" alt="ARA KOREA 사운드와 미디어아트 장면" loading="lazy"></div><div class="home-card-meta"><span>01</span><h3>SOUND</h3><span class="home-card-arrow" aria-hidden="true">+</span></div><p data-i18n="aboutSound">전통의 음색과 전자음향을 연결해 공간의 시간과 정서를 구축합니다.</p></article>
+        <article class="home-culture-card home-culture-card-tall home-reveal"><div class="home-card-image"><img src="images/highlight-1.jpg" alt="ARA KOREA 무용 공연 장면" loading="lazy"></div><div class="home-card-meta"><span>02</span><h3>MOVEMENT</h3><span class="home-card-arrow" aria-hidden="true">+</span></div><p data-i18n="aboutMovement">신체의 흐름을 통해 상징과 서사가 살아 있는 장면으로 전환됩니다.</p></article>
+        <article class="home-culture-card home-culture-card-full home-reveal"><div class="home-card-image"><img src="images/highlight-3.jpg" alt="ARA KOREA 영상과 빛의 장면" loading="lazy"></div><div class="home-card-meta"><span>03</span><h3>IMAGE</h3><span class="home-card-arrow" aria-hidden="true">+</span></div><p data-i18n="aboutImage">빛과 영상, 오브제가 무대의 감각을 확장하며 새로운 시각적 기억을 남깁니다.</p></article>
+      </div>
+    </section>
+
+    <section class="home-feature home-reveal" aria-labelledby="woosoozoo-title">
+      <div class="home-feature-image"><img src="images/kc_gallery_07.jpg" alt="WOOSOOZOO 프로젝트의 공연 장면" loading="lazy"></div>
+      <div class="home-feature-copy"><div class="home-section-index" data-i18n="aboutProjectIndex">03 / LONG-TERM PROJECT</div><p class="home-feature-type" data-i18n="aboutProjectType">FROM 2018 TO THE PRESENT</p><h2 id="woosoozoo-title">WOOSOOZOO</h2><p data-i18n="aboutProjectBody">한국 문화의 상징과 서사는 공연, 예술영화, 미디어아트로 이어집니다. 축적된 장면은 다음 창작을 위한 자원이 되어 새로운 해석과 국제적 교류를 연결합니다.</p><a class="home-text-link" href="/kculture-gallery"><span data-i18n="aboutViewArchive">View the archive</span> <span aria-hidden="true">→</span></a></div>
+    </section>
+
+    <section class="home-connections" aria-labelledby="direction-title">
+      <div class="home-section-heading home-reveal"><div><div class="home-section-index" data-i18n="aboutDirectionIndex">04 / DIRECTION</div><h2 id="direction-title" data-i18n="aboutDirectionTitle">An Archive in Motion</h2></div><a class="home-text-link" href="/contact"><span data-i18n="aboutGetInTouch">Get in touch</span> <span aria-hidden="true">→</span></a></div>
+      <div class="home-connection-list">
+        <a class="home-connection home-reveal" href="/kculture"><span class="home-connection-number">01</span><strong data-i18n="aboutDirection1Title">CONTEMPORARY K-CULTURE</strong><span data-i18n="aboutDirection1Body">Performance · Film · Media Art</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="/kculture-portfolio"><span class="home-connection-number">02</span><strong data-i18n="aboutDirection2Title">LIVING ARCHIVE</strong><span data-i18n="aboutDirection2Body">Awards · Messages · Posters</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="https://arakoreagroup.com" target="_blank" rel="noopener noreferrer"><span class="home-connection-number">03</span><strong data-i18n="aboutDirection3Title">CULTURAL CONNECTION</strong><span data-i18n="aboutDirection3Body">Creative Ecosystem · Global Exchange</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="home-footer">
+    <div class="home-footer-top"><div><p class="home-footer-label" data-i18n="footerContact">CONTACT</p><a href="mailto:info@akenm.com">info@akenm.com</a><a href="tel:+8224007151">02-400-7151</a></div><div><p class="home-footer-label" data-i18n="footerSocial">SOCIAL</p><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div><p class="home-footer-mark" aria-label="ARA KOREA">AK</p></div>
+    <div class="home-footer-bottom"><span>© ARA KOREA Space Art Project</span><a href="#main-content" data-i18n="backTop">Back to top ↑</a></div>
+  </footer>
+
+  <script type="application/json" id="page-translations">
+  {
+    "ko":{"title":"About · ARA KOREA","description":"한국 문화의 기억을 공연, 예술영화, 사운드, 무용과 미디어아트로 확장하는 ARA KOREA의 창작 철학과 여정을 소개합니다.","aboutKicker":"MEMORY · CULTURE · CONTEMPORARY ART","aboutLead1":"한국 문화의 기억에서 출발해,","aboutLead2":"무대와 영상 사이에 새로운 감각의 장면을 설계합니다.","aboutExplore":"Explore K-Culture","aboutContact":"Contact","aboutFigure1":"Creative Archive","aboutFigure2":"Memory · Sound · Movement","aboutOriginIndex":"01 / ORIGIN","aboutOriginLine1":"오래된 지명의 기억에서 출발해","aboutOriginLine2":"오늘의 예술 언어로 확장합니다","aboutOriginMobile":"오래된 지명의 기억에서 출발해 오늘의 예술 언어로 확장합니다","aboutOriginBody":"WOOSOOZOO는 637년에 기록된 춘천의 옛 지명 ‘우수주’에서 출발한 ARA KOREA의 장기 프로젝트입니다. 2018년 첫 무대 이후, 이름이 품은 음성적 질감과 지역의 기억을 음악·무용·영상의 교차점에서 탐구해 왔습니다.","aboutLanguageIndex":"02 / CREATIVE LANGUAGE","aboutLanguageTitle":"One Space, Three Senses","aboutLanguageIntro1":"소리와 움직임, 이미지가 서로를 연결하며","aboutLanguageIntro2":"하나의 시공간을 구성합니다.","aboutSound":"전통의 음색과 전자음향을 연결해 공간의 시간과 정서를 구축합니다.","aboutMovement":"신체의 흐름을 통해 상징과 서사가 살아 있는 장면으로 전환됩니다.","aboutImage":"빛과 영상, 오브제가 무대의 감각을 확장하며 새로운 시각적 기억을 남깁니다.","aboutProjectIndex":"03 / LONG-TERM PROJECT","aboutProjectType":"FROM 2018 TO THE PRESENT","aboutProjectBody":"한국 문화의 상징과 서사는 공연, 예술영화, 미디어아트로 이어집니다. 축적된 장면은 다음 창작을 위한 자원이 되어 새로운 해석과 국제적 교류를 연결합니다.","aboutViewArchive":"View the archive","aboutDirectionIndex":"04 / DIRECTION","aboutDirectionTitle":"An Archive in Motion","aboutGetInTouch":"Get in touch","aboutDirection1Title":"CONTEMPORARY K-CULTURE","aboutDirection1Body":"Performance · Film · Media Art","aboutDirection2Title":"LIVING ARCHIVE","aboutDirection2Body":"Awards · Messages · Posters","aboutDirection3Title":"CULTURAL CONNECTION","aboutDirection3Body":"Creative Ecosystem · Global Exchange"},
+    "en":{"title":"About · ARA KOREA","description":"Discover ARA KOREA’s creative journey, translating Korean cultural memory into performance, art film, sound, movement and media art.","aboutKicker":"MEMORY · CULTURE · CONTEMPORARY ART","aboutLead1":"Beginning with the memory of Korean culture,","aboutLead2":"we shape new scenes between performance and moving image.","aboutExplore":"Explore K-Culture","aboutContact":"Contact","aboutFigure1":"Creative Archive","aboutFigure2":"Memory · Sound · Movement","aboutOriginIndex":"01 / ORIGIN","aboutOriginLine1":"Beginning with the memory of an ancient name,","aboutOriginLine2":"we extend it through the language of contemporary art.","aboutOriginMobile":"Beginning with the memory of an ancient name, we extend it through the language of contemporary art.","aboutOriginBody":"WOOSOOZOO is ARA KOREA’s long-term project inspired by Woosooju, an ancient name for Chuncheon recorded in 637. Since its first stage in 2018, the project has explored the name’s sonic texture and regional memory where music, dance and moving image converge.","aboutLanguageIndex":"02 / CREATIVE LANGUAGE","aboutLanguageTitle":"One Space, Three Senses","aboutLanguageIntro1":"Sound, movement and image connect with one another","aboutLanguageIntro2":"to form a single field of time and space.","aboutSound":"Traditional timbres and electronic sound shape the time and emotional character of each space.","aboutMovement":"Bodily movement transforms cultural symbols and narratives into living scenes.","aboutImage":"Light, moving image and objects extend the stage and leave new visual memories.","aboutProjectIndex":"03 / LONG-TERM PROJECT","aboutProjectType":"FROM 2018 TO THE PRESENT","aboutProjectBody":"Korean cultural symbols and narratives continue through performance, art film and media art. Each accumulated scene becomes a resource for future work, connecting new interpretations with international exchange.","aboutViewArchive":"View the archive","aboutDirectionIndex":"04 / DIRECTION","aboutDirectionTitle":"An Archive in Motion","aboutGetInTouch":"Get in touch","aboutDirection1Title":"CONTEMPORARY K-CULTURE","aboutDirection1Body":"Performance · Film · Media Art","aboutDirection2Title":"LIVING ARCHIVE","aboutDirection2Body":"Awards · Messages · Posters","aboutDirection3Title":"CULTURAL CONNECTION","aboutDirection3Body":"Creative Ecosystem · Global Exchange"},
+    "ja":{"title":"About · ARA KOREA","description":"韓国文化の記憶を舞台芸術、アートフィルム、音、舞踊、メディアアートへと広げるARA KOREAの歩みをご紹介します。","aboutKicker":"記憶 · 文化 · 現代芸術","aboutLead1":"韓国文化の記憶から出発し、","aboutLead2":"舞台と映像の間に新たな感覚の場面を描きます。","aboutExplore":"Kカルチャーを見る","aboutContact":"お問い合わせ","aboutFigure1":"クリエイティブ・アーカイブ","aboutFigure2":"記憶 · 音 · 動き","aboutOriginIndex":"01 / 起源","aboutOriginLine1":"古い地名の記憶から出発し、","aboutOriginLine2":"現代芸術の言語へと広げます。","aboutOriginMobile":"古い地名の記憶から出発し、現代芸術の言語へと広げます。","aboutOriginBody":"WOOSOOZOOは、637年に記録された春川の旧地名「牛首州」から始まったARA KOREAの長期プロジェクトです。2018年の初演以来、その名が持つ音の質感と地域の記憶を、音楽・舞踊・映像が交差する地点で探究してきました。","aboutLanguageIndex":"02 / 創作言語","aboutLanguageTitle":"一つの空間、三つの感覚","aboutLanguageIntro1":"音、動き、イメージが互いにつながり、","aboutLanguageIntro2":"一つの時空間を構成します。","aboutSound":"伝統の音色と電子音響を結び、空間の時間と情緒を形づくります。","aboutMovement":"身体の流れを通じて、象徴と物語を生きた場面へと変換します。","aboutImage":"光、映像、オブジェが舞台の感覚を広げ、新たな視覚的記憶を残します。","aboutProjectIndex":"03 / 長期プロジェクト","aboutProjectType":"2018年から現在まで","aboutProjectBody":"韓国文化の象徴と物語は、舞台芸術、アートフィルム、メディアアートへと続きます。蓄積された場面は次の創作の資源となり、新たな解釈と国際交流を結びます。","aboutViewArchive":"アーカイブを見る","aboutDirectionIndex":"04 / 方向性","aboutDirectionTitle":"動き続けるアーカイブ","aboutGetInTouch":"お問い合わせ","aboutDirection1Title":"現代Kカルチャー","aboutDirection1Body":"舞台 · 映画 · メディアアート","aboutDirection2Title":"生きたアーカイブ","aboutDirection2Body":"受賞 · 祝辞 · ポスター","aboutDirection3Title":"文化をつなぐ","aboutDirection3Body":"創造的エコシステム · 国際交流"},
+    "zh":{"title":"About · ARA KOREA","description":"了解ARA KOREA如何将韩国文化记忆延伸至表演、艺术电影、声音、舞蹈与媒体艺术。","aboutKicker":"记忆 · 文化 · 当代艺术","aboutLead1":"从韩国文化记忆出发，","aboutLead2":"在舞台与影像之间构筑全新的感知场景。","aboutExplore":"探索韩国文化","aboutContact":"联系我们","aboutFigure1":"创意档案","aboutFigure2":"记忆 · 声音 · 动作","aboutOriginIndex":"01 / 起源","aboutOriginLine1":"从古老地名的记忆出发，","aboutOriginLine2":"延展为当代艺术的语言。","aboutOriginMobile":"从古老地名的记忆出发，延展为当代艺术的语言。","aboutOriginBody":"WOOSOOZOO是ARA KOREA的长期项目，源自公元637年记载的春川古称“牛首州”。自2018年首次登台以来，项目持续在音乐、舞蹈与影像的交汇处探索这一名称的声音质感与地域记忆。","aboutLanguageIndex":"02 / 创作语言","aboutLanguageTitle":"一个空间，三种感知","aboutLanguageIntro1":"声音、动作与影像彼此连接，","aboutLanguageIntro2":"共同构成完整的时空场域。","aboutSound":"连接传统音色与电子声响，塑造空间的时间感与情绪。","aboutMovement":"通过身体的流动，使文化象征与叙事转化为鲜活场景。","aboutImage":"光线、影像与艺术物件延伸舞台感知，留下新的视觉记忆。","aboutProjectIndex":"03 / 长期项目","aboutProjectType":"从2018年至今","aboutProjectBody":"韩国文化的象征与叙事延伸至表演、艺术电影和媒体艺术。累积的场景成为未来创作的资源，连接新的诠释与国际交流。","aboutViewArchive":"查看档案","aboutDirectionIndex":"04 / 方向","aboutDirectionTitle":"持续流动的档案","aboutGetInTouch":"联系我们","aboutDirection1Title":"当代韩国文化","aboutDirection1Body":"表演 · 电影 · 媒体艺术","aboutDirection2Title":"鲜活档案","aboutDirection2Body":"奖项 · 贺词 · 海报","aboutDirection3Title":"文化连接","aboutDirection3Body":"创意生态 · 国际交流"}
+  }
+  </script>
+  <script src="site.js?v=20260827-2" defer></script>
 </body>
 </html>

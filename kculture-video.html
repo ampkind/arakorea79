@@ -1,397 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>ARA KOREA · K-Culture · Video</title>
-  <link rel="stylesheet" href="styles.css?v=20251219-vid1"/>
-  <style>
-    /* Video gallery (page-only) */
-    .video-grid{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap:14px;
-    }
-    .v-card{
-      text-align:left;
-      padding:0;
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius: var(--radius);
-      overflow:hidden;
-      box-shadow: 0 18px 50px rgba(0,0,0,.28);
-      cursor:pointer;
-      transition: transform .16s ease, border-color .16s ease, background .16s ease;
-    }
-    .v-card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,.16);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-    }
-    .v-thumb{ position:relative; aspect-ratio:16/9; background: rgba(0,0,0,.35); }
-    .v-thumb img{ width:100%; height:100%; object-fit:cover; display:block; filter: saturate(1.05) contrast(1.02); }
-    .v-play{
-      position:absolute; inset:0;
-      display:grid; place-items:center;
-      background: radial-gradient(500px 220px at 50% 60%, rgba(0,0,0,.00), rgba(0,0,0,.45));
-    }
-    .v-play::before{
-      content:"";
-      width:62px; height:62px;
-      border-radius:999px;
-      background: linear-gradient(135deg, rgba(69,182,255,.95), rgba(122,99,255,.95));
-      box-shadow: 0 16px 40px rgba(0,0,0,.35);
-      opacity:.92;
-    }
-    .v-play::after{
-      content:"";
-      position:absolute;
-      width:0; height:0;
-      border-left: 16px solid #061427;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      margin-left: 4px;
-    }
-    .v-body{ padding:14px 14px 16px; }
-    .v-title{ font-weight:900; letter-spacing:.02em; font-size:14px; line-height:1.35; }
-    .v-desc{ margin-top:6px; color: var(--muted); font-size:13px; line-height:1.55; }
-    .v-link{ display:inline-block; margin-top:12px; font-size:12px; font-weight:800; letter-spacing:.04em; color: rgba(69,182,255,.92); text-decoration:none; }
-    .v-link:hover{ text-decoration:underline; }
-
-    /* Modal */
-    .yt-modal{ position:fixed; inset:0; z-index:999; display:none; }
-    .yt-modal.is-open{ display:block; }
-    .yt-backdrop{ position:absolute; inset:0; background: rgba(0,0,0,.62); backdrop-filter: blur(6px); }
-    .yt-panel{
-      position:relative;
-      width:min(980px, calc(100vw - 28px));
-      margin: 7vh auto 0;
-      border-radius: var(--radius2);
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(8,12,20,.78);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .yt-bar{ display:flex; align-items:center; justify-content:space-between; padding:10px 12px; border-bottom:1px solid rgba(255,255,255,.10); }
-    .yt-title{ font-weight:900; font-size:13px; letter-spacing:.04em; color: rgba(233,238,247,.92); }
-    .yt-close{
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color: rgba(233,238,247,.92);
-      border-radius: 999px;
-      padding:8px 12px;
-      font-weight:900;
-      cursor:pointer;
-    }
-    .yt-close:hover{ background: rgba(255,255,255,.10); }
-    .yt-frame{ aspect-ratio:16/9; background:#000; }
-    .yt-frame iframe{ width:100%; height:100%; border:0; display:block; }
-
-    @media (max-width: 720px){
-      .yt-panel{ margin-top: 10vh; }
-    }
-  </style>
-<style>
-/* ==================================================
-   Mobile Nav Dropdown Fix
-   - Tap K-Culture to toggle submenu vertically on mobile
-   - PC hover behavior remains
-   ================================================== */
-@media (max-width: 900px){
-  .nav-dd-menu{
-    position: static !important;
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    padding-top: 6px;
-  }
-  .nav-dd.is-open .nav-dd-menu{ display: flex !important; }
-  .nav-dd-menu .nav-pill{ width: 100%; justify-content: flex-start; }
-  .nav-dd-menu a:active{ transform: scale(0.99); }
-}
-</style>
-
-<style>
-/* ==================================================
-   K-Culture Video patch
-   - Back navigation (same style as Awards/Posters)
-   - Mobile: always show K-Culture submenu (no double-tap, no toggle)
-   ================================================== */
-
-/* Back Navigation */
-.back-nav{
-  width: min(1100px, 100%);
-  margin: 18px auto 6px;
-  padding: 0 18px;
-}
-.back-link{
-  display: inline-block;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 12px;
-  opacity: .85;
-}
-.back-link::before{ content: "← "; }
-.back-link:hover{ opacity: 1; }
-
-@media (max-width: 900px){
-  .back-nav{ margin: 14px auto 4px; }
-  .back-link{ font-size: 11px; }
-
-  /* Always show submenu on mobile so K-Culture remains single-tap navigable */
-  .nav-dd-menu{
-    position: static !important;
-    display: flex !important;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    padding-top: 6px;
-  }
-  .nav-dd-menu .nav-pill{ width: 100%; justify-content: flex-start; }
-}
-</style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Archive · ARA KOREA</title>
+  <meta name="description" content="ARA KOREA의 공연과 미디어아트 프로젝트를 소리와 움직임의 영상 기록으로 만나보세요.">
+  <meta name="keywords" content="ARA KOREA, K-Culture, 공연 영상, 미디어아트, 예술영화, WOOSOOZOO, 영상 아카이브">
+  <link rel="canonical" href="https://arakorea.org/kculture-video">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ARA KOREA">
+  <meta property="og:title" content="Video Archive · ARA KOREA">
+  <meta property="og:description" content="Moving-image records of performance, sound and media art.">
+  <meta property="og:url" content="https://arakorea.org/kculture-video">
+  <meta property="og:image" content="https://arakorea.org/images/og-arakorea-kakao.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css?v=20260827">
 </head>
-<body>
-
-<header class="site-header">
-<div class="brand">
-<div class="brand-title">ARA KOREA</div>
-<div class="brand-sub">Immersive K‑Culture · Art Film &amp; Performance</div>
-</div>
-<nav aria-label="Primary" class="top-nav"><a class="nav-pill" href="index.html">Home</a><a class="nav-pill" href="about.html">About</a><div class="nav-dd"><a class="nav-pill" href="kculture.html">K‑Culture</a><div class="nav-dd-menu"><a class="nav-dd-item nav-pill" href="kculture-gallery.html">Gallery</a><a class="nav-dd-item nav-pill" href="kculture-portfolio.html">Portfolio</a><a class="nav-dd-item nav-pill is-active" href="kculture-video.html">Video</a></div></div><a class="nav-pill" href="news.html">News</a><a class="nav-pill" href="contact.html">Contact</a></nav>
-</header>
-
-<main class="page">
-
-  <div class="back-nav">
-    <a href="kculture.html" class="back-link">BACK</a>
-  </div>
-
-  <section class="section">
-    <div class="section-head">
-      <h2 class="section-title">Video</h2>
-      <p class="section-sub">ARA KOREA의 공연·프로젝트 영상 아카이브입니다. 카드를 클릭하면 바로 재생됩니다.</p>
+<body class="home-page">
+  <a class="home-skip" href="#main-content">본문 바로가기</a>
+  <header class="home-header" data-home-header>
+    <a class="home-brand" href="/" aria-label="ARA KOREA 홈"><span class="home-brand-name">ARA KOREA</span><span class="home-brand-tag" data-i18n="brandTag">Contemporary K-Culture</span></a>
+    <div class="home-header-tools">
+      <nav class="home-nav" id="home-navigation" aria-label="주요 메뉴">
+        <a href="/" data-i18n="navHome">Home</a><a href="/about" data-i18n="navAbout">About</a><a class="is-active" href="/kculture" aria-current="page" data-i18n="navCulture">K-Culture</a><a href="/news" data-i18n="navNews">News</a><a href="/contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="home-language-menu" data-language-menu>
+        <button class="home-language-trigger" type="button" aria-expanded="false" aria-controls="home-language-options"><span data-language-current>KO</span><span class="home-language-chevron" aria-hidden="true">⌄</span></button>
+        <div class="home-language-options" id="home-language-options" role="menu" aria-label="언어 선택">
+          <button type="button" role="menuitemradio" data-lang="ko" aria-checked="true"><span>한국어</span><small>KO</small></button><button type="button" role="menuitemradio" data-lang="en" aria-checked="false"><span>English</span><small>EN</small></button><button type="button" role="menuitemradio" data-lang="ja" aria-checked="false"><span>日本語</span><small>JA</small></button><button type="button" role="menuitemradio" data-lang="zh" aria-checked="false"><span>中文</span><small>ZH</small></button>
+        </div>
+      </div>
+      <button class="home-menu-toggle" type="button" aria-expanded="false" aria-controls="home-navigation"><span data-i18n="menu">MENU</span><span class="home-menu-icon" aria-hidden="true"></span></button>
     </div>
+  </header>
 
-    <div class="video-grid">
+  <main id="main-content">
+    <section class="home-hero" aria-labelledby="video-title">
+      <div class="home-hero-copy">
+        <p class="home-kicker" data-i18n="vdKicker">PERFORMANCE · SOUND · MOVING IMAGE</p>
+        <h1 id="video-title" class="home-title"><span>VIDEO</span><span>ARCHIVE</span></h1>
+        <p class="home-lead"><span class="home-copy-line" data-i18n="vdLead1">무대에서 생성된 소리와 움직임을 기록하고,</span><span class="home-copy-line" data-i18n="vdLead2">시간을 넘어 다시 만나는 장면으로 이어갑니다.</span></p>
+        <div class="home-actions"><a class="home-action home-action-primary" href="https://www.youtube.com/watch?v=3UhGyFxWqmE" target="_blank" rel="noopener noreferrer" data-i18n="vdFirstAction">Watch Featured Film</a><a class="home-action" href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer" data-i18n="vdChannelAction">YouTube Channel</a></div>
+      </div>
+      <figure class="home-hero-visual"><img src="images/kc_c4_05.jpg" alt="ARA KOREA 영상 아카이브 공연 장면" fetchpriority="high"><figcaption><span data-i18n="vdFigure1">Moving Image Archive</span><span data-i18n="vdFigure2">Stage · Time · Memory</span></figcaption></figure>
+      <p class="home-scroll" aria-hidden="true" data-i18n="scroll">SCROLL TO EXPLORE</p>
+    </section>
 
-      <button class="v-card" type="button"
-              data-vid="3UhGyFxWqmE" data-start="2963"
-              aria-label="WOOSOOZOO IV – 시간의 유령 (play)">
-        <div class="v-thumb">
-          <img loading="lazy" src="https://img.youtube.com/vi/3UhGyFxWqmE/hqdefault.jpg" alt="WOOSOOZOO IV – 시간의 유령 thumbnail">
-          <div class="v-play" aria-hidden="true"></div>
-        </div>
-        <div class="v-body">
-          <div class="v-title">WOOSOOZOO IV – 시간의 유령</div>
-          
-          <a class="v-link" href="https://www.youtube.com/watch?v=3UhGyFxWqmE&t=2963s" target="_blank" rel="noopener">Open on YouTube</a>
-        </div>
-      </button>
-    
+    <section class="home-statement home-reveal" aria-labelledby="video-statement-title">
+      <div class="home-section-index" data-i18n="vdIdentityIndex">01 / MOVING IMAGE</div>
+      <div class="home-statement-body">
+        <h2 id="video-statement-title"><span class="home-statement-desktop"><span data-i18n="vdStatement1">사라지는 공연의 순간을 움직이는 기록으로 잇고</span><span data-i18n="vdStatement2">작품의 감각과 시간을 다시 펼쳐냅니다</span></span><span class="home-statement-mobile" data-i18n="vdStatementMobile">사라지는 공연의 순간을 움직이는 기록으로 잇고 작품의 감각과 시간을 다시 펼쳐냅니다</span></h2>
+        <p data-i18n="vdStatementBody">영상은 무대의 형태만 남기는 기록을 넘어 소리의 밀도, 신체의 리듬, 공간을 가르는 빛까지 함께 전달합니다. ARA KOREA의 영상 아카이브는 공연과 미디어아트가 발생한 시간을 보존하며 관객이 새로운 시선으로 작품에 다시 진입하도록 안내합니다.</p>
+      </div>
+    </section>
 
-      <button class="v-card" type="button"
-              data-vid="sa7AcspcZ7A" data-start="10"
-              aria-label="시간의 유령 – 하이라이트 (play)">
-        <div class="v-thumb">
-          <img loading="lazy" src="https://img.youtube.com/vi/sa7AcspcZ7A/hqdefault.jpg" alt="시간의 유령 – 하이라이트 thumbnail">
-          <div class="v-play" aria-hidden="true"></div>
-        </div>
-        <div class="v-body">
-          <div class="v-title">시간의 유령 – 하이라이트</div>
-          
-          <a class="v-link" href="https://www.youtube.com/watch?v=sa7AcspcZ7A&t=10s" target="_blank" rel="noopener">Open on YouTube</a>
-        </div>
-      </button>
-    
+    <section class="home-culture" aria-labelledby="video-selected-title">
+      <div class="home-section-heading home-reveal">
+        <div><div class="home-section-index" data-i18n="vdSelectedIndex">02 / SELECTED VIDEOS</div><h2 id="video-selected-title" data-i18n="vdSelectedTitle">Watch the Archive</h2></div>
+        <p><span data-i18n="vdSelectedIntro1">대표 공연과 프로젝트의 주요 장면을</span><span data-i18n="vdSelectedIntro2">영상 기록으로 만나보세요.</span></p>
+      </div>
+      <div class="home-culture-grid">
+        <a class="home-culture-card home-culture-card-wide home-reveal" href="https://www.youtube.com/watch?v=3UhGyFxWqmE" target="_blank" rel="noopener noreferrer"><div class="home-card-image"><img src="https://img.youtube.com/vi/3UhGyFxWqmE/hqdefault.jpg" alt="WOOSOOZOO IV (우수주 네 번째 이야기)" loading="lazy"></div><div class="home-card-meta"><span>01</span><h3>WOOSOOZOO IV</h3><span class="home-card-arrow" aria-hidden="true">↗</span></div><p>WOO SOO ZOO IV · FULL PERFORMANCE</p></a>
+        <a class="home-culture-card home-culture-card-tall home-reveal" href="https://www.youtube.com/watch?v=TkTrvnEqV_A" target="_blank" rel="noopener noreferrer"><div class="home-card-image"><img src="https://img.youtube.com/vi/TkTrvnEqV_A/hqdefault.jpg" alt="우수주 3 | WOO SOO ZOO – III (2022)" loading="lazy"></div><div class="home-card-meta"><span>02</span><h3>WOO SOO ZOO III</h3><span class="home-card-arrow" aria-hidden="true">↗</span></div><p>우수주 3 · CONTEMPORARY CONVERGENCE ART</p></a>
+        <a class="home-culture-card home-culture-card-full home-reveal" href="https://www.youtube.com/watch?v=CMcSx-OjxZA" target="_blank" rel="noopener noreferrer"><div class="home-card-image"><img src="https://img.youtube.com/vi/CMcSx-OjxZA/hqdefault.jpg" alt="GANG GA 현대 퍼포먼스 예술" loading="lazy"></div><div class="home-card-meta"><span>03</span><h3>GANG GA</h3><span class="home-card-arrow" aria-hidden="true">↗</span></div><p>BODY · RHYTHM · REPETITION</p></a>
+      </div>
+    </section>
 
-      <button class="v-card" type="button"
-              data-vid="TkTrvnEqV_A" data-start="173"
-              aria-label="ARA KOREA – 캠페인/프로젝트 클립 (play)">
-        <div class="v-thumb">
-          <img loading="lazy" src="https://img.youtube.com/vi/TkTrvnEqV_A/hqdefault.jpg" alt="ARA KOREA – 캠페인/프로젝트 클립 thumbnail">
-          <div class="v-play" aria-hidden="true"></div>
-        </div>
-        <div class="v-body">
-          <div class="v-title">ARA KOREA – 캠페인/프로젝트 클립</div>
-          
-          <a class="v-link" href="https://www.youtube.com/watch?v=TkTrvnEqV_A&t=173s" target="_blank" rel="noopener">Open on YouTube</a>
-        </div>
-      </button>
-    
+    <section class="home-feature home-reveal" aria-labelledby="video-feature-title">
+      <div class="home-feature-image"><img src="images/highlight-2.jpg" alt="ARA KOREA 공연 영상 기록" loading="lazy"></div>
+      <div class="home-feature-copy"><div class="home-section-index" data-i18n="vdFeatureIndex">03 / CINEMATIC MEMORY</div><p class="home-feature-type" data-i18n="vdFeatureType">THE STAGE CONTINUES ON SCREEN</p><h2 id="video-feature-title" data-i18n="vdFeatureTitle">Time Becomes Image</h2><p data-i18n="vdFeatureBody">카메라는 한 번뿐인 공연의 시간을 여러 시선과 거리로 확장합니다. 현장의 에너지와 세밀한 움직임이 영상의 리듬 안에서 새롭게 구성되며, 작품은 또 다른 감상 경험으로 관객과 만납니다.</p><a class="home-text-link" href="/kculture"><span data-i18n="vdFeatureLink">Return to K-Culture</span> <span aria-hidden="true">→</span></a></div>
+    </section>
 
-      <button class="v-card" type="button"
-              data-vid="CMcSx-OjxZA" data-start="902"
-              aria-label="현상과 현실의 혼합 (play)">
-        <div class="v-thumb">
-          <img loading="lazy" src="https://img.youtube.com/vi/CMcSx-OjxZA/hqdefault.jpg" alt="현상과 현실의 혼합 thumbnail">
-          <div class="v-play" aria-hidden="true"></div>
-        </div>
-        <div class="v-body">
-          <div class="v-title">현상과 현실의 혼합</div>
-          
-          <a class="v-link" href="https://www.youtube.com/watch?v=CMcSx-OjxZA&t=902s" target="_blank" rel="noopener">Open on YouTube</a>
-        </div>
-      </button>
-    
+    <section class="home-connections" aria-labelledby="video-more-title">
+      <div class="home-section-heading home-reveal"><div><div class="home-section-index" data-i18n="vdMoreIndex">04 / MORE VIDEOS</div><h2 id="video-more-title" data-i18n="vdMoreTitle">Continue Watching</h2></div></div>
+      <div class="home-connection-list">
+        <a class="home-connection home-reveal" href="https://www.youtube.com/watch?v=H_3ieProGYo" target="_blank" rel="noopener noreferrer"><span class="home-connection-number">04</span><strong>Neuron Anthropause</strong><span>CONVERGENCE ART · ANTHROPAUSE</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="https://www.youtube.com/watch?v=GJOPNTTp39g" target="_blank" rel="noopener noreferrer"><span class="home-connection-number">05</span><strong>현상과 현실의 혼합</strong><span>ELECTRONIC MUSIC · PERFORMANCE</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="https://www.youtube.com/watch?v=sa7AcspcZ7A" target="_blank" rel="noopener noreferrer"><span class="home-connection-number">06</span><strong>시뮬라크르 시뮬라시옹</strong><span>CONVERGENCE ART · SIMULATION</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+        <a class="home-connection home-reveal" href="https://www.youtube.com/watch?v=UXj2ZhWDRZw" target="_blank" rel="noopener noreferrer"><span class="home-connection-number">07</span><strong>달. 해 아이 (KOREAN)</strong><span>ARA KOREA CAMPAIGN</span><span class="home-connection-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
 
-      <button class="v-card" type="button"
-              data-vid="H_3ieProGYo" data-start="1641"
-              aria-label="Live Session – Excerpt (play)">
-        <div class="v-thumb">
-          <img loading="lazy" src="https://img.youtube.com/vi/H_3ieProGYo/hqdefault.jpg" alt="Live Session – Excerpt thumbnail">
-          <div class="v-play" aria-hidden="true"></div>
-        </div>
-        <div class="v-body">
-          <div class="v-title">Live Session – Excerpt</div>
-          
-          <a class="v-link" href="https://www.youtube.com/watch?v=H_3ieProGYo&t=1641s" target="_blank" rel="noopener">Open on YouTube</a>
-        </div>
-      </button>
-    
+  <footer class="home-footer">
+    <div class="home-footer-top"><div><p class="home-footer-label" data-i18n="footerContact">CONTACT</p><a href="mailto:info@akenm.com">info@akenm.com</a><a href="tel:+8224007151">02-400-7151</a></div><div><p class="home-footer-label" data-i18n="footerSocial">SOCIAL</p><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div><p class="home-footer-mark" aria-label="ARA KOREA">AK</p></div>
+    <div class="home-footer-bottom"><span>© ARA KOREA Space Art Project</span><a href="#main-content" data-i18n="backTop">Back to top ↑</a></div>
+  </footer>
 
-      <button class="v-card" type="button"
-              data-vid="GJOPNTTp39g" data-start="0"
-              aria-label="Neuro Anthropause (play)">
-        <div class="v-thumb">
-          <img loading="lazy" src="https://img.youtube.com/vi/GJOPNTTp39g/hqdefault.jpg" alt="Neuro Anthropause thumbnail">
-          <div class="v-play" aria-hidden="true"></div>
-        </div>
-        <div class="v-body">
-          <div class="v-title">Neuro Anthropause</div>
-          
-          <a class="v-link" href="https://www.youtube.com/watch?v=GJOPNTTp39g" target="_blank" rel="noopener">Open on YouTube</a>
-        </div>
-      </button>
-    
-
-      <button class="v-card" type="button"
-              data-vid="IoXaREaUZ0c" data-start="17"
-              aria-label="ARA KOREA – Documentary (play)">
-        <div class="v-thumb">
-          <img loading="lazy" src="https://img.youtube.com/vi/IoXaREaUZ0c/hqdefault.jpg" alt="ARA KOREA – Documentary thumbnail">
-          <div class="v-play" aria-hidden="true"></div>
-        </div>
-        <div class="v-body">
-          <div class="v-title">ARA KOREA – Documentary</div>
-          
-          <a class="v-link" href="https://www.youtube.com/watch?v=IoXaREaUZ0c&t=17s" target="_blank" rel="noopener">Open on YouTube</a>
-        </div>
-      </button>
-    
-
-      <button class="v-card" type="button"
-              data-vid="UXj2ZhWDRZw" data-start="127"
-              aria-label="중첩된 콜라주: 시뮬라크르 시뮬라시옹 (play)">
-        <div class="v-thumb">
-          <img loading="lazy" src="https://img.youtube.com/vi/UXj2ZhWDRZw/hqdefault.jpg" alt="중첩된 콜라주: 시뮬라크르 시뮬라시옹 thumbnail">
-          <div class="v-play" aria-hidden="true"></div>
-        </div>
-        <div class="v-body">
-          <div class="v-title">중첩된 콜라주: 시뮬라크르 시뮬라시옹</div>
-          
-          <a class="v-link" href="https://www.youtube.com/watch?v=UXj2ZhWDRZw&t=127s" target="_blank" rel="noopener">Open on YouTube</a>
-        </div>
-      </button>
-    
-
-      <button class="v-card" type="button"
-              data-vid="neM15H5ThWU" data-start="0"
-              aria-label="Behind the Scenes / Rehearsal (play)">
-        <div class="v-thumb">
-          <img loading="lazy" src="https://img.youtube.com/vi/neM15H5ThWU/hqdefault.jpg" alt="Behind the Scenes / Rehearsal thumbnail">
-          <div class="v-play" aria-hidden="true"></div>
-        </div>
-        <div class="v-body">
-          <div class="v-title">Behind the Scenes / Rehearsal</div>
-          
-          <a class="v-link" href="https://www.youtube.com/watch?v=neM15H5ThWU" target="_blank" rel="noopener">Open on YouTube</a>
-        </div>
-      </button>
-    
-    </div>
-  </section>
-</main>
-
-<!-- Modal -->
-<div class="yt-modal" id="ytModal" aria-hidden="true">
-  <div class="yt-backdrop" data-close></div>
-  <div class="yt-panel" role="dialog" aria-modal="true" aria-label="Video player">
-    <div class="yt-bar">
-      <div class="yt-title" id="ytModalTitle">Video</div>
-      <button class="yt-close" type="button" data-close>Close</button>
-    </div>
-    <div class="yt-frame">
-      <iframe id="ytFrame" title="YouTube player" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
-  </div>
-</div>
-
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-head">Contact</div>
-      <div class="footer-text">E-mail: info@akenm.com</div>
-      <div class="footer-text">Tel: 02-400-7151</div>
-    </div>
-    <div>
-      <div class="footer-head">Social</div>
-      <div class="footer-text"><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div>
-    </div>
-    <div>
-      <div class="footer-head">Shop</div>
-      <div class="footer-text"><a href="https://arakorea.shop" target="_blank" rel="noopener noreferrer">ARAKOREA.SHOP</a></div>
-    </div>
-  </div>
-  <div class="footer-bottom">© ARA KOREA Space Art Project</div>
-</footer>
-
-<script>
-(function(){
-  const modal = document.getElementById('ytModal');
-  const frame = document.getElementById('ytFrame');
-  const titleEl = document.getElementById('ytModalTitle');
-
-  function openModal(vid, start, title){
-    const startParam = start && start > 0 ? `&start=${start}` : '';
-    frame.src = `https://www.youtube.com/embed/${vid}?autoplay=1&rel=0&modestbranding=1${startParam}`;
-    titleEl.textContent = title || 'Video';
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden','false');
-    document.body.style.overflow = 'hidden';
+  <script type="application/json" id="page-translations">
+  {
+    "ko":{"title":"Video Archive · ARA KOREA","description":"ARA KOREA의 공연과 미디어아트 프로젝트를 소리와 움직임의 영상 기록으로 만나보세요.","vdKicker":"PERFORMANCE · SOUND · MOVING IMAGE","vdLead1":"무대에서 생성된 소리와 움직임을 기록하고,","vdLead2":"시간을 넘어 다시 만나는 장면으로 이어갑니다.","vdFirstAction":"Watch Featured Film","vdChannelAction":"YouTube Channel","vdFigure1":"Moving Image Archive","vdFigure2":"Stage · Time · Memory","vdIdentityIndex":"01 / MOVING IMAGE","vdStatement1":"사라지는 공연의 순간을 움직이는 기록으로 잇고","vdStatement2":"작품의 감각과 시간을 다시 펼쳐냅니다","vdStatementMobile":"사라지는 공연의 순간을 움직이는 기록으로 잇고 작품의 감각과 시간을 다시 펼쳐냅니다","vdStatementBody":"영상은 무대의 형태만 남기는 기록을 넘어 소리의 밀도, 신체의 리듬, 공간을 가르는 빛까지 함께 전달합니다. ARA KOREA의 영상 아카이브는 공연과 미디어아트가 발생한 시간을 보존하며 관객이 새로운 시선으로 작품에 다시 진입하도록 안내합니다.","vdSelectedIndex":"02 / SELECTED VIDEOS","vdSelectedTitle":"Watch the Archive","vdSelectedIntro1":"대표 공연과 프로젝트의 주요 장면을","vdSelectedIntro2":"영상 기록으로 만나보세요.","vdVideo1Body":"시간의 유령 · 공연 전체 기록에서 만나는 대표 장면","vdVideo2Body":"시간의 유령 · 감각적인 순간을 응축한 하이라이트","vdVideo3Body":"ARA KOREA · 프로젝트의 시각 언어를 담은 캠페인 클립","vdFeatureIndex":"03 / CINEMATIC MEMORY","vdFeatureType":"THE STAGE CONTINUES ON SCREEN","vdFeatureTitle":"Time Becomes Image","vdFeatureBody":"카메라는 한 번뿐인 공연의 시간을 여러 시선과 거리로 확장합니다. 현장의 에너지와 세밀한 움직임이 영상의 리듬 안에서 새롭게 구성되며, 작품은 또 다른 감상 경험으로 관객과 만납니다.","vdFeatureLink":"Return to K-Culture","vdMoreIndex":"04 / MORE VIDEOS","vdMoreTitle":"Continue Watching","vdMore4":"Performance · Media Art","vdMore5":"Live · Excerpt","vdMore6":"Art Film · Project","vdMore7":"Documentary · Archive","vdMore8":"Collage · Moving Image","vdMore9":"Process · Rehearsal"},
+    "en":{"title":"Video Archive · ARA KOREA","description":"Explore moving-image records of ARA KOREA’s performance and media-art projects.","vdKicker":"PERFORMANCE · SOUND · MOVING IMAGE","vdLead1":"Documenting sound and movement generated on stage,","vdLead2":"we carry each moment beyond its original time.","vdFirstAction":"Watch Featured Film","vdChannelAction":"YouTube Channel","vdFigure1":"Moving Image Archive","vdFigure2":"Stage · Time · Memory","vdIdentityIndex":"01 / MOVING IMAGE","vdStatement1":"Connecting the fleeting moment of performance with moving records,","vdStatement2":"we unfold the work’s sensibility and time once more.","vdStatementMobile":"Connecting the fleeting moment of performance with moving records, we unfold the work’s sensibility and time once more.","vdStatementBody":"Moving image preserves more than the form of a stage. It conveys the density of sound, the rhythm of the body and the light that divides space. ARA KOREA’s video archive holds the time in which performance and media art occurred, inviting audiences to enter each work from a renewed perspective.","vdSelectedIndex":"02 / SELECTED VIDEOS","vdSelectedTitle":"Watch the Archive","vdSelectedIntro1":"Encounter defining scenes from major performances","vdSelectedIntro2":"and projects through moving-image records.","vdVideo1Body":"Ghost of Time · A defining scene from the complete performance record","vdVideo2Body":"Ghost of Time · A concentrated view of its most vivid moments","vdVideo3Body":"ARA KOREA · A campaign clip shaped by the project’s visual language","vdFeatureIndex":"03 / CINEMATIC MEMORY","vdFeatureType":"THE STAGE CONTINUES ON SCREEN","vdFeatureTitle":"Time Becomes Image","vdFeatureBody":"The camera extends a singular performance through multiple viewpoints and distances. The energy of the site and its detailed movements are composed anew within the rhythm of film, allowing the work to meet audiences as another experience.","vdFeatureLink":"Return to K-Culture","vdMoreIndex":"04 / MORE VIDEOS","vdMoreTitle":"Continue Watching","vdMore4":"Performance · Media Art","vdMore5":"Live · Excerpt","vdMore6":"Art Film · Project","vdMore7":"Documentary · Archive","vdMore8":"Collage · Moving Image","vdMore9":"Process · Rehearsal"},
+    "ja":{"title":"映像アーカイブ · ARA KOREA","description":"ARA KOREAの舞台芸術とメディアアートを、音と動きの映像記録でご覧ください。","vdKicker":"舞台 · 音 · 動くイメージ","vdLead1":"舞台で生まれた音と動きを記録し、","vdLead2":"時を越えて再び出会う場面へとつなぎます。","vdFirstAction":"代表映像を見る","vdChannelAction":"YouTubeチャンネル","vdFigure1":"映像アーカイブ","vdFigure2":"舞台 · 時間 · 記憶","vdIdentityIndex":"01 / 動くイメージ","vdStatement1":"消えていく舞台の瞬間を動く記録へと結び、","vdStatement2":"作品の感覚と時間を再びひらきます。","vdStatementMobile":"消えていく舞台の瞬間を動く記録へと結び、作品の感覚と時間を再びひらきます。","vdStatementBody":"映像は舞台の形だけでなく、音の密度、身体のリズム、空間を横切る光まで伝えます。ARA KOREAの映像アーカイブは、舞台芸術とメディアアートが生まれた時間を残し、観客を新たな視点から作品へと導きます。","vdSelectedIndex":"02 / セレクション","vdSelectedTitle":"アーカイブを見る","vdSelectedIntro1":"代表的な舞台とプロジェクトの場面を","vdSelectedIntro2":"映像記録でご覧ください。","vdVideo1Body":"時間の幽霊 · 舞台全編の記録から選んだ代表的な場面","vdVideo2Body":"時間の幽霊 · 感覚的な瞬間を凝縮したハイライト","vdVideo3Body":"ARA KOREA · プロジェクトの視覚言語を伝えるキャンペーン映像","vdFeatureIndex":"03 / 映像の記憶","vdFeatureType":"舞台はスクリーンの中で続く","vdFeatureTitle":"時間が映像になる","vdFeatureBody":"カメラは一度限りの舞台を複数の視点と距離へ広げます。現場のエネルギーと細やかな動きは映像のリズムの中で再構成され、作品は新たな鑑賞体験として観客と出会います。","vdFeatureLink":"Kカルチャーへ戻る","vdMoreIndex":"04 / その他の映像","vdMoreTitle":"続けて見る","vdMore4":"舞台 · メディアアート","vdMore5":"ライブ · 抜粋","vdMore6":"アートフィルム · プロジェクト","vdMore7":"ドキュメンタリー · 記録","vdMore8":"コラージュ · 動くイメージ","vdMore9":"制作過程 · リハーサル"},
+    "zh":{"title":"影像档案 · ARA KOREA","description":"通过声音与动作的影像记录，探索ARA KOREA的表演和媒体艺术项目。","vdKicker":"表演 · 声音 · 动态影像","vdLead1":"记录舞台上生成的声音与动作，","vdLead2":"将现场延续为跨越时间的相遇。","vdFirstAction":"观看代表影片","vdChannelAction":"YouTube频道","vdFigure1":"动态影像档案","vdFigure2":"舞台 · 时间 · 记忆","vdIdentityIndex":"01 / 动态影像","vdStatement1":"将转瞬即逝的表演连接为动态记录，","vdStatement2":"重新展开作品的感知与时间。","vdStatementMobile":"将转瞬即逝的表演连接为动态记录，重新展开作品的感知与时间。","vdStatementBody":"影像保存的不只是舞台形态，也传递声音的密度、身体的节奏与划过空间的光线。ARA KOREA影像档案保存表演和媒体艺术发生的时间，引导观众以新的视角再次进入作品。","vdSelectedIndex":"02 / 精选影像","vdSelectedTitle":"观看档案","vdSelectedIntro1":"通过动态影像记录，观看代表性表演","vdSelectedIntro2":"与项目中的重要场景。","vdVideo1Body":"时间的幽灵 · 完整表演记录中的代表场景","vdVideo2Body":"时间的幽灵 · 凝聚感知瞬间的精选片段","vdVideo3Body":"ARA KOREA · 呈现项目视觉语言的宣传影像","vdFeatureIndex":"03 / 影像记忆","vdFeatureType":"舞台在屏幕上延续","vdFeatureTitle":"时间化为影像","vdFeatureBody":"镜头将仅发生一次的表演延伸至多种视角与距离。现场能量与细微动作在影像节奏中重新组合，使作品以另一种观看体验与观众相遇。","vdFeatureLink":"返回韩国文化","vdMoreIndex":"04 / 更多影像","vdMoreTitle":"继续观看","vdMore4":"表演 · 媒体艺术","vdMore5":"现场 · 节选","vdMore6":"艺术电影 · 项目","vdMore7":"纪录片 · 档案","vdMore8":"拼贴 · 动态影像","vdMore9":"创作过程 · 排练"}
   }
-
-  function closeModal(){
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden','true');
-    frame.src = '';
-    document.body.style.overflow = '';
-  }
-
-  document.querySelectorAll('.v-card').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const vid = btn.getAttribute('data-vid');
-      const start = parseInt(btn.getAttribute('data-start') || '0', 10);
-      const title = btn.querySelector('.v-title')?.textContent?.trim();
-      openModal(vid, start, title);
-    });
-  });
-
-  modal.addEventListener('click', (e) => {
-    if(e.target && e.target.matches('[data-close]')) closeModal();
-  });
-
-  window.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
-  });
-})();
-</script>
-
-<!-- mobile nav toggle script removed: submenu is always visible on mobile -->
+  </script>
+  <script src="site.js?v=20260827-2" defer></script>
 </body>
 </html>

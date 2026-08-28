@@ -1,185 +1,128 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ko">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>ARA KOREA · Contact</title>
-  <link rel="stylesheet" href="styles.css?v=20251218"/>
-  
-
-  <style>
-    /* Contact page layout (keeps global ARA KOREA design language) */
-    .contact-wrap{max-width: 920px; margin: 0 auto;}
-    .contact-row{display:grid; grid-template-columns: 1.1fr .9fr .9fr; gap:14px;}
-    @media (max-width: 980px){.contact-row{grid-template-columns:1fr;}}
-    .contact-card .meta{color:var(--muted); font-size:13px; margin-top:10px; line-height:1.55}
-    .contact-card a{color:var(--accent)}
-    .contact-card a:hover{text-decoration:underline}
-
-    .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
-    @media (max-width: 980px){.form-grid{grid-template-columns:1fr;}}
-    .input, .textarea{
-      width:100%;
-      padding:12px 12px;
-      border-radius: 14px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.18);
-      color: var(--text);
-      outline:none;
-    }
-    .textarea{min-height: 132px; resize: vertical}
-    label.meta{display:block; margin-bottom:8px;}
-  </style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact · ARA KOREA</title>
+  <meta name="description" content="ARA KOREA의 공연, 상영, 문화예술 협업과 언론 문의를 위한 공식 연락처입니다.">
+  <meta name="keywords" content="ARA KOREA, 아라코리아, 공연 문의, 상영 문의, 문화예술 협업, 언론 문의, K-Culture">
+  <link rel="canonical" href="https://arakorea.org/contact">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ARA KOREA">
+  <meta property="og:title" content="Contact · ARA KOREA">
+  <meta property="og:description" content="Connect with ARA KOREA for collaborations, screenings, performances and press inquiries.">
+  <meta property="og:url" content="https://arakorea.org/contact">
+  <meta property="og:image" content="https://arakorea.org/images/og-arakorea-kakao.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css?v=20260828">
 </head>
-<body>
-  <header class="site-header">
-<div class="brand">
-<div class="brand-title">ARA KOREA</div>
-<div class="brand-sub">Immersive K‑Culture · Art Film &amp; Performance</div>
-</div>
-<nav aria-label="Primary" class="top-nav"><a class="nav-pill" href="index.html">Home</a><a class="nav-pill" href="about.html">About</a><div class="nav-dd"><a class="nav-pill" href="kculture.html">K‑Culture</a><div class="nav-dd-menu"><a class="nav-dd-item nav-pill" href="kculture-gallery.html">Gallery</a><a class="nav-dd-item nav-pill" href="kculture-portfolio.html">Portfolio</a><a class="nav-dd-item nav-pill" href="kculture-video.html">Video</a></div></div><a class="nav-pill" href="news.html">News</a><a class="nav-pill is-active" href="contact.html">Contact</a></nav>
-</header>
+<body class="home-page contact-page">
+  <a class="home-skip" href="#main-content">본문 바로가기</a>
+  <header class="home-header" data-home-header>
+    <a class="home-brand" href="/" aria-label="ARA KOREA 홈"><span class="home-brand-name">ARA KOREA</span><span class="home-brand-tag" data-i18n="brandTag">Contemporary K-Culture</span></a>
+    <div class="home-header-tools">
+      <nav class="home-nav" id="home-navigation" aria-label="주요 메뉴">
+        <a href="/" data-i18n="navHome">Home</a><a href="/about" data-i18n="navAbout">About</a><a href="/kculture" data-i18n="navCulture">K-Culture</a><a href="/news" data-i18n="navNews">News</a><a class="is-active" href="/contact" aria-current="page" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="home-language-menu" data-language-menu>
+        <button class="home-language-trigger" type="button" aria-expanded="false" aria-controls="home-language-options"><span data-language-current>KO</span><span class="home-language-chevron" aria-hidden="true">⌄</span></button>
+        <div class="home-language-options" id="home-language-options" role="menu" aria-label="언어 선택">
+          <button type="button" role="menuitemradio" data-lang="ko" aria-checked="true"><span>한국어</span><small>KO</small></button><button type="button" role="menuitemradio" data-lang="en" aria-checked="false"><span>English</span><small>EN</small></button><button type="button" role="menuitemradio" data-lang="ja" aria-checked="false"><span>日本語</span><small>JA</small></button><button type="button" role="menuitemradio" data-lang="zh" aria-checked="false"><span>中文</span><small>ZH</small></button>
+        </div>
+      </div>
+      <button class="home-menu-toggle" type="button" aria-expanded="false" aria-controls="home-navigation"><span data-i18n="menu">MENU</span><span class="home-menu-icon" aria-hidden="true"></span></button>
+    </div>
+  </header>
 
-  <main class="page">
-    <section class="section" style="padding-top:10px;">
-      <div class="section-head">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-sub">For collaborations, screenings, performances, and press inquiries.</p>
+  <main id="main-content">
+    <section class="home-hero" aria-labelledby="contact-title">
+      <div class="home-hero-copy">
+        <p class="home-kicker" data-i18n="ctKicker">COLLABORATION · PERFORMANCE · PRESS</p>
+        <h1 id="contact-title" class="home-title"><span>CONTACT</span><span>ARA KOREA</span></h1>
+        <p class="home-lead"><span class="home-copy-line" data-i18n="ctLead1">예술과 문화가 만나는 다음 장면을 위해,</span><span class="home-copy-line" data-i18n="ctLead2">새로운 제안과 대화를 기다립니다.</span></p>
+        <div class="home-actions"><a class="home-action home-action-primary" href="#inquiry" data-i18n="ctWriteAction">Send an Inquiry</a><a class="home-action" href="mailto:info@akenm.com" data-i18n="ctEmailAction">Email Us</a></div>
+      </div>
+      <figure class="home-hero-visual"><img src="images/highlight-3.jpg" alt="ARA KOREA 미디어아트 공연 장면" fetchpriority="high"><figcaption><span data-i18n="ctFigure1">Open Conversation</span><span data-i18n="ctFigure2">Seoul · Korea</span></figcaption></figure>
+      <p class="home-scroll" aria-hidden="true" data-i18n="scroll">SCROLL TO EXPLORE</p>
+    </section>
+
+    <section class="home-statement home-reveal" aria-labelledby="contact-statement-title">
+      <div class="home-section-index" data-i18n="ctStatementIndex">01 / CONNECT</div>
+      <div class="home-statement-body">
+        <h2 id="contact-statement-title"><span class="home-statement-desktop"><span data-i18n="ctStatement1">공연과 영상, 문화 프로젝트의 가능성을 나누며</span><span data-i18n="ctStatement2">서로의 감각이 이어지는 자리를 엽니다</span></span><span class="home-statement-mobile" data-i18n="ctStatementMobile">공연과 영상, 문화 프로젝트의 가능성을 나누며 서로의 감각이 이어지는 자리를 엽니다</span></h2>
+        <p data-i18n="ctStatementBody">공동 기획, 작품 상영, 공연 초청, 언론 취재와 문화적 교류에 관한 제안을 보내주세요. 문의의 성격과 일정을 함께 적어주시면 내용을 확인한 뒤 적합한 방향으로 답변드리겠습니다.</p>
       </div>
     </section>
 
-    <div class="contact-wrap">
-      <section class="contact-row">
-        <article class="panel contact-card">
-          <div class="panel-title">Direct</div>
-          <div class="panel-desc">Primary channels for quick response.</div>
-          <div style="height:10px"></div>
-
-          <div class="meta">
-            <strong>E-mail</strong><br/>
-            <a href="mailto:info@akenm.com">info@akenm.com</a>
-          </div>
-
-          <div class="meta" style="margin-top:12px">
-            <strong>Tel</strong><br/>
-            <a href="tel:+8224007151">02‑400‑7151</a>
-          </div>
-
-          <div class="meta" style="margin-top:12px">
-            <strong>Website</strong><br/>
-            <a href="https://akenm.com" target="_blank" rel="noopener">akenm.com</a>
-          </div>
+    <section class="contact-directory" aria-labelledby="contact-directory-title">
+      <div class="home-section-heading home-reveal">
+        <div><div class="home-section-index" data-i18n="ctDirectoryIndex">02 / CONTACT DIRECTORY</div><h2 id="contact-directory-title" data-i18n="ctDirectoryTitle">Ways to Connect</h2></div>
+        <p><span data-i18n="ctDirectoryIntro1">문의 목적에 맞는 채널을 선택해</span><span data-i18n="ctDirectoryIntro2">ARA KOREA와 연결하세요.</span></p>
+      </div>
+      <div class="contact-directory-grid">
+        <article class="contact-channel home-reveal">
+          <p class="contact-channel-index" data-i18n="ctDirectIndex">01 / DIRECT</p>
+          <h2 data-i18n="ctDirectTitle">Email &amp; Phone</h2>
+          <p data-i18n="ctDirectBody">공연, 상영과 협업에 관한 공식 문의를 전해주세요.</p>
+          <div class="contact-channel-links"><a href="mailto:info@akenm.com">info@akenm.com</a><a href="tel:+8224007151">02-400-7151</a></div>
         </article>
-
-        <article class="panel contact-card">
-          <div class="panel-title">Social</div>
-          <div class="panel-desc">Follow and message us.</div>
-          <div style="height:10px"></div>
-          <div class="meta">
-            <a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> ·
-            <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> ·
-            <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a>
-          </div>
-          <div class="meta" style="opacity:.85; margin-top:12px">
-            If you'd like, send the exact URLs and we will link them here.
-          </div>
+        <article class="contact-channel home-reveal">
+          <p class="contact-channel-index" data-i18n="ctSocialIndex">02 / SOCIAL</p>
+          <h2 data-i18n="ctSocialTitle">Follow the Work</h2>
+          <p data-i18n="ctSocialBody">공연과 영상 프로젝트의 새로운 소식을 확인하세요.</p>
+          <div class="contact-channel-links"><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube ↗</a><a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook ↗</a></div>
         </article>
-
-        <article class="panel contact-card">
-          <div class="panel-title">Shop</div>
-          <div class="panel-desc">Merch & digital goods.</div>
-          <div style="height:10px"></div>
-          <div class="meta">
-            <a href="https://arakorea.shop" target="_blank" rel="noopener">ARAKOREA.SHOP</a>
-          </div>
+        <article class="contact-channel home-reveal">
+          <p class="contact-channel-index" data-i18n="ctNetworkIndex">03 / NETWORK</p>
+          <h2 data-i18n="ctNetworkTitle">Creative Network</h2>
+          <p data-i18n="ctNetworkBody">연결된 문화예술 네트워크와 프로젝트를 만나보세요.</p>
+          <div class="contact-channel-links"><a href="https://akenm.com" target="_blank" rel="noopener noreferrer">AK ENM ↗</a><a href="https://arakorea.shop" target="_blank" rel="noopener noreferrer">ARAKOREA.SHOP ↗</a></div>
         </article>
-      </section>
+      </div>
+    </section>
 
-      
-      <section class="panel" style="margin-top:14px">
-        <div class="panel-title">Send a message</div>
-        <div class="panel-desc">This form sends directly to our inbox (no email client needed).</div>
-
-        <div style="height:12px"></div>
-
-        <form id="contactForm" method="POST" action="https://formspree.io/f/maqyznbe">
-          <input type="hidden" name="_subject" value="[ARA KOREA] New inquiry"/>
-          <input type="hidden" name="form_type" value="ARAKOREA_CONTACT"/>
-          <!-- Honeypot field (spam protection). Humans should leave this blank. -->
-          <input type="text" name="_gotcha" style="display:none"/>
-
-          <div class="form-grid">
-            <div>
-              <label class="meta" for="name">Name</label>
-              <input class="input" id="name" name="name" type="text" placeholder="Your name" required />
-            </div>
-            <div>
-              <label class="meta" for="email">Email</label>
-              <input class="input" id="email" name="email" type="email" placeholder="you@example.com" required />
-            </div>
-            <div>
-              <label class="meta" for="phone">Phone (optional)</label>
-              <input class="input" id="phone" name="phone" type="text" placeholder="+82 10-0000-0000" />
-            </div>
-            <div>
-              <label class="meta" for="topic">Topic (optional)</label>
-              <input class="input" id="topic" name="topic" type="text" placeholder="Program / Partnership / Press" />
-            </div>
+    <section class="contact-form-section" id="inquiry" aria-labelledby="contact-form-title">
+      <div class="contact-form-lead">
+        <div>
+          <div class="home-section-index" data-i18n="ctFormIndex">03 / INQUIRY</div>
+          <h2 id="contact-form-title" data-i18n="ctFormTitle">Start a Conversation</h2>
+          <p data-i18n="ctFormBody">필요한 내용을 남겨주시면 확인 후 입력하신 이메일로 연락드리겠습니다.</p>
+        </div>
+        <p class="contact-form-note" data-i18n="ctFormNote">Performance · Screening · Partnership · Press</p>
+      </div>
+      <div class="contact-form-wrap">
+        <form class="contact-form" method="POST" action="https://formspree.io/f/maqyznbe">
+          <input type="hidden" name="_subject" value="[ARA KOREA] New inquiry">
+          <input type="hidden" name="form_type" value="ARAKOREA_CONTACT">
+          <label class="contact-honeypot" for="company-website">Company website</label>
+          <input class="contact-honeypot" id="company-website" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          <div class="contact-form-grid">
+            <div class="contact-field"><label for="name" data-i18n="ctName">Name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+            <div class="contact-field"><label for="email" data-i18n="ctEmail">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+            <div class="contact-field"><label for="phone" data-i18n="ctPhone">Phone · Optional</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+            <div class="contact-field"><label for="topic" data-i18n="ctTopic">Inquiry Type</label><select id="topic" name="topic" required><option value="" selected disabled data-i18n="ctTopicSelect">Select a category</option><option value="collaboration" data-i18n="ctTopicCollaboration">Collaboration</option><option value="screening" data-i18n="ctTopicScreening">Screening</option><option value="performance" data-i18n="ctTopicPerformance">Performance</option><option value="press" data-i18n="ctTopicPress">Press</option><option value="other" data-i18n="ctTopicOther">Other</option></select></div>
+            <div class="contact-field contact-field-full"><label for="subject" data-i18n="ctSubject">Subject</label><input id="subject" name="subject" type="text" required></div>
+            <div class="contact-field contact-field-full"><label for="message" data-i18n="ctMessage">Message</label><textarea id="message" name="message" required></textarea></div>
           </div>
-
-          <div style="height:12px"></div>
-          <div>
-            <label class="meta" for="subject">Subject</label>
-            <input class="input" id="subject" name="subject" type="text" placeholder="Inquiry / collaboration" required />
-          </div>
-
-          <div style="height:12px"></div>
-          <div>
-            <label class="meta" for="message">Message</label>
-            <textarea class="textarea" id="message" name="message" placeholder="Write your message" required></textarea>
-          </div>
-
-          <div style="height:14px"></div>
-          <button class="btn btn-primary" id="sendBtn" type="submit">Send</button>
-          <span class="meta" id="hint" style="margin-left:10px"></span>
+          <div class="contact-form-actions"><button class="contact-submit" type="submit"><span data-i18n="ctSend">Send Inquiry</span><span aria-hidden="true">→</span></button><p class="contact-privacy" data-i18n="ctPrivacy">보내주신 정보는 문의 확인과 답변을 위해서만 사용됩니다.</p></div>
         </form>
-      </section>
-
-    </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-<div class="footer-grid">
-<div>
-<div class="footer-head">Contact</div>
-<div class="footer-text">E‑mail: info@akenm.com</div>
-<div class="footer-text">Tel: 02‑400‑7151</div>
-</div>
-<div>
-<div class="footer-head">Social</div>
-<div class="footer-text"><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div>
-</div>
-<div>
-<div class="footer-head">Shop</div>
-<div class="footer-text"><a href="https://arakorea.shop" target="_blank" rel="noopener noreferrer">ARAKOREA.SHOP</a></div>
-</div>
-</div>
-<div class="footer-bottom">© ARA KOREA Space Art Project</div>
-</footer>
+  <footer class="home-footer">
+    <div class="home-footer-top"><div><p class="home-footer-label" data-i18n="footerContact">CONTACT</p><a href="mailto:info@akenm.com">info@akenm.com</a><a href="tel:+8224007151">02-400-7151</a></div><div><p class="home-footer-label" data-i18n="footerSocial">SOCIAL</p><a href="https://www.youtube.com/ampkind" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://instagram.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://facebook.com/arakorea.shop" target="_blank" rel="noopener noreferrer">Facebook</a></div><p class="home-footer-mark" aria-label="ARA KOREA">AK</p></div>
+    <div class="home-footer-bottom"><span>© ARA KOREA Space Art Project</span><a href="#main-content" data-i18n="backTop">Back to top ↑</a></div>
+  </footer>
 
-  
-  <script>
-    const form = document.getElementById('contactForm');
-    const btn = document.getElementById('sendBtn');
-    const hint = document.getElementById('hint');
-
-    form.addEventListener('submit', () => {
-      btn.disabled = true;
-      hint.textContent = 'Sending…';
-      // Formspree will redirect to a confirmation page by default.
-      // If you prefer staying on the same page, we can switch to AJAX submission.
-    });
+  <script type="application/json" id="page-translations">
+  {
+    "ko":{"title":"Contact · ARA KOREA","description":"ARA KOREA의 공연, 상영, 문화예술 협업과 언론 문의를 위한 공식 연락처입니다.","ctKicker":"COLLABORATION · PERFORMANCE · PRESS","ctLead1":"예술과 문화가 만나는 다음 장면을 위해,","ctLead2":"새로운 제안과 대화를 기다립니다.","ctWriteAction":"Send an Inquiry","ctEmailAction":"Email Us","ctFigure1":"Open Conversation","ctFigure2":"Seoul · Korea","ctStatementIndex":"01 / CONNECT","ctStatement1":"공연과 영상, 문화 프로젝트의 가능성을 나누며","ctStatement2":"서로의 감각이 이어지는 자리를 엽니다","ctStatementMobile":"공연과 영상, 문화 프로젝트의 가능성을 나누며 서로의 감각이 이어지는 자리를 엽니다","ctStatementBody":"공동 기획, 작품 상영, 공연 초청, 언론 취재와 문화적 교류에 관한 제안을 보내주세요. 문의의 성격과 일정을 함께 적어주시면 내용을 확인한 뒤 적합한 방향으로 답변드리겠습니다.","ctDirectoryIndex":"02 / CONTACT DIRECTORY","ctDirectoryTitle":"Ways to Connect","ctDirectoryIntro1":"문의 목적에 맞는 채널을 선택해","ctDirectoryIntro2":"ARA KOREA와 연결하세요.","ctDirectIndex":"01 / DIRECT","ctDirectTitle":"Email & Phone","ctDirectBody":"공연, 상영과 협업에 관한 공식 문의를 전해주세요.","ctSocialIndex":"02 / SOCIAL","ctSocialTitle":"Follow the Work","ctSocialBody":"공연과 영상 프로젝트의 새로운 소식을 확인하세요.","ctNetworkIndex":"03 / NETWORK","ctNetworkTitle":"Creative Network","ctNetworkBody":"연결된 문화예술 네트워크와 프로젝트를 만나보세요.","ctFormIndex":"03 / INQUIRY","ctFormTitle":"Start a Conversation","ctFormBody":"필요한 내용을 남겨주시면 확인 후 입력하신 이메일로 연락드리겠습니다.","ctFormNote":"Performance · Screening · Partnership · Press","ctName":"이름","ctEmail":"이메일","ctPhone":"전화번호 · 선택","ctTopic":"문의 유형","ctTopicSelect":"유형을 선택해 주세요","ctTopicCollaboration":"협업 및 공동 기획","ctTopicScreening":"작품 상영","ctTopicPerformance":"공연 초청","ctTopicPress":"언론 및 취재","ctTopicOther":"기타","ctSubject":"제목","ctMessage":"문의 내용","ctSend":"문의 보내기","ctPrivacy":"보내주신 정보는 문의 확인과 답변을 위해서만 사용됩니다."},
+    "en":{"title":"Contact · ARA KOREA","description":"Official contact information for ARA KOREA collaborations, screenings, performances and press inquiries.","ctKicker":"COLLABORATION · PERFORMANCE · PRESS","ctLead1":"For the next scene where art and culture meet,","ctLead2":"we welcome new proposals and conversations.","ctWriteAction":"Send an Inquiry","ctEmailAction":"Email Us","ctFigure1":"Open Conversation","ctFigure2":"Seoul · Korea","ctStatementIndex":"01 / CONNECT","ctStatement1":"Sharing possibilities across performance, film and culture,","ctStatement2":"we open a space where creative perspectives connect.","ctStatementMobile":"Sharing possibilities across performance, film and culture, we open a space where creative perspectives connect.","ctStatementBody":"We welcome proposals for co-production, screenings, performance invitations, press coverage and cultural exchange. Please include the purpose and schedule of your inquiry so we can review it and respond with the most relevant direction.","ctDirectoryIndex":"02 / CONTACT DIRECTORY","ctDirectoryTitle":"Ways to Connect","ctDirectoryIntro1":"Choose the channel that best fits your inquiry","ctDirectoryIntro2":"and connect with ARA KOREA.","ctDirectIndex":"01 / DIRECT","ctDirectTitle":"Email & Phone","ctDirectBody":"Send official inquiries about performances, screenings and collaborations.","ctSocialIndex":"02 / SOCIAL","ctSocialTitle":"Follow the Work","ctSocialBody":"Discover new updates from our performance and moving-image projects.","ctNetworkIndex":"03 / NETWORK","ctNetworkTitle":"Creative Network","ctNetworkBody":"Explore the cultural network and projects connected with ARA KOREA.","ctFormIndex":"03 / INQUIRY","ctFormTitle":"Start a Conversation","ctFormBody":"Leave the relevant details and we will reply to the email address you provide.","ctFormNote":"Performance · Screening · Partnership · Press","ctName":"Name","ctEmail":"Email","ctPhone":"Phone · Optional","ctTopic":"Inquiry Type","ctTopicSelect":"Select a category","ctTopicCollaboration":"Collaboration","ctTopicScreening":"Screening","ctTopicPerformance":"Performance","ctTopicPress":"Press","ctTopicOther":"Other","ctSubject":"Subject","ctMessage":"Message","ctSend":"Send Inquiry","ctPrivacy":"The information you provide is used only to review and respond to your inquiry."},
+    "ja":{"title":"お問い合わせ · ARA KOREA","description":"ARA KOREAの舞台、上映、文化芸術コラボレーション、取材に関する公式お問い合わせページです。","ctKicker":"コラボレーション · 舞台 · 取材","ctLead1":"芸術と文化が出会う次の場面に向けて、","ctLead2":"新たな提案と対話をお待ちしています。","ctWriteAction":"お問い合わせを送る","ctEmailAction":"メールを送る","ctFigure1":"開かれた対話","ctFigure2":"ソウル · 韓国","ctStatementIndex":"01 / つながる","ctStatement1":"舞台、映像、文化プロジェクトの可能性を分かち合い、","ctStatement2":"感性と視点がつながる場をひらきます。","ctStatementMobile":"舞台、映像、文化プロジェクトの可能性を分かち合い、感性と視点がつながる場をひらきます。","ctStatementBody":"共同企画、作品上映、公演招聘、取材、文化交流に関するご提案をお寄せください。お問い合わせの目的と日程をご記入いただければ、内容を確認のうえ適切な方向でご返信いたします。","ctDirectoryIndex":"02 / 連絡先","ctDirectoryTitle":"つながる方法","ctDirectoryIntro1":"目的に合った窓口を選び、","ctDirectoryIntro2":"ARA KOREAへご連絡ください。","ctDirectIndex":"01 / 直接連絡","ctDirectTitle":"メール・電話","ctDirectBody":"舞台、上映、コラボレーションに関する公式のお問い合わせ窓口です。","ctSocialIndex":"02 / ソーシャル","ctSocialTitle":"活動をフォロー","ctSocialBody":"舞台と映像プロジェクトの最新情報をご覧ください。","ctNetworkIndex":"03 / ネットワーク","ctNetworkTitle":"クリエイティブ・ネットワーク","ctNetworkBody":"ARA KOREAにつながる文化芸術ネットワークとプロジェクトをご紹介します。","ctFormIndex":"03 / お問い合わせ","ctFormTitle":"対話を始める","ctFormBody":"必要事項をご記入ください。確認後、ご入力のメールアドレスへ返信いたします。","ctFormNote":"舞台 · 上映 · パートナーシップ · 取材","ctName":"お名前","ctEmail":"メール","ctPhone":"電話番号 · 任意","ctTopic":"お問い合わせ種別","ctTopicSelect":"種別を選択してください","ctTopicCollaboration":"コラボレーション","ctTopicScreening":"作品上映","ctTopicPerformance":"公演招聘","ctTopicPress":"取材・報道","ctTopicOther":"その他","ctSubject":"件名","ctMessage":"お問い合わせ内容","ctSend":"送信する","ctPrivacy":"ご入力いただいた情報は、お問い合わせの確認と返信にのみ使用します。"},
+    "zh":{"title":"联系我们 · ARA KOREA","description":"ARA KOREA演出、放映、文化艺术合作及媒体采访的官方联系页面。","ctKicker":"合作 · 演出 · 媒体","ctLead1":"为艺术与文化相遇的下一个场景，","ctLead2":"我们期待新的提案与对话。","ctWriteAction":"发送咨询","ctEmailAction":"发送邮件","ctFigure1":"开放对话","ctFigure2":"首尔 · 韩国","ctStatementIndex":"01 / 建立联系","ctStatement1":"分享演出、影像与文化项目的多重可能，","ctStatement2":"开启创意视角彼此连接的空间。","ctStatementMobile":"分享演出、影像与文化项目的多重可能，开启创意视角彼此连接的空间。","ctStatementBody":"欢迎就联合策划、作品放映、演出邀请、媒体采访及文化交流提出建议。请同时填写咨询目的与时间安排，我们将在确认内容后给予相应回复。","ctDirectoryIndex":"02 / 联系方式","ctDirectoryTitle":"与我们联系","ctDirectoryIntro1":"请选择符合咨询目的的渠道，","ctDirectoryIntro2":"与ARA KOREA建立联系。","ctDirectIndex":"01 / 直接联系","ctDirectTitle":"邮件与电话","ctDirectBody":"欢迎就演出、放映及合作事宜发送正式咨询。","ctSocialIndex":"02 / 社交媒体","ctSocialTitle":"关注创作动态","ctSocialBody":"了解演出与影像项目的最新消息。","ctNetworkIndex":"03 / 创意网络","ctNetworkTitle":"创意网络","ctNetworkBody":"探索与ARA KOREA相连的文化艺术网络及项目。","ctFormIndex":"03 / 咨询","ctFormTitle":"开启对话","ctFormBody":"请留下相关信息，我们确认后将通过您填写的邮箱回复。","ctFormNote":"演出 · 放映 · 合作 · 媒体","ctName":"姓名","ctEmail":"邮箱","ctPhone":"电话 · 选填","ctTopic":"咨询类型","ctTopicSelect":"请选择类型","ctTopicCollaboration":"合作与联合策划","ctTopicScreening":"作品放映","ctTopicPerformance":"演出邀请","ctTopicPress":"媒体与采访","ctTopicOther":"其他","ctSubject":"主题","ctMessage":"咨询内容","ctSend":"发送咨询","ctPrivacy":"您提供的信息仅用于确认并回复本次咨询。"}
+  }
   </script>
+  <script src="site.js?v=20260827-2" defer></script>
 </body>
 </html>
