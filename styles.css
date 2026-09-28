@@ -1123,3 +1123,227 @@ body.home-page :focus-visible{outline:2px solid var(--home-red);outline-offset:5
   }
   .home-hero-visual img,.home-card-image img{transform:none!important}
 }
+
+
+/* ARA KOREA 22ND CAMPAIGN — SKULL & ICE */
+.home-campaign-title{font-size:clamp(70px,9.3vw,158px);line-height:.78;}
+.home-campaign-title span:last-child{margin-left:.28em;}
+.home-campaign-artist{margin:-8px 0 24px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(22px,2.2vw,38px);letter-spacing:.12em;color:var(--home-white);}
+.home-campaign-date{margin:26px 0 0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(14px,1.15vw,18px);letter-spacing:.18em;color:rgba(247,244,237,.86);}
+.home-campaign-note{margin:12px 0 0;color:rgba(247,244,237,.55);font-size:11px;letter-spacing:.08em;word-break:keep-all;}
+.home-hero-visual img{filter:saturate(.95) contrast(1.06);}
+@media (max-width:980px){
+ .home-campaign-title{font-size:clamp(58px,18vw,100px);}
+ .home-campaign-artist{margin:0 0 20px;font-size:clamp(20px,6vw,30px);}
+ .home-campaign-date{font-size:12px;letter-spacing:.12em;}
+ .home-campaign-note{font-size:10px;line-height:1.7;}
+}
+
+
+/* =========================================================
+   ARA KOREA 22ND CAMPAIGN — OFFICIAL PDF BROCHURE VIEWER
+   ========================================================= */
+.home-brochure{
+  width:min(calc(100% - 44px),1464px);
+  margin:0 auto;
+  padding:clamp(92px,11vw,170px) 0;
+  border-top:1px solid var(--home-line);
+}
+.home-brochure-head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(260px,.55fr);
+  gap:40px;
+  align-items:end;
+  margin-bottom:36px;
+}
+.home-brochure-kicker{
+  margin:28px 0 10px;
+  color:var(--home-red);
+  font-size:10px;
+  font-weight:760;
+  letter-spacing:.2em;
+}
+.home-brochure h2{
+  margin:0;
+  font-family:"Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  font-size:clamp(54px,8vw,126px);
+  line-height:.82;
+  letter-spacing:-.065em;
+}
+.home-brochure-intro{
+  margin:0 0 5px;
+  color:rgba(247,244,237,.64);
+  font-size:11px;
+  font-weight:650;
+  line-height:1.9;
+  letter-spacing:.09em;
+  text-align:right;
+}
+.home-pdf-shell{
+  border:1px solid var(--home-line);
+  background:#050505;
+}
+.home-pdf-toolbar{
+  min-height:58px;
+  padding:0 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  border-bottom:1px solid var(--home-line);
+  color:rgba(247,244,237,.62);
+  font-size:9px;
+  font-weight:720;
+  letter-spacing:.12em;
+}
+.home-pdf-actions{display:flex;gap:22px;align-items:center}
+.home-pdf-actions a{
+  color:var(--home-white);
+  transition:opacity .2s ease;
+}
+.home-pdf-actions a:hover{opacity:.58}
+.home-pdf-frame{
+  height:min(82vh,980px);
+  min-height:680px;
+  background:#111;
+}
+.home-pdf-frame object{width:100%;height:100%;display:block}
+.home-pdf-fallback{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  padding:30px;
+  text-align:center;
+}
+.home-pdf-fallback p{color:var(--home-muted)}
+.home-pdf-mobile{display:none}
+
+@media (max-width: 760px){
+  .home-brochure{
+    width:calc(100% - 32px);
+    padding:86px 0;
+  }
+  .home-brochure-head{
+    grid-template-columns:1fr;
+    gap:20px;
+    margin-bottom:24px;
+  }
+  .home-brochure h2{font-size:clamp(58px,18vw,92px)}
+  .home-brochure-intro{text-align:left}
+  .home-pdf-toolbar{
+    align-items:flex-start;
+    flex-direction:column;
+    padding:16px;
+  }
+  .home-pdf-actions{width:100%;justify-content:space-between;gap:12px}
+  .home-pdf-frame{display:none}
+  .home-pdf-mobile{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    padding:28px 16px 30px;
+  }
+  .home-pdf-mobile p{
+    flex-basis:100%;
+    margin:0 0 12px;
+    color:var(--home-muted);
+    font-size:13px;
+    line-height:1.7;
+  }
+}
+
+
+/* =========================================================
+   ARA KOREA 22ND CAMPAIGN — POSTER FEATURE
+   ========================================================= */
+.home-campaign22{
+  width:min(calc(100% - 44px),1464px);
+  margin:0 auto;
+  padding:clamp(100px,13vw,190px) 0;
+  border-top:1px solid var(--home-line);
+  display:grid;
+  grid-template-columns:minmax(0,.72fr) minmax(360px,.58fr);
+  gap:clamp(42px,8vw,130px);
+  align-items:center;
+}
+.home-campaign22-copy{max-width:700px}
+.home-campaign22-kicker{
+  margin:34px 0 20px;
+  color:var(--home-red);
+  font-size:10px;
+  font-weight:760;
+  letter-spacing:.22em;
+}
+.home-campaign22 h2{
+  margin:0 0 38px;
+  font-family:"Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  font-size:clamp(82px,10vw,164px);
+  font-weight:800;
+  line-height:.72;
+  letter-spacing:-.075em;
+}
+.home-campaign22-lead{
+  margin:0;
+  color:rgba(247,244,237,.86);
+  font-size:clamp(17px,1.45vw,23px);
+  line-height:1.85;
+  word-break:keep-all;
+}
+.home-campaign22-meta{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  margin-top:34px;
+  padding-top:20px;
+  border-top:1px solid var(--home-line);
+  color:rgba(247,244,237,.7);
+  font-size:10px;
+  font-weight:720;
+  letter-spacing:.14em;
+}
+.home-campaign22-location{
+  margin:20px 0 0;
+  color:rgba(247,244,237,.48);
+  font-size:12px;
+  line-height:1.7;
+}
+.home-campaign22-poster{
+  position:relative;
+  margin:0;
+  width:min(100%,610px);
+  justify-self:end;
+  background:#080808;
+  box-shadow:0 34px 90px rgba(0,0,0,.55);
+}
+.home-campaign22-poster::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border:1px solid rgba(247,244,237,.16);
+  pointer-events:none;
+}
+.home-campaign22-poster img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+@media (max-width: 900px){
+  .home-campaign22{
+    width:calc(100% - 32px);
+    grid-template-columns:1fr;
+    gap:50px;
+    padding:90px 0;
+  }
+  .home-campaign22 h2{
+    font-size:clamp(76px,24vw,126px);
+    margin-bottom:30px;
+  }
+  .home-campaign22-poster{
+    width:min(100%,620px);
+    justify-self:center;
+  }
+}
