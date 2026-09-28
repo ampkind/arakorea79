@@ -1347,3 +1347,189 @@ body.home-page :focus-visible{outline:2px solid var(--home-red);outline-offset:5
     justify-self:center;
   }
 }
+
+
+/* =========================================================
+   OFFICIAL BROCHURE — REFINED VIEW-ONLY OVERRIDES
+   ========================================================= */
+.home-brochure{
+  font-family:Inter,"Noto Sans KR","Apple SD Gothic Neo","Helvetica Neue",Arial,sans-serif;
+}
+.home-brochure-head{
+  align-items:end;
+}
+.home-brochure-kicker{
+  margin:28px 0 14px;
+  color:rgba(247,244,237,.54);
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.24em;
+}
+.home-brochure h2{
+  font-family:Inter,"Helvetica Neue",Arial,sans-serif;
+  font-size:clamp(58px,7.5vw,118px);
+  font-weight:760;
+  line-height:.86;
+  letter-spacing:-.065em;
+}
+.home-brochure-subtitle{
+  margin:22px 0 0;
+  color:rgba(247,244,237,.62);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.15em;
+}
+.home-brochure-note{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:8px;
+  padding-bottom:3px;
+  color:rgba(247,244,237,.42);
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.15em;
+}
+.home-pdf-viewonly{
+  background:#050505;
+  border:1px solid rgba(247,244,237,.16);
+}
+.home-pdf-viewonly .home-pdf-toolbar{
+  min-height:64px;
+  padding:0 22px;
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.17em;
+}
+.home-pdf-viewonly .home-pdf-toolbar a{
+  color:rgba(247,244,237,.82);
+  border-bottom:1px solid rgba(247,244,237,.28);
+  padding-bottom:3px;
+}
+.home-pdf-viewonly .home-pdf-toolbar a:hover{
+  color:#fff;
+  border-color:#fff;
+}
+.home-brochure-open{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  padding:0 18px;
+  border:1px solid rgba(247,244,237,.32);
+  color:#f7f4ed;
+  font-size:10px;
+  font-weight:650;
+  letter-spacing:.14em;
+  background:transparent;
+}
+.home-brochure-open:hover{
+  border-color:rgba(247,244,237,.78);
+}
+.home-pdf-fallback{
+  color:rgba(247,244,237,.55);
+  font-size:13px;
+}
+@media (max-width:760px){
+  .home-brochure-note{
+    align-items:flex-start;
+  }
+  .home-pdf-viewonly .home-pdf-toolbar{
+    min-height:auto;
+    padding:17px 16px;
+    flex-direction:row;
+    align-items:center;
+  }
+  .home-pdf-mobile{
+    display:block;
+    padding:38px 16px 42px;
+    text-align:left;
+  }
+  .home-pdf-mobile p{
+    margin:0 0 22px;
+    color:rgba(247,244,237,.58);
+    font-size:13px;
+    line-height:1.75;
+  }
+}
+
+
+/* =========================================================
+   22ND CAMPAIGN — MINIMAL EDITORIAL OVERRIDES
+   ========================================================= */
+.home-campaign22-minimal{
+  grid-template-columns:minmax(0,.58fr) minmax(360px,.62fr);
+  gap:clamp(48px,9vw,150px);
+}
+.home-campaign22-minimal .home-campaign22-kicker{
+  color:rgba(247,244,237,.5);
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.2em;
+}
+.home-campaign22-minimal h2{
+  margin-bottom:46px;
+}
+.home-campaign22-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px 30px;
+  padding-top:22px;
+  border-top:1px solid rgba(247,244,237,.18);
+}
+.home-campaign22-links a{
+  color:rgba(247,244,237,.86);
+  font-size:10px;
+  font-weight:650;
+  letter-spacing:.14em;
+  padding-bottom:4px;
+  border-bottom:1px solid rgba(247,244,237,.28);
+}
+.home-campaign22-links a:hover{
+  color:#fff;
+  border-color:#fff;
+}
+
+/* One brochure entry only — no duplicate viewer/download controls */
+.home-brochure-minimal{
+  padding:clamp(82px,9vw,130px) 0;
+}
+.home-brochure-minimal .home-brochure-head{
+  margin:0;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:end;
+}
+.home-brochure-minimal h2{
+  font-size:clamp(54px,6.8vw,104px);
+  line-height:.83;
+}
+.home-brochure-single-link{
+  display:inline-block;
+  margin-bottom:5px;
+  color:rgba(247,244,237,.88);
+  font-size:10px;
+  font-weight:650;
+  letter-spacing:.16em;
+  padding:0 0 6px;
+  border-bottom:1px solid rgba(247,244,237,.35);
+}
+.home-brochure-single-link:hover{
+  color:#fff;
+  border-color:#fff;
+}
+
+@media(max-width:900px){
+  .home-campaign22-minimal{
+    grid-template-columns:1fr;
+    gap:44px;
+  }
+}
+@media(max-width:760px){
+  .home-brochure-minimal .home-brochure-head{
+    grid-template-columns:1fr;
+    gap:32px;
+  }
+  .home-brochure-single-link{
+    justify-self:start;
+  }
+}
